@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Nóvum Industrial — Footer Component Styles
+   Light/white surface matching mockup, logo black, nav links, social icons, tagline.
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--color-white);
+  color: var(--color-charcoal);
+  border-top: 1px solid var(--border-light);
+  padding-block: 1.75rem;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .footer-bar {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.footer-brand .logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav-link {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-nav-link:hover,
+.footer-nav-link:focus-visible {
+  color: var(--color-orange);
+}
+
+.footer-right-group {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+}
+
+.footer-social-link:hover {
+  color: var(--color-orange);
+  transform: translateY(-2px);
+}
+
+.footer-social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.footer-divider {
+  width: 1px;
+  height: 28px;
+  background-color: var(--border-light);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .footer-divider {
+    display: block;
+  }
+}
+
+.footer-tagline-text {
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  color: var(--text-muted);
+  text-align: right;
+  margin: 0;
+}

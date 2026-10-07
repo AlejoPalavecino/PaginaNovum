@@ -1,0 +1,504 @@
+/* ==========================================================================
+   Nóvum Industrial — Final CTA / Contact Component Styles (#contacto)
+   Dark industrial panoramic card matching the reference mockup (media_1791402827857_c6045fce.png):
+   - Left Zone: Eyebrow + 3-line display title + bottom editorial badge
+   - Central Divider: Subtle vertical separator hairline
+   - Center Zone: Descriptive text + Orange mailto button + phone/location meta
+   - Right Zone: Industrial 3D piece with CAD wireframe & HUD technical callouts
+   ========================================================================== */
+
+.section-cta {
+  position: relative;
+  background-color: #0c0d10;
+  color: var(--color-white);
+  padding-block: clamp(3.5rem, 2.5rem + 3vw, 5.5rem);
+  overflow: hidden;
+}
+
+/* Background Ambient Gradient */
+.cta-ambient-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 85%, rgba(255, 129, 52, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 90% 50%, rgba(255, 129, 52, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Container */
+.cta-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 0.8rem + 1.5vw, 2.5rem);
+}
+
+/* Panoramic Card Box */
+.cta-card-box {
+  position: relative;
+  background-color: #111215;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  background-image:
+    radial-gradient(circle at 5% 95%, rgba(255, 129, 52, 0.07) 0%, transparent 40%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, transparent 100%);
+}
+
+/* Desktop 3-Column Layout */
+@media (min-width: 1100px) {
+  .cta-card-box {
+    display: grid;
+    grid-template-columns: 1.12fr 1fr 1.25fr;
+    min-height: 430px;
+    align-items: stretch;
+  }
+}
+
+/* ==========================================================================
+   Zone 1: Left Column (Titles & Editorial Badge)
+   ========================================================================== */
+
+.cta-left-zone {
+  padding: clamp(2rem, 1.6rem + 1.5vw, 3.25rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.cta-eyebrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.cta-orange-dash {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-orange);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.cta-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 1.7rem + 1.7vw, 3.1rem);
+  line-height: 1.08;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: -0.035em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* Bottom Left Editorial Block with Vertical Orange Bar */
+.cta-editorial-bottom {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.cta-editorial-bar {
+  width: 2px;
+  background-color: var(--color-orange);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.cta-editorial-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   Zone 2: Center Column (CTA Action & Meta)
+   ========================================================================== */
+
+.cta-center-zone {
+  padding: clamp(2rem, 1.6rem + 1.5vw, 3.25rem) clamp(1.5rem, 1.2rem + 1vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.75rem;
+  position: relative;
+  z-index: 3;
+}
+
+@media (min-width: 1100px) {
+  .cta-center-zone {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.cta-description {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #C5C8CF;
+  margin: 0;
+  max-width: 38ch;
+}
+
+/* Primary Orange Mailto Button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.65rem;
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(255, 129, 52, 0.35);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  align-self: flex-start;
+}
+
+.cta-button:hover {
+  background-color: #ff934e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 129, 52, 0.5);
+}
+
+.cta-btn-icon {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.cta-btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.cta-button:hover .cta-btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Contact Meta Details Row (Phone + Location) */
+.cta-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #B5B9C2;
+}
+
+.cta-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #C5C8CF;
+  text-decoration: none;
+}
+
+.cta-meta-item svg {
+  color: var(--color-orange);
+  flex-shrink: 0;
+}
+
+.cta-meta-divider {
+  color: rgba(255, 255, 255, 0.2);
+  user-select: none;
+}
+
+/* ==========================================================================
+   Zone 3: Right Column (3D Piece, CAD Wireframe, HUD Callouts)
+   ========================================================================== */
+
+.cta-visual-zone {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3D Technical Piece Image */
+.cta-piece-image {
+  position: absolute;
+  right: -30px;
+  bottom: -25px;
+  width: clamp(340px, 32vw, 480px);
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85));
+  user-select: none;
+}
+
+/* CAD Technical Wireframe Backdrop */
+.cta-wireframe-backdrop {
+  position: absolute;
+  right: 60px;
+  top: 15px;
+  width: clamp(240px, 22vw, 360px);
+  height: auto;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+/* HUD Callout 1 (Top Right) */
+.cta-hud-top-right {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cta-hud-crosshair {
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--color-orange);
+  font-weight: 400;
+}
+
+.cta-hud-tag-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+
+/* HUD Callout 2 (Middle Right) */
+.cta-hud-mid-right {
+  position: absolute;
+  top: 48%;
+  right: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* HUD Brand Watermark (Bottom Right over Piece) */
+.cta-hud-brand-watermark {
+  position: absolute;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cta-brand-dash {
+  width: 18px;
+  height: 2px;
+  background-color: var(--color-orange);
+  border-radius: 1px;
+}
+
+.cta-brand-name {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.1;
+}
+
+.cta-brand-sub {
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Blueprint Ruler / Bottom Axis Ticker */
+.cta-bottom-ticker {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 38%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.32);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ticker-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet & Intermediate Viewports (768px – 1099px) */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .cta-card-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+
+  .cta-left-zone {
+    padding: 2.5rem 2rem;
+  }
+
+  .cta-center-zone {
+    padding: 2.5rem 2rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-visual-zone {
+    grid-column: span 2;
+    min-height: 240px;
+    background: radial-gradient(circle at 70% 50%, rgba(255, 129, 52, 0.05) 0%, transparent 60%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-piece-image {
+    right: 5%;
+    bottom: -15px;
+    width: 320px;
+  }
+
+  .cta-wireframe-backdrop {
+    right: 15%;
+    width: 240px;
+  }
+
+  .cta-bottom-ticker {
+    left: 50%;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .section-cta {
+    padding-block: 2.5rem;
+  }
+
+  .cta-card-box {
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+  }
+
+  .cta-left-zone {
+    padding: 1.75rem 1.25rem 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 1.85rem;
+  }
+
+  .cta-center-zone {
+    padding: 0 1.25rem 1.75rem;
+    gap: 1.25rem;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+
+  .cta-meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .cta-meta-divider {
+    display: none;
+  }
+
+  .cta-visual-zone {
+    min-height: 180px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-piece-image {
+    right: -20px;
+    bottom: -10px;
+    width: 240px;
+    opacity: 0.6;
+  }
+
+  .cta-wireframe-backdrop,
+  .cta-hud-mid-right,
+  .cta-bottom-ticker {
+    display: none;
+  }
+
+  .cta-hud-top-right {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .cta-hud-brand-watermark {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}

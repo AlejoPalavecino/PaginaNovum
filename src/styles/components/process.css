@@ -1,0 +1,901 @@
+/* ==========================================================================
+   Nóvum Industrial — Process Component Styles (#proceso)
+   "Cómo trabajamos" — Technical, Dark (#101113), Precision Engineering Section.
+   Proportional layout with strict collision prevention and responsive scaling.
+   ========================================================================== */
+
+.section-process {
+  position: relative;
+  background-color: #101113;
+  color: var(--color-white);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  padding-block: clamp(4rem, 3rem + 3vw, 6rem);
+}
+
+@media (min-width: 1200px) {
+  .section-process {
+    min-height: 900px;
+    height: clamp(880px, 92vh, 980px);
+    display: flex;
+    align-items: center;
+    padding-block: 0;
+  }
+}
+
+/* Background Blueprint Grid & Vignette Overlays */
+.process-blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.process-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 35%, #101113 90%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Decorative Background Visuals (Proportioned to never obstruct text/cards)
+   ========================================================================== */
+
+/* 3D Industrial Piece (Tucked in bottom-left corner) */
+.process-main-piece {
+  position: absolute;
+  bottom: -30px;
+  left: -20px;
+  width: clamp(260px, 24vw, 420px);
+  height: auto;
+  opacity: 0.75;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
+}
+
+/* Wireframe CAD Piece (Subtle backdrop on right border) */
+.process-wireframe-piece {
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  transform: translateY(-50%);
+  width: clamp(280px, 26vw, 460px);
+  height: auto;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
+}
+
+/* Technical Badges and HUD Accents */
+.process-tech-badge-piece {
+  position: absolute;
+  bottom: clamp(120px, 16vh, 180px);
+  left: clamp(240px, 22vw, 360px);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  line-height: 1.3;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.process-badge-line {
+  width: 20px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.process-hud-top-right {
+  position: absolute;
+  top: clamp(1.75rem, 3vh, 3rem);
+  right: clamp(1.5rem, 3vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hud-brand {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hud-caps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.process-hud-bottom-right {
+  position: absolute;
+  bottom: clamp(1.75rem, 3vh, 3rem);
+  right: clamp(1.5rem, 3vw, 3.5rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   Main Container
+   ========================================================================== */
+
+.process-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 1rem + 2vw, 3.5rem);
+  position: relative;
+  z-index: 4;
+}
+
+@media (min-width: 1200px) {
+  .process-container {
+    height: 100%;
+    min-height: 880px;
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+/* ==========================================================================
+   Zone 1: Left Intro Column
+   ========================================================================== */
+
+.process-intro-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 1200px) {
+  .process-intro-col {
+    position: absolute;
+    top: 7%;
+    bottom: 7%;
+    left: clamp(1.25rem, 1rem + 2vw, 3.5rem);
+    width: clamp(250px, 20vw, 310px);
+  }
+
+  .process-editorial-features {
+    position: absolute;
+    top: 57%;
+    left: 0;
+    margin-top: 0;
+  }
+}
+
+.process-intro-col .section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.15rem;
+}
+
+.process-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.6rem + 1.6vw, 3.1rem);
+  line-height: 1.08;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: -0.035em;
+  margin: 0 0 1.5rem 0;
+  text-transform: none;
+}
+
+.process-editorial-features {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.editorial-orange-bar {
+  width: 2px;
+  background-color: var(--color-orange);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.editorial-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ==========================================================================
+   Zone 2 & 3: Timeline & Alternating Process Cards
+   ========================================================================== */
+
+.process-timeline-zone {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .process-timeline-zone {
+    height: 100%;
+    min-height: 880px;
+  }
+}
+
+/* Central Vertical Axis (Line Base + Progress Line) */
+.process-vertical-axis {
+  position: absolute;
+  top: 7%;
+  bottom: 7%;
+  width: 2px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@media (min-width: 1200px) {
+  .process-vertical-axis {
+    left: 52%;
+    transform: translateX(-50%);
+  }
+}
+
+.process-line-base {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+
+.process-line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: var(--color-orange);
+  border-radius: 2px;
+  transform-origin: top center;
+  transform: scaleY(0);
+  box-shadow: 0 0 14px rgba(255, 129, 52, 0.7), 0 0 4px var(--color-orange);
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* Steps List Container */
+.process-steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .process-steps-list {
+    height: 100%;
+    min-height: 880px;
+  }
+}
+
+/* Individual Step Item */
+.process-step-item {
+  position: relative;
+  z-index: 6;
+}
+
+@media (min-width: 1200px) {
+  .process-step-item {
+    position: absolute;
+    left: 52%;
+    width: 0;
+    height: 0;
+  }
+
+  /* Well-proportioned vertical distribution with ~170px clearance */
+  .step-01 { top: 9%; }
+  .step-02 { top: 27%; }
+  .step-03 { top: 46%; }
+  .step-04 { top: 65%; }
+  .step-05 { top: 84%; }
+}
+
+/* ==========================================================================
+   Node Circles on the Axis
+   ========================================================================== */
+
+.process-node-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Technical blueprint radar rings around Node 01 (matches approved mockup) */
+@media (min-width: 1200px) {
+  .step-01 .process-node-anchor::before {
+    content: "";
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.09);
+    pointer-events: none;
+  }
+
+  .step-01 .process-node-anchor::after {
+    content: "";
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+  }
+}
+
+.process-node-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #101113;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(.22,.61,.36,1);
+}
+
+.node-inner-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step-item.is-active .process-node-circle {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 16px rgba(255, 129, 52, 0.8), 0 0 6px var(--color-orange);
+  transform: scale(1.08);
+}
+
+.process-step-item.is-active .node-inner-dot {
+  background-color: var(--color-orange);
+  transform: scale(1.3);
+  box-shadow: 0 0 8px var(--color-orange);
+}
+
+/* ==========================================================================
+   Horizontal Connectors (Node to Card)
+   ========================================================================== */
+
+.process-connector-line {
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+  z-index: 6;
+  transform: scaleX(0);
+  transition: transform 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+@media (min-width: 1200px) {
+  /* Left Steps Connector (Runs from Node leftwards to Card) */
+  .step-left .process-connector-line {
+    right: 10px;
+    width: 32px;
+    transform-origin: right center;
+  }
+
+  /* Right Steps Connector (Runs from Node rightwards to Card) */
+  .step-right .process-connector-line {
+    left: 10px;
+    width: 32px;
+    transform-origin: left center;
+  }
+}
+
+.process-step-item.is-active .process-connector-line {
+  transform: scaleX(1);
+  background-color: rgba(255, 129, 52, 0.6);
+}
+
+/* ==========================================================================
+   Step Cards (Discrete Horizontal Cards)
+   ========================================================================== */
+
+/* ==========================================================================
+   Step Cards (Discrete Horizontal Cards)
+   ========================================================================== */
+
+.process-step-card {
+  /* Solid translucent background + blur to prevent see-through overlap */
+  background: rgba(16, 17, 19, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: clamp(290px, 22.5vw, 345px);
+  min-height: 88px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.45s cubic-bezier(.22,.61,.36,1), transform 0.45s cubic-bezier(.22,.61,.36,1);
+  z-index: 6;
+}
+
+.process-step-card:hover {
+  background-color: rgba(24, 25, 28, 0.96);
+  border-color: rgba(255, 129, 52, 0.45);
+}
+
+@media (min-width: 1200px) {
+  .step-left .process-step-card {
+    position: absolute;
+    top: 0;
+    right: 42px; /* 10px node radius + 32px connector */
+    transform: translate(14px, -50%);
+    opacity: 0;
+  }
+
+  .step-right .process-step-card {
+    position: absolute;
+    top: 0;
+    left: 42px; /* 10px node radius + 32px connector */
+    transform: translate(-14px, -50%);
+    opacity: 0;
+  }
+
+  .process-step-item.is-active.step-left .process-step-card {
+    opacity: 1;
+    transform: translate(0, -50%);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), -2px 0 16px rgba(255, 129, 52, 0.12);
+  }
+
+  .process-step-item.is-active.step-right .process-step-card {
+    opacity: 1;
+    transform: translate(0, -50%);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 2px 0 16px rgba(255, 129, 52, 0.12);
+  }
+}
+
+.step-num-badge {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--color-orange);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.step-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.step-icon-box img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.step-title {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.step-text {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: #9CA3AF;
+  margin: 0;
+  white-space: normal;
+  word-break: normal;
+}
+
+/* ==========================================================================
+   Editorial Callouts Around Steps (Positioned to avoid all collisions)
+   ========================================================================== */
+
+.process-step-callout {
+  display: none;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  line-height: 1.35;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  z-index: 5;
+}
+
+@media (min-width: 1200px) {
+  .process-step-callout {
+    display: flex;
+    align-items: center;
+    position: absolute;
+  }
+
+  /* Callout 01: Right of Node 01 (Directly opposite Card 01, matching approved mockup) */
+  .callout-step-1 {
+    top: 0;
+    left: 42px;
+    transform: translateY(-50%);
+  }
+  .callout-step-1::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.16);
+    margin-right: 0.65rem;
+  }
+
+  /* Callout 02: Directly right of Card 02 */
+  .callout-step-2 {
+    top: 0;
+    left: calc(42px + clamp(290px, 22.5vw, 345px) + 20px);
+    transform: translateY(-50%);
+  }
+  .callout-step-2::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.16);
+    margin-right: 0.65rem;
+  }
+
+  /* Callout 03: Left of Card 03 (Displayed on widescreen 1280px+) */
+  @media (min-width: 1280px) {
+    .callout-step-3 {
+      top: 0;
+      right: calc(42px + clamp(290px, 22.5vw, 345px) + 20px);
+      transform: translateY(-50%);
+      flex-direction: row-reverse;
+    }
+    .callout-step-3::before {
+      content: "";
+      width: 20px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.16);
+      margin-left: 0.65rem;
+    }
+  }
+
+  /* Callout 04: Directly right of Card 04 */
+  .callout-step-4 {
+    top: 0;
+    left: calc(42px + clamp(290px, 22.5vw, 345px) + 20px);
+    transform: translateY(-50%);
+  }
+  .callout-step-4::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.16);
+    margin-right: 0.65rem;
+  }
+
+  /* Callout 05: Directly right of Node 05 (Matches approved mockup) */
+  .callout-step-5 {
+    top: 0;
+    left: 42px;
+    transform: translateY(-50%);
+  }
+  .callout-step-5::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.16);
+    margin-right: 0.65rem;
+  }
+
+  .process-step-item.is-active .process-step-callout {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Responsive: Tablet & Small Laptops (768px – 1199px)
+   Linear side-by-side: Intro top/left, timeline with all cards on right of line
+   ========================================================================== */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .section-process {
+    padding-block: 4rem;
+  }
+
+  .process-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .process-intro-col {
+    max-width: 600px;
+  }
+
+  .process-timeline-zone {
+    position: relative;
+    padding-left: 54px;
+  }
+
+  .process-vertical-axis {
+    left: 20px;
+    top: 20px;
+    bottom: 20px;
+    transform: none;
+  }
+
+  .process-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .process-step-item {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .process-node-anchor {
+    left: -34px; /* Centers 20px node on 20px line */
+    top: 50%;
+  }
+
+  .process-connector-line {
+    left: -24px;
+    width: 24px;
+    top: 50%;
+    transform-origin: left center;
+  }
+
+  .process-step-card {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .process-step-item.is-active .process-step-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  .step-icon-box {
+    width: 54px;
+    height: 54px;
+  }
+
+  .step-icon-box img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .step-title {
+    font-size: 1.0625rem;
+  }
+
+  .step-text {
+    font-size: 0.84rem;
+  }
+
+  .process-main-piece {
+    opacity: 0.25;
+    width: 280px;
+    bottom: -20px;
+    left: -20px;
+  }
+
+  .process-wireframe-piece,
+  .process-tech-badge-piece,
+  .process-step-callout {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Responsive: Mobile (< 768px)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .section-process {
+    padding-block: 3.5rem;
+  }
+
+  .process-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .process-intro-col {
+    max-width: 100%;
+  }
+
+  .process-title {
+    font-size: 2rem;
+  }
+
+  .process-timeline-zone {
+    position: relative;
+    padding-left: 44px;
+  }
+
+  .process-vertical-axis {
+    left: 14px;
+    top: 15px;
+    bottom: 15px;
+    transform: none;
+  }
+
+  .process-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .process-step-item {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .process-node-anchor {
+    left: -30px; /* Centers 20px node on 14px line */
+    top: 50%;
+  }
+
+  .process-connector-line {
+    left: -20px;
+    width: 20px;
+    top: 50%;
+    transform-origin: left center;
+  }
+
+  .process-step-card {
+    width: 100%;
+    padding: 0.8rem 0.95rem;
+    gap: 0.75rem;
+  }
+
+  .process-step-item.is-active .process-step-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  .step-num-badge {
+    font-size: 0.8125rem;
+    margin-top: 0.2rem;
+  }
+
+  .step-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+
+  .step-icon-box img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .step-title {
+    font-size: 0.9375rem;
+  }
+
+  .step-text {
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .process-main-piece {
+    opacity: 0.18;
+    width: 220px;
+    bottom: -20px;
+    left: -20px;
+  }
+
+  .process-wireframe-piece,
+  .process-hud-top-right,
+  .process-hud-bottom-right,
+  .process-tech-badge-piece,
+  .process-step-callout {
+    display: none;
+  }
+}
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .process-line-progress {
+    transform: scaleY(1) !important;
+  }
+
+  .process-step-card,
+  .process-connector-line,
+  .process-step-callout {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

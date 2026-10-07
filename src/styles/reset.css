@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Modern Accessible CSS Reset
+   ========================================================================== */
+
+/* 1. Box sizing rules and margin/padding reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Prevent font size inflation & set rendering defaults */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+/* 3. Responsive media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 4. Form controls font inheritance */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 5. List defaults */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 6. Link defaults */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 7. Button defaults */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 8. Address defaults */
+address {
+  font-style: normal;
+}
+
+/* 9. Accessible reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

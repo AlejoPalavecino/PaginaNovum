@@ -1,0 +1,273 @@
+/* ==========================================================================
+   Nóvum Industrial — Experience Section Styles (#experiencia)
+   Ultra-compact ("fina") technical gallery banner with smooth left-to-right
+   infinite loop marquee and precision engineering accents.
+   ========================================================================== */
+
+.section-experience {
+  position: relative;
+  background-color: #FAFAFA;
+  padding-top: clamp(1.1rem, 0.85rem + 0.5vw, 1.6rem);
+  padding-bottom: clamp(1.1rem, 0.85rem + 0.5vw, 1.6rem);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+/* Background Technical Watermark */
+.exp-watermark-wrapper {
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  transform: translateY(-50%);
+  width: 380px;
+  height: 240px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.exp-technical-watermark {
+  width: 100%;
+  height: 100%;
+}
+
+/* Inner Layout Container */
+.exp-inner-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 0.35rem + 0.35vw, 0.85rem);
+}
+
+/* ==========================================================================
+   Top Header Row: Tag + Full Continuous Connector Line
+   ========================================================================== */
+
+.exp-header-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.exp-header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.exp-orange-dash {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-orange);
+  border-radius: 1px;
+}
+
+.exp-tag-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-charcoal);
+  text-transform: uppercase;
+}
+
+.exp-header-connector {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.09) 0%, rgba(0, 0, 0, 0.02) 100%);
+  margin-left: 1.25rem;
+}
+
+/* ==========================================================================
+   Infinite Marquee Viewport & Track
+   ========================================================================== */
+
+.experience-marquee-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-block: 0.2rem;
+  /* Premium edge fade mask */
+  mask-image: linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+}
+
+.experience-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  user-select: none;
+}
+
+/* Client Brand Card (Streamlined for slim height) */
+.client-brand-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-inline: 0.4rem;
+  flex-shrink: 0;
+  cursor: default;
+  transition: transform var(--transition-fast);
+}
+
+.client-brand-card:hover {
+  transform: translateY(-2px);
+}
+
+.client-brand-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+}
+
+.client-brand-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.client-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.client-name-primary {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-black);
+  letter-spacing: -0.015em;
+}
+
+.client-name-secondary {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #404146;
+  letter-spacing: -0.01em;
+}
+
+.client-brand-separator {
+  width: 1px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-inline: clamp(1.1rem, 0.85rem + 0.7vw, 2.25rem);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Bottom Technical Row
+   ========================================================================== */
+
+.exp-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0;
+}
+
+.exp-bottom-left,
+.exp-bottom-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.exp-tech-label {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #9CA3AF;
+  text-transform: uppercase;
+}
+
+.exp-tech-line {
+  width: 50px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.exp-tech-tagline {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .section-experience {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .exp-watermark-wrapper {
+    display: none;
+  }
+
+  .exp-tech-line {
+    width: 28px;
+  }
+
+  .client-brand-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .client-name-primary {
+    font-size: 0.875rem;
+  }
+
+  .client-name-secondary {
+    font-size: 0.775rem;
+  }
+
+  .client-brand-separator {
+    height: 24px;
+    margin-inline: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .exp-bottom-right {
+    flex-direction: row-reverse;
+  }
+
+  .exp-tech-tagline {
+    text-align: left;
+  }
+}
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .experience-marquee-viewport {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow-x: auto;
+  }
+}

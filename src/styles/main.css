@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Nóvum Industrial — Main Stylesheet Entry Point
+   Bundling typography imports, design tokens, reset, base, layout & components.
+   ========================================================================== */
+
+/* Inter Font Weights (400 Regular, 500 Medium, 600 SemiBold, 700 Bold) */
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/latin-700.css";
+
+/* Core Design System Layers */
+@import "./tokens.css";
+@import "./reset.css";
+@import "./base.css";
+@import "./layout.css";
+
+/* Component Layers */
+@import "./components/header.css";
+@import "./components/hero.css";
+@import "./components/problems.css";
+@import "./components/solutions.css";
+@import "./components/experience.css";
+@import "./components/process.css";
+@import "./components/capabilities.css";
+@import "./components/faq.css";
+@import "./components/cta.css";
+@import "./components/footer.css";
+

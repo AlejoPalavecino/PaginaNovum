@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Nóvum Industrial — Global Layout & Grid Styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Section Layout & Smooth Anchor Offsets
+   ========================================================================== */
+
+.site-section,
+section[id] {
+  /* Offset sticky header + safety breathing room so anchors never clip */
+  scroll-margin-top: calc(var(--header-height, 72px) + 1.5rem);
+  padding-block: var(--section-padding-y);
+  position: relative;
+  width: 100%;
+}
+
+/* Alternate Section Surfaces */
+.section-surface-light {
+  background-color: var(--surface-light);
+}
+
+.section-surface-soft {
+  background-color: var(--surface-soft);
+}
+
+.section-surface-dark {
+  background-color: var(--surface-dark);
+  color: var(--color-white);
+}
+
+.section-surface-dark h2,
+.section-surface-dark h3,
+.section-surface-dark .section-title,
+.section-surface-dark .section-headline {
+  color: var(--color-white);
+}
+
+.section-surface-dark .section-description {
+  color: #A6A9B0;
+}
+
+.section-surface-dark .section-eyebrow {
+  color: var(--color-orange);
+}
+
+/* ==========================================================================
+   Section Headers (Consistent Typography & Editorial Rhythm)
+   ========================================================================== */
+
+.section-header {
+  margin-bottom: clamp(2.5rem, 1.8rem + 2vw, 4rem);
+  max-width: 820px;
+}
+
+.section-header-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-header-center .section-description {
+  margin-inline: auto;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-charcoal);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.section-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background-color: var(--color-orange);
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-black);
+  margin-bottom: 0.75rem;
+}
+
+.section-headline {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-h3);
+  color: var(--color-charcoal);
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+  color: var(--text-muted);
+  max-width: 65ch;
+}
+
+/* 2-Column Split Section Header (Matching Mockup) */
+.section-header-split {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 1.5rem + 1.5vw, 3.25rem);
+}
+
+@media (min-width: 768px) {
+  .section-header-split {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 3rem;
+  }
+
+  .section-header-split .section-header-left {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .section-header-split .section-header-right {
+    flex: 1;
+    max-width: 480px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .section-header-split .section-header-right .section-description {
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+}
+
+/* Orange Arrow Link */
+.link-arrow-orange {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--color-orange);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.link-arrow-orange:hover {
+  color: var(--color-orange-hover);
+  transform: translateX(2px);
+}
+
+.text-orange {
+  color: var(--color-orange) !important;
+}
+
+/* ==========================================================================
+   Buttons & Interactive CTAs
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8125rem 1.625rem;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  min-height: var(--min-tap-target);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border-color: var(--color-orange);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-orange-hover);
+  border-color: var(--color-orange-hover);
+  color: var(--color-white);
+}
+
+.btn-primary:active {
+  background-color: var(--color-orange-active);
+  border-color: var(--color-orange-active);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: #22242A;
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface-light);
+  border-color: var(--color-black);
+}
+
+.section-surface-dark .btn-secondary {
+  color: var(--color-white);
+  border-color: var(--border-dark);
+}
+
+.section-surface-dark .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-white);
+}
+
+/* ==========================================================================
+   Structural Grids & Base Layout Containers
+   ========================================================================== */
+
+/* 12-Column Base Grid */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+

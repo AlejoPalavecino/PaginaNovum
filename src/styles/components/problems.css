@@ -333,9 +333,15 @@
   text-align: left;
   position: relative;
   padding: 0.25rem 0;
-  max-width: 215px;
+  max-width: 100%;
   cursor: pointer;
   transition: transform var(--transition-fast);
+}
+
+@media (min-width: 1080px) {
+  .problem-diag-card {
+    max-width: 215px;
+  }
 }
 
 .problem-diag-card:hover,

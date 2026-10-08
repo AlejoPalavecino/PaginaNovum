@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nóvum Industrial | Soluciones técnicas a medida para la industria</title>
-  <meta name="description" content="Diseño, ingeniería inversa, impresión 3D, repuestos, prototipos y pequeñas series para empresas. Contanos tu proyecto técnico y evaluamos cómo resolverlo." />
+  <title>Nóvum Industrial | Soluciones industriales a medida para empresas</title>
+  <meta name="description" content="Repuestos, ingeniería inversa, inventario digital y desarrollos a medida. Un socio técnico para resolver necesidades de mantenimiento, producción e ingeniería." />
+  
+  <!-- Open Graph Protocol -->
+  <meta property="og:title" content="Nóvum Industrial | Soluciones industriales a medida para empresas" />
+  <meta property="og:description" content="Repuestos, ingeniería inversa, inventario digital y desarrollos a medida. Un socio técnico para resolver necesidades de mantenimiento, producción e ingeniería." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:image" content="./assets/logo/logo-black-transparent.png" />
+
   <link rel="icon" type="image/png" href="./assets/logo/logo-black-transparent.png" />
   <link rel="stylesheet" href="/src/styles/main.css" />
 </head>
@@ -45,15 +53,16 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="#inicio" class="nav-link active" aria-current="page">Inicio</a></li>
           <li class="nav-item"><a href="#soluciones" class="nav-link">Soluciones</a></li>
-          <li class="nav-item"><a href="#experiencia" class="nav-link">Experiencia</a></li>
+          <li class="nav-item"><a href="#sectores" class="nav-link">Sectores</a></li>
           <li class="nav-item"><a href="#proceso" class="nav-link">Proceso</a></li>
           <li class="nav-item"><a href="#capacidades" class="nav-link">Capacidades</a></li>
           <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
         <div class="nav-cta-wrapper">
           <a
-            href="mailto:[EMAIL_DE_CONTACTO]?subject=Consulta%20t%C3%A9cnica%20desde%20la%20web%20-%20N%C3%B3vum%20Industrial&amp;body=Hola%20equipo%20de%20N%C3%B3vum%2C%0A%0AQuisiera%20consultar%20por%20una%20necesidad%20t%C3%A9cnica.%0A%0AEmpresa%3A%0ANombre%20y%20cargo%3A%0ALocalidad%20%2F%20provincia%3A%0APieza%2C%20equipo%20o%20problema%20a%20resolver%3A%0ACantidad%20aproximada%3A%0APlazo%20deseado%3A%0A"
+            href="#contacto"
             class="btn btn-primary btn-header"
+            data-consulta="Consulta general"
           >
             <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16" rx="2"></rect>
@@ -88,21 +97,21 @@
 
       <div class="container hero-layout">
         <div class="hero-content">
-          <p class="section-eyebrow">IMPRESIÓN 3D PARA LA INDUSTRIA</p>
+          <p class="section-eyebrow">INGENIERÍA, DISEÑO Y FABRICACIÓN · B2B</p>
           <h1 class="hero-title">
-            SOLUCIONES<br />
-            TÉCNICAS A MEDIDA<br />
-            <span class="text-orange">PARA LA INDUSTRIA.</span>
+            SOLUCIONES INDUSTRIALES<br />
+            <span class="text-orange">A MEDIDA.</span>
           </h1>
           <p class="hero-description">
-            Repuestos, prototipos, componentes y pequeñas series fabricados con impresión 3D, para que tu operación nunca se detenga.
+            ¿Un repuesto que no conseguís? ¿Una máquina que necesita una adaptación? Analizamos el problema, diseñamos la solución y la fabricamos para tu empresa.
           </p>
           <div class="hero-actions">
             <a
-              href="mailto:[EMAIL_DE_CONTACTO]?subject=Consulta%20t%C3%A9cnica%20desde%20la%20web%20-%20N%C3%B3vum%20Industrial&amp;body=Hola%20equipo%20de%20N%C3%B3vum%2C%0A%0AQuisiera%20consultar%20por%20una%20necesidad%20t%C3%A9cnica.%0A%0AEmpresa%3A%0ANombre%20y%20cargo%3A%0ALocalidad%20%2F%20provincia%3A%0APieza%2C%20equipo%20o%20problema%20a%20resolver%3A%0ACantidad%20aproximada%3A%0APlazo%20deseado%3A%0A"
+              href="#contacto"
               class="btn btn-primary"
+              data-consulta="Consulta general"
             >
-              <span>Contá tu proyecto</span>
+              <span>Contanos qué necesitás resolver</span>
               <span aria-hidden="true">&rarr;</span>
             </a>
             <a href="#soluciones" class="btn btn-secondary">
@@ -120,8 +129,8 @@
                 </svg>
               </div>
               <div class="hero-metric-text">
-                <strong>Más agilidad</strong>
-                <span>de la idea a la pieza</span>
+                <strong>Diagnóstico técnico</strong>
+                <span>de la necesidad real</span>
               </div>
             </div>
 
@@ -132,8 +141,8 @@
                 </svg>
               </div>
               <div class="hero-metric-text">
-                <strong>Menores costos</strong>
-                <span>sin stock innecesario</span>
+                <strong>Diseño e ingeniería</strong>
+                <span>adaptado a tu operación</span>
               </div>
             </div>
 
@@ -146,8 +155,8 @@
                 </svg>
               </div>
               <div class="hero-metric-text">
-                <strong>Soluciones reales</strong>
-                <span>para entornos exigentes</span>
+                <strong>Fabricación funcional</strong>
+                <span>repuestos y desarrollos</span>
               </div>
             </div>
           </div>
@@ -161,7 +170,7 @@
     <section id="problemas" class="site-section section-problems">
       <!-- Watermark top-right corner -->
       <div class="problems-tech-corner-top" aria-hidden="true">
-        <span class="tech-tag">FABRICACIÓN ADITIVA PARA LA INDUSTRIA</span>
+        <span class="tech-tag">SOLUCIONES INDUSTRIALES A MEDIDA</span>
         <svg class="tech-crosshair" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
           <line x1="8" y1="0" x2="8" y2="16" stroke-width="1.2"></line>
           <line x1="0" y1="8" x2="16" y2="8" stroke-width="1.2"></line>
@@ -169,7 +178,7 @@
       </div>
 
       <div class="container problems-main-container">
-        <!-- Left: Intro column (Eyebrow, H2, description, bottom note) -->
+        <!-- Left: Intro column -->
         <div class="problems-intro-col">
           <p class="section-eyebrow">PROBLEMAS QUE RESOLVEMOS</p>
 
@@ -180,12 +189,12 @@
           </h2>
 
           <p class="problems-main-desc">
-            Acompañamos a la industria con fabricación aditiva para resolver problemas reales, de forma rápida, confiable y eficiente.
+            Una pieza faltante, un equipo que necesita adaptarse o un proceso que puede mejorar. Partimos de tu necesidad, no de una tecnología.
           </p>
 
           <div class="problems-bottom-note" aria-hidden="true">
-            <span class="note-line">PIEZAS REALES</span>
-            <span class="note-line">PARA UN MUNDO</span>
+            <span class="note-line">SOLUCIONES TÉCNICAS</span>
+            <span class="note-line">PARA UNA OPERACIÓN</span>
             <span class="note-line">QUE NO SE DETIENE.</span>
           </div>
         </div>
@@ -209,7 +218,7 @@
               <div class="problems-piece-wrap">
                 <img
                   src="./assets/images/transparent/seccion02_assets/seccion02-carcasa-industrial.png"
-                  alt="Carcasa industrial técnica fabricada en aditiva con entramado orgánico"
+                  alt="Carcasa industrial técnica para análisis y desarrollo a medida"
                   width="1090"
                   height="1178"
                   loading="lazy"
@@ -225,7 +234,7 @@
                   class="piece-pin"
                   id="pin-1"
                   data-target="card-1"
-                  aria-label="Punto crítico: Paradas de producción"
+                  aria-label="Punto crítico: Falta de repuestos"
                   style="left: 24.3%; top: 24.7%;"
                 >
                   <span class="pin-ring"></span>
@@ -237,7 +246,7 @@
                   class="piece-pin"
                   id="pin-2"
                   data-target="card-2"
-                  aria-label="Punto crítico: Componentes descontinuados"
+                  aria-label="Punto crítico: Piezas discontinuadas"
                   style="left: 15.0%; top: 52.8%;"
                 >
                   <span class="pin-ring"></span>
@@ -249,7 +258,7 @@
                   class="piece-pin"
                   id="pin-3"
                   data-target="card-3"
-                  aria-label="Punto crítico: Altos tiempos de entrega"
+                  aria-label="Punto crítico: Esperas que frenan"
                   style="left: 26.6%; top: 78.0%;"
                 >
                   <span class="pin-ring"></span>
@@ -261,7 +270,7 @@
                   class="piece-pin"
                   id="pin-4"
                   data-target="card-4"
-                  aria-label="Punto crítico: Costos elevados de reposición"
+                  aria-label="Punto crítico: Repuestos sin organizar"
                   style="left: 72.7%; top: 25.2%;"
                 >
                   <span class="pin-ring"></span>
@@ -273,7 +282,7 @@
                   class="piece-pin"
                   id="pin-5"
                   data-target="card-5"
-                  aria-label="Punto crítico: Diseños que no se adaptan"
+                  aria-label="Punto crítico: Equipos que adaptar"
                   style="left: 81.0%; top: 55.9%;"
                 >
                   <span class="pin-ring"></span>
@@ -285,7 +294,7 @@
                   class="piece-pin"
                   id="pin-6"
                   data-target="card-6"
-                  aria-label="Punto crítico: Falta de innovación"
+                  aria-label="Punto crítico: Desarrollos por validar"
                   style="left: 69.9%; top: 79.2%;"
                 >
                   <span class="pin-ring"></span>
@@ -321,8 +330,8 @@
                   </div>
                   <span class="card-anchor-node node-right" id="node-1"></span>
                 </div>
-                <h3 class="problem-diag-title">Paradas de producción</h3>
-                <p class="problem-diag-text">Repuestos sin stock, cuando más se necesitan.</p>
+                <h3 class="problem-diag-title">Falta de repuestos</h3>
+                <p class="problem-diag-text">Un componente faltante compromete la continuidad de tu operación.</p>
               </article>
 
               <!-- Card 2 -->
@@ -340,8 +349,8 @@
                   </div>
                   <span class="card-anchor-node node-right" id="node-2"></span>
                 </div>
-                <h3 class="problem-diag-title">Componentes descontinuados</h3>
-                <p class="problem-diag-text">Fabricamos piezas que ya no se consiguen.</p>
+                <h3 class="problem-diag-title">Piezas discontinuadas</h3>
+                <p class="problem-diag-text">Necesitás un reemplazo, pero el original ya no se fabrica.</p>
               </article>
 
               <!-- Card 3 -->
@@ -359,8 +368,8 @@
                   </div>
                   <span class="card-anchor-node node-right" id="node-3"></span>
                 </div>
-                <h3 class="problem-diag-title">Altos tiempos de entrega</h3>
-                <p class="problem-diag-text">Pasá de semanas a días.</p>
+                <h3 class="problem-diag-title">Esperas que frenan</h3>
+                <p class="problem-diag-text">Los plazos para conseguir un componente afectan tu producción.</p>
                 <div class="card-accent-bar" aria-hidden="true"></div>
               </article>
             </div>
@@ -382,8 +391,8 @@
                     />
                   </div>
                 </div>
-                <h3 class="problem-diag-title">Costos elevados de reposición</h3>
-                <p class="problem-diag-text">Soluciones más rentables y eficientes.</p>
+                <h3 class="problem-diag-title">Repuestos sin organizar</h3>
+                <p class="problem-diag-text">Necesitás identificar y ordenar piezas para futuras reposiciones.</p>
                 <div class="card-accent-bar" aria-hidden="true"></div>
               </article>
 
@@ -402,8 +411,8 @@
                     />
                   </div>
                 </div>
-                <h3 class="problem-diag-title">Diseños que no se adaptan</h3>
-                <p class="problem-diag-text">Personalización total para tu aplicación.</p>
+                <h3 class="problem-diag-title">Equipos que adaptar</h3>
+                <p class="problem-diag-text">Una máquina, herramienta o dispositivo necesita una mejora.</p>
               </article>
 
               <!-- Card 6 -->
@@ -421,8 +430,8 @@
                     />
                   </div>
                 </div>
-                <h3 class="problem-diag-title">Falta de innovación</h3>
-                <p class="problem-diag-text">Te ayudamos a transformar ideas en piezas funcionales.</p>
+                <h3 class="problem-diag-title">Desarrollos por validar</h3>
+                <p class="problem-diag-text">Necesitás probar una solución antes de pasar a producción.</p>
                 <div class="card-accent-bar" aria-hidden="true"></div>
               </article>
             </div>
@@ -434,7 +443,7 @@
       <div class="problems-tech-footer" aria-hidden="true">
         <div class="container tech-footer-container">
           <div class="tech-footer-left">
-            <span class="tech-footer-label">IDEAS + MATERIA + RESULTADOS</span>
+            <span class="tech-footer-label">DIAGNÓSTICO + INGENIERÍA + FABRICACIÓN</span>
             <span class="tech-footer-line"></span>
           </div>
           <div class="tech-footer-right">
@@ -448,616 +457,407 @@
     <!-- 03 — Soluciones (#soluciones) -->
     <section id="soluciones" class="site-section section-solutions">
       <div class="container solutions-main-container">
-        <!-- Left Column: Header Block & Featured Card 01 -->
-        <div class="solutions-left-col">
-          <div class="solutions-header-block">
-            <p class="section-eyebrow">SOLUCIONES</p>
-            <h2 class="solutions-main-title">
-              Imprimimos<br />
-              posibilidades<br />
-              para tu industria<span class="text-orange">.</span>
-            </h2>
-            <p class="solutions-main-desc">
-              Fabricación aditiva para un mañana más eficiente, ágil y sostenible.
-            </p>
+        <!-- Top Half: Left Header & Featured Partner Industrial + Right 2x2 Subgrid -->
+        <div class="solutions-top-grid">
+          <!-- Left Column: Header + Main Card (Partner Industrial) -->
+          <div class="solutions-featured-col">
+            <div class="solutions-header-block">
+              <p class="section-eyebrow">SOLUCIONES</p>
+              <h2 class="solutions-main-title">
+                Una necesidad.<br />
+                La solución para<br />
+                <span class="text-orange">tu empresa.</span>
+              </h2>
+              <p class="solutions-main-desc">
+                Desde un repuesto puntual hasta una relación técnica recurrente. Encontramos el enfoque para cada necesidad de tu operación.
+              </p>
+            </div>
+
+            <!-- Main Featured Card: Partner Industrial -->
+            <article class="solution-card-featured">
+              <div class="featured-top-content">
+                <div class="featured-text-block">
+                  <div class="card-num-eyebrow">
+                    <span class="card-num">DESTACADO</span>
+                    <span class="card-num-line" aria-hidden="true"></span>
+                  </div>
+                  <h3 class="featured-title">Partner Industrial</h3>
+                  <p class="featured-desc">
+                    Un socio técnico para resolver periódicamente necesidades de repuestos, piezas y desarrollos. Más que un trabajo puntual: una relación de largo plazo.
+                  </p>
+                  <a href="#contacto" class="btn btn-primary solution-cta" data-consulta="Partner Industrial">
+                    <span>Hablemos de tu operación</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+
+                <div class="featured-media-block">
+                  <img
+                    src="./assets/images/transparent/service-repuesto-tecnico.png"
+                    alt="Componente y soporte técnico de precisión para soluciones industriales recurrentes"
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    class="featured-img"
+                  />
+                  <div class="featured-callout" aria-hidden="true">
+                    <span class="callout-tag">RELACIÓN TÉCNICA<br />DE LARGO PLAZO</span>
+                    <svg class="callout-pointer" width="46" height="54" viewBox="0 0 46 54" fill="none">
+                      <path d="M38 0 V24 L4 50" stroke="#FF8134" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <circle cx="4" cy="50" r="3" fill="#FF8134"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Row: Value Badges -->
+              <div class="featured-bottom-row">
+                <div class="featured-badges-group">
+                  <div class="featured-badge-item">
+                    <svg class="mini-badge-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span class="mini-badge-text">RESPUESTA PERIÓDICA</span>
+                  </div>
+                  <div class="featured-badge-item">
+                    <svg class="mini-badge-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span class="mini-badge-text">CONTINUIDAD OPERATIVA</span>
+                  </div>
+                  <div class="featured-badge-item">
+                    <svg class="mini-badge-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span class="mini-badge-text">SOPORTE TÉCNICO B2B</span>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <!-- Featured Card 01 -->
-          <article class="solution-card-featured">
-            <div class="featured-top-content">
-              <div class="featured-text-block">
+          <!-- Right Column: 4 Complementary Solutions (2x2 Grid) -->
+          <div class="solutions-grid-col">
+            <div class="solutions-subgrid">
+              <!-- Card 01: Repuesto Express -->
+              <article class="solution-grid-card">
                 <div class="card-num-eyebrow">
                   <span class="card-num">01</span>
                   <span class="card-num-line" aria-hidden="true"></span>
                 </div>
-                <h3 class="featured-title">Soluciones Industriales a medida</h3>
-                <p class="featured-desc">
-                  Diseño y fabricación de piezas específicas para tus procesos.
-                </p>
-                <a href="#contacto" class="solution-link">
-                  <span>Saber más</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-
-              <div class="featured-media-block">
-                <img
-                  src="./assets/images/transparent/service-repuesto-tecnico.png"
-                  alt="Soporte y componente técnico industrial de alta resistencia impreso en 3D"
-                  width="800"
-                  height="800"
-                  loading="lazy"
-                  class="featured-img"
-                />
-
-                <!-- Callout indicator pointing to bracket -->
-                <div class="featured-callout" aria-hidden="true">
-                  <span class="callout-tag">GEOMETRÍAS<br />SIN LÍMITES</span>
-                  <svg class="callout-pointer" width="46" height="54" viewBox="0 0 46 54" fill="none">
-                    <path d="M38 0 V24 L4 50" stroke="#FF8134" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <circle cx="4" cy="50" r="3" fill="#FF8134"></circle>
-                  </svg>
+                <div class="grid-card-media">
+                  <img
+                    src="./assets/images/transparent/service-soluciones-industriales.png"
+                    alt="Engranaje técnico industrial para reposición express"
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    class="grid-card-img"
+                  />
                 </div>
-              </div>
+                <div class="grid-card-content">
+                  <h3 class="grid-card-title">Repuesto Express</h3>
+                  <p class="grid-card-text">
+                    Desarrollo y fabricación de repuestos para reducir esperas y paradas operativas.
+                  </p>
+                  <a href="#contacto" class="solution-link" data-consulta="Repuesto Express">
+                    <span>Consultar por un repuesto</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              </article>
+
+              <!-- Card 02: Ingeniería Inversa -->
+              <article class="solution-grid-card">
+                <div class="card-num-eyebrow">
+                  <span class="card-num">02</span>
+                  <span class="card-num-line" aria-hidden="true"></span>
+                </div>
+                <div class="grid-card-media">
+                  <img
+                    src="./assets/images/transparent/service-ingenieria-inversa.png"
+                    alt="Carcasa industrial digitalizada y reconstruida con ingeniería inversa"
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    class="grid-card-img"
+                  />
+                </div>
+                <div class="grid-card-content">
+                  <h3 class="grid-card-title">Ingeniería Inversa</h3>
+                  <p class="grid-card-text">
+                    Relevamos y recreamos piezas existentes, incluso cuando no hay planos originales.
+                  </p>
+                  <a href="#contacto" class="solution-link" data-consulta="Ingeniería Inversa">
+                    <span>Consultar por una pieza</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              </article>
+
+              <!-- Card 03: Inventario Digital -->
+              <article class="solution-grid-card">
+                <div class="card-num-eyebrow">
+                  <span class="card-num">03</span>
+                  <span class="card-num-line" aria-hidden="true"></span>
+                </div>
+                <div class="grid-card-media">
+                  <img
+                    src="./assets/images/transparent/capability-cad.png"
+                    alt="Modelado digital y biblioteca CAD para organización técnica"
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    class="grid-card-img"
+                  />
+                </div>
+                <div class="grid-card-content">
+                  <h3 class="grid-card-title">Inventario Digital</h3>
+                  <p class="grid-card-text">
+                    Una biblioteca digital de piezas y repuestos para organizar futuras reposiciones.
+                  </p>
+                  <a href="#contacto" class="solution-link" data-consulta="Inventario Digital">
+                    <span>Organizar mis repuestos</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              </article>
+
+              <!-- Card 04: Solución Industrial -->
+              <article class="solution-grid-card">
+                <div class="card-num-eyebrow">
+                  <span class="card-num">04</span>
+                  <span class="card-num-line" aria-hidden="true"></span>
+                </div>
+                <div class="grid-card-media">
+                  <img
+                    src="./assets/images/transparent/capability-quality.png"
+                    alt="Pieza y soporte a medida para mantenimiento y producción industrial"
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    class="grid-card-img"
+                  />
+                </div>
+                <div class="grid-card-content">
+                  <h3 class="grid-card-title">Solución Industrial</h3>
+                  <p class="grid-card-text">
+                    Piezas, adaptaciones y dispositivos para problemas de producción o mantenimiento.
+                  </p>
+                  <a href="#contacto" class="solution-link" data-consulta="Solución Industrial">
+                    <span>Consultar por una solución</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              </article>
             </div>
-
-            <!-- Bottom Row: 3 Feature Badges + Technical Tag -->
-            <div class="featured-bottom-row">
-              <div class="featured-badges-group">
-                <div class="featured-badge-item">
-                  <svg class="mini-badge-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="m2 22 10-20 10 20Z"></path>
-                    <path d="M6 14h12"></path>
-                  </svg>
-                  <span class="mini-badge-text">MAYOR LIBERTAD DE DISEÑO</span>
-                </div>
-
-                <div class="featured-badge-item">
-                  <svg class="mini-badge-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                  </svg>
-                  <span class="mini-badge-text">PIEZAS MÁS LIGERAS Y RESISTENTES</span>
-                </div>
-
-                <div class="featured-badge-item">
-                  <svg class="mini-badge-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-                  </svg>
-                  <span class="mini-badge-text">PRODUCCIÓN MÁS ÁGIL Y SOSTENIBLE</span>
-                </div>
-              </div>
-
-              <div class="featured-watermark-tag" aria-hidden="true">
-                <span class="watermark-subline"></span>
-                <span>FABRICACIÓN ADITIVA DE ALTO RENDIMIENTO</span>
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
 
-        <!-- Right Column: Header Action & 2x2 Grid (Cards 02-05) -->
-        <div class="solutions-right-col">
-          <div class="solutions-action-bar">
-            <a href="#contacto" class="solutions-view-all">
-              <span>Ver todas las soluciones</span>
-              <span aria-hidden="true">&rarr;</span>
-            </a>
+        <!-- Bottom Row: Development & Production Tier -->
+        <div class="solutions-tier-dev">
+          <div class="tier-dev-header">
+            <span class="tier-dev-dash" aria-hidden="true"></span>
+            <p class="tier-dev-intro">
+              Para validar una idea, fabricar una serie o resolver una necesidad frecuente.
+            </p>
           </div>
 
-          <!-- 2x2 Subgrid -->
-          <div class="solutions-subgrid">
-            <!-- Card 02 -->
-            <article class="solution-grid-card">
-              <div class="card-num-eyebrow">
-                <span class="card-num">02</span>
-                <span class="card-num-line" aria-hidden="true"></span>
-              </div>
-              <div class="grid-card-media">
-                <img
-                  src="./assets/images/transparent/service-soluciones-industriales.png"
-                  alt="Engranaje técnico industrial impreso en 3D"
-                  width="800"
-                  height="800"
-                  loading="lazy"
-                  class="grid-card-img"
-                />
-              </div>
-              <div class="grid-card-content">
-                <h3 class="grid-card-title">Repuestos técnicos bajo demanda</h3>
-                <p class="grid-card-text">
-                  Obtené repuestos funcionales sin depender de stock.
-                </p>
-                <a href="#contacto" class="solution-link">
-                  <span>Saber más</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            </article>
-
-            <!-- Card 03 -->
-            <article class="solution-grid-card">
-              <div class="card-num-eyebrow">
-                <span class="card-num">03</span>
-                <span class="card-num-line" aria-hidden="true"></span>
-              </div>
-              <div class="grid-card-media">
-                <img
-                  src="./assets/images/transparent/service-ingenieria-inversa.png"
-                  alt="Carcasa técnica reconstruida mediante ingeniería inversa"
-                  width="800"
-                  height="800"
-                  loading="lazy"
-                  class="grid-card-img"
-                />
-              </div>
-              <div class="grid-card-content">
-                <h3 class="grid-card-title">Ingeniería inversa</h3>
-                <p class="grid-card-text">
-                  Digitalizamos y reproducimos piezas existentes.
-                </p>
-                <a href="#contacto" class="solution-link">
-                  <span>Saber más</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            </article>
-
-            <!-- Card 04 -->
-            <article class="solution-grid-card">
-              <div class="card-num-eyebrow">
-                <span class="card-num">04</span>
-                <span class="card-num-line" aria-hidden="true"></span>
-              </div>
-              <div class="grid-card-media">
+          <div class="tier-dev-grid">
+            <!-- Tier Card 1: Prototipado -->
+            <article class="tier-card">
+              <div class="tier-card-top">
+                <span class="tier-card-num">05</span>
                 <img
                   src="./assets/images/transparent/service-prototipado.png"
-                  alt="Impulsor de turbina para prototipado funcional"
-                  width="800"
-                  height="800"
+                  alt="Impulsor técnico para prototipado funcional"
+                  width="120"
+                  height="120"
                   loading="lazy"
-                  class="grid-card-img"
+                  class="tier-card-thumb"
                 />
               </div>
-              <div class="grid-card-content">
-                <h3 class="grid-card-title">Prototipado funcional</h3>
-                <p class="grid-card-text">
-                  Validá tus diseños en condiciones reales de uso.
-                </p>
-                <a href="#contacto" class="solution-link">
-                  <span>Saber más</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
+              <h3 class="tier-card-title">Prototipado</h3>
+              <p class="tier-card-desc">
+                Prototipos funcionales para validar diseños, mecanismos y soluciones antes de producir.
+              </p>
+              <a href="#contacto" class="solution-link" data-consulta="Prototipado">
+                <span>Consultar por un prototipo</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
             </article>
 
-            <!-- Card 05 -->
-            <article class="solution-grid-card">
-              <div class="card-num-eyebrow">
-                <span class="card-num">05</span>
-                <span class="card-num-line" aria-hidden="true"></span>
-              </div>
-              <div class="grid-card-media">
+            <!-- Tier Card 2: Producción seriada -->
+            <article class="tier-card">
+              <div class="tier-card-top">
+                <span class="tier-card-num">06</span>
                 <img
                   src="./assets/images/transparent/service-pequenas-series.png"
-                  alt="Lote de bujes técnicos para pequeñas series"
-                  width="800"
-                  height="800"
+                  alt="Lote de piezas técnicas para producción seriada"
+                  width="120"
+                  height="120"
                   loading="lazy"
-                  class="grid-card-img"
+                  class="tier-card-thumb"
                 />
               </div>
-              <div class="grid-card-content">
-                <h3 class="grid-card-title">Pequeñas series</h3>
-                <p class="grid-card-text">
-                  Producción flexible, sin moldes ni grandes inversiones.
-                </p>
-                <a href="#contacto" class="solution-link">
-                  <span>Saber más</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </a>
+              <h3 class="tier-card-title">Producción seriada</h3>
+              <p class="tier-card-desc">
+                Pequeñas y medianas series para empresas que necesitan flexibilidad de fabricación.
+              </p>
+              <a href="#contacto" class="solution-link" data-consulta="Producción seriada">
+                <span>Consultar por una serie</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </article>
+
+            <!-- Tier Card 3: Productos propios -->
+            <article class="tier-card">
+              <div class="tier-card-top">
+                <span class="tier-card-num">07</span>
+                <img
+                  src="./assets/images/transparent/capability-fdm.png"
+                  alt="Desarrollo técnico estandarizado para la industria"
+                  width="120"
+                  height="120"
+                  loading="lazy"
+                  class="tier-card-thumb"
+                />
               </div>
+              <h3 class="tier-card-title">Productos propios</h3>
+              <p class="tier-card-desc">
+                Desarrollo de productos y adaptaciones estandarizadas para necesidades frecuentes de la industria.
+              </p>
+              <a href="#contacto" class="solution-link" data-consulta="Productos propios">
+                <span>Consultar desarrollos disponibles</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
             </article>
           </div>
         </div>
 
-        <!-- Far Right Technical Watermark Column -->
-        <div class="solutions-tech-watermark" aria-hidden="true">
-          <div class="watermark-block-top">
-            <span class="watermark-crosshair">+</span>
-            <span class="watermark-rule"></span>
-            <div class="watermark-vert-text">
-              <span>IDEAS</span>
-              <span>PIEZAS</span>
-              <span>INDUSTRIA</span>
-              <span>SIN LÍMITES</span>
-            </div>
-          </div>
-
-          <div class="watermark-block-bottom">
-            <span class="watermark-vert-rule"></span>
-            <span class="watermark-crosshair">+</span>
-            <div class="watermark-vert-text">
-              <span>DE LA IDEA</span>
-              <span>A LA INDUSTRIA</span>
-            </div>
-          </div>
+        <!-- Section Footer Note & Generic CTA Alternative -->
+        <div class="solutions-footer-block">
+          <p class="solutions-technical-note">
+            Cada necesidad requiere una evaluación técnica. El alcance, los materiales y los plazos se definen para cada proyecto.
+          </p>
+          <a href="#contacto" class="solutions-generic-cta" data-consulta="Consulta general">
+            <span>Orientame sobre mi necesidad</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- 04 — Experiencia / Con quiénes trabajamos (#experiencia) -->
-    <section id="experiencia" class="site-section section-experience">
-      <!-- Decorative Technical Watermark Arcs -->
-      <div class="exp-watermark-wrapper" aria-hidden="true">
-        <svg class="exp-technical-watermark" viewBox="0 0 520 380" fill="none">
-          <circle cx="460" cy="190" r="300" stroke="rgba(0, 0, 0, 0.04)" stroke-width="1" />
-          <circle cx="460" cy="190" r="200" stroke="rgba(0, 0, 0, 0.05)" stroke-width="1" stroke-dasharray="4 4" />
-          <circle cx="460" cy="190" r="100" stroke="rgba(0, 0, 0, 0.04)" stroke-width="1" />
-          <path d="M455 70H465M460 65V75" stroke="rgba(0, 0, 0, 0.12)" stroke-width="1" />
-          <path d="M455 310H465M460 305V315" stroke="rgba(0, 0, 0, 0.12)" stroke-width="1" />
-        </svg>
-      </div>
+    <!-- 04 — Sectores (#sectores) con ancla auxiliar (#experiencia) -->
+    <section id="sectores" class="site-section section-sectors">
+      <!-- Auxiliary compatibility anchor for #experiencia without ID duplication -->
+      <span id="experiencia" class="anchor-compat" aria-hidden="true"></span>
 
-      <div class="container exp-inner-container">
-        <!-- Top Row: Eyebrow Tag + Connector Line -->
-        <div class="exp-header-row">
-          <div class="exp-header-tag">
-            <span class="exp-orange-dash" aria-hidden="true"></span>
-            <span class="exp-tag-title">CON QUIÉNES TRABAJAMOS</span>
+      <div class="container sectors-container">
+        <header class="sectors-header">
+          <p class="section-eyebrow">CON QUIÉNES BUSCAMOS TRABAJAR</p>
+          <h2 class="sectors-title">Empresas con desafíos técnicos reales<span class="text-orange">.</span></h2>
+          <p class="sectors-description">
+            Fábricas, talleres y organizaciones donde una pieza, una adaptación o una mejora puede marcar la diferencia en la operación.
+          </p>
+        </header>
+
+        <!-- 6 Target Sectors Grid -->
+        <div class="sectors-grid" role="list">
+          <div class="sector-card" role="listitem">
+            <div class="sector-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 20h20"></path>
+                <path d="M6 20V8l6 4V4l6 4v12"></path>
+              </svg>
+            </div>
+            <div class="sector-content">
+              <span class="sector-tag">01 · MANUFACTURA</span>
+              <h3 class="sector-name">Industria manufacturera</h3>
+            </div>
           </div>
-          <div class="exp-header-connector" aria-hidden="true"></div>
-        </div>
 
-        <!-- Infinite Loop Marquee Gallery -->
-        <div class="experience-marquee-viewport" aria-label="Empresas industriales que confían en Nóvum Industrial">
-          <div class="experience-marquee-track" id="experience-track">
-            <!-- Set 1 -->
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <polygon points="20 4 37 36 28.5 36 20 18 11.5 36 3 36"></polygon>
-                  <polygon points="20 22 25 31 15 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aceros</strong>
-                <span class="client-name-secondary">del Oeste</span>
-              </div>
+          <div class="sector-card" role="listitem">
+            <div class="sector-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
             </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
+            <div class="sector-content">
+              <span class="sector-tag">02 · MANTENIMIENTO</span>
+              <h3 class="sector-name">Talleres y mantenimiento</h3>
+            </div>
+          </div>
 
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="4 30 14 12 22 23 29 13 39 30"></polyline>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Bodega</strong>
-                <span class="client-name-secondary">Los Andes</span>
-              </div>
+          <div class="sector-card" role="listitem">
+            <div class="sector-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
             </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
+            <div class="sector-content">
+              <span class="sector-tag">03 · CONTROL & CAD</span>
+              <h3 class="sector-name">Ingeniería y automatización</h3>
+            </div>
+          </div>
 
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="currentColor">
-                  <polygon points="4 31 18 11 28 31"></polygon>
-                  <polygon points="22 31 31 17 40 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Minera</strong>
-                <span class="client-name-secondary">Cordillera</span>
-              </div>
+          <div class="sector-card" role="listitem">
+            <div class="sector-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
             </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
+            <div class="sector-content">
+              <span class="sector-tag">04 · EQUIPAMIENTO</span>
+              <h3 class="sector-name">Maquinaria y equipamiento</h3>
+            </div>
+          </div>
 
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 5C20 5 9 17 9 24.5C9 30.5 13.9 35 20 35C26.1 35 31 30.5 31 24.5C31 17 20 5 20 5Z"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Packing</strong>
-                <span class="client-name-secondary">San Rafael</span>
-              </div>
+          <div class="sector-card" role="listitem">
+            <div class="sector-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
             </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
+            <div class="sector-content">
+              <span class="sector-tag">05 · AGRO & PACKING</span>
+              <h3 class="sector-name">Agroindustria</h3>
+            </div>
+          </div>
 
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <path d="M20 4L36 30L26 26L20 36L14 26L4 30L20 4Z"/>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aerolíneas</strong>
-                <span class="client-name-secondary">Argentinas</span>
-              </div>
+          <div class="sector-card" role="listitem">
+            <div class="sector-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2v7.31"></path>
+                <path d="M14 9.3V2"></path>
+                <path d="M8.5 2h7"></path>
+                <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+                <path d="M5.52 16h12.96"></path>
+              </svg>
             </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="20" cy="20" r="14"></circle>
-                  <line x1="20" y1="6" x2="20" y2="34"></line>
-                  <path d="M12 24L20 13L28 24"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aeropuertos</strong>
-                <span class="client-name-secondary">2000</span>
-              </div>
+            <div class="sector-content">
+              <span class="sector-tag">06 · I+D & CONTROL</span>
+              <h3 class="sector-name">Laboratorios</h3>
             </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <!-- Set 2 -->
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <polygon points="20 4 37 36 28.5 36 20 18 11.5 36 3 36"></polygon>
-                  <polygon points="20 22 25 31 15 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aceros</strong>
-                <span class="client-name-secondary">del Oeste</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="4 30 14 12 22 23 29 13 39 30"></polyline>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Bodega</strong>
-                <span class="client-name-secondary">Los Andes</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="currentColor">
-                  <polygon points="4 31 18 11 28 31"></polygon>
-                  <polygon points="22 31 31 17 40 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Minera</strong>
-                <span class="client-name-secondary">Cordillera</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 5C20 5 9 17 9 24.5C9 30.5 13.9 35 20 35C26.1 35 31 30.5 31 24.5C31 17 20 5 20 5Z"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Packing</strong>
-                <span class="client-name-secondary">San Rafael</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <path d="M20 4L36 30L26 26L20 36L14 26L4 30L20 4Z"/>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aerolíneas</strong>
-                <span class="client-name-secondary">Argentinas</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="20" cy="20" r="14"></circle>
-                  <line x1="20" y1="6" x2="20" y2="34"></line>
-                  <path d="M12 24L20 13L28 24"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aeropuertos</strong>
-                <span class="client-name-secondary">2000</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <!-- Set 3 -->
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <polygon points="20 4 37 36 28.5 36 20 18 11.5 36 3 36"></polygon>
-                  <polygon points="20 22 25 31 15 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aceros</strong>
-                <span class="client-name-secondary">del Oeste</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="4 30 14 12 22 23 29 13 39 30"></polyline>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Bodega</strong>
-                <span class="client-name-secondary">Los Andes</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="currentColor">
-                  <polygon points="4 31 18 11 28 31"></polygon>
-                  <polygon points="22 31 31 17 40 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Minera</strong>
-                <span class="client-name-secondary">Cordillera</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 5C20 5 9 17 9 24.5C9 30.5 13.9 35 20 35C26.1 35 31 30.5 31 24.5C31 17 20 5 20 5Z"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Packing</strong>
-                <span class="client-name-secondary">San Rafael</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <path d="M20 4L36 30L26 26L20 36L14 26L4 30L20 4Z"/>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aerolíneas</strong>
-                <span class="client-name-secondary">Argentinas</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="20" cy="20" r="14"></circle>
-                  <line x1="20" y1="6" x2="20" y2="34"></line>
-                  <path d="M12 24L20 13L28 24"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aeropuertos</strong>
-                <span class="client-name-secondary">2000</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <!-- Set 4 -->
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <polygon points="20 4 37 36 28.5 36 20 18 11.5 36 3 36"></polygon>
-                  <polygon points="20 22 25 31 15 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aceros</strong>
-                <span class="client-name-secondary">del Oeste</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="4 30 14 12 22 23 29 13 39 30"></polyline>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Bodega</strong>
-                <span class="client-name-secondary">Los Andes</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 40" fill="currentColor">
-                  <polygon points="4 31 18 11 28 31"></polygon>
-                  <polygon points="22 31 31 17 40 31"></polygon>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Minera</strong>
-                <span class="client-name-secondary">Cordillera</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 5C20 5 9 17 9 24.5C9 30.5 13.9 35 20 35C26.1 35 31 30.5 31 24.5C31 17 20 5 20 5Z"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Packing</strong>
-                <span class="client-name-secondary">San Rafael</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="currentColor">
-                  <path d="M20 4L36 30L26 26L20 36L14 26L4 30L20 4Z"/>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aerolíneas</strong>
-                <span class="client-name-secondary">Argentinas</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
-
-            <div class="client-brand-card">
-              <div class="client-brand-icon" aria-hidden="true">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="20" cy="20" r="14"></circle>
-                  <line x1="20" y1="6" x2="20" y2="34"></line>
-                  <path d="M12 24L20 13L28 24"></path>
-                </svg>
-              </div>
-              <div class="client-brand-text">
-                <strong class="client-name-primary">Aeropuertos</strong>
-                <span class="client-name-secondary">2000</span>
-              </div>
-            </div>
-            <div class="client-brand-separator" aria-hidden="true"></div>
           </div>
         </div>
 
-        <!-- Bottom Row: Technical Meta Text -->
-        <div class="exp-bottom-row" aria-hidden="true">
-          <div class="exp-bottom-left">
-            <span class="exp-tech-label">NÓVUM INDUSTRIAL</span>
-            <span class="exp-tech-line"></span>
-          </div>
-          <div class="exp-bottom-right">
-            <span class="exp-tech-line"></span>
-            <span class="exp-tech-tagline">INDUSTRIA QUE IMPULSA EL MAÑANA</span>
-          </div>
+        <!-- Complementary Text & CTA -->
+        <div class="sectors-footer-bar">
+          <p class="sectors-complementary-text">
+            Para dueños de PyMEs y responsables de planta, mantenimiento, producción, ingeniería y compras.
+          </p>
+          <a href="#contacto" class="btn btn-secondary sectors-cta" data-consulta="Consulta general">
+            <span>Conversemos sobre tu empresa</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1091,22 +891,22 @@
       <!-- Micro Technical HUD Badges -->
       <div class="process-tech-badge-piece" aria-hidden="true">
         <span class="process-badge-line"></span>
-        <span>FABRICACIÓN<br />SIN LÍMITES</span>
+        <span>SOLUCIONES<br />A MEDIDA</span>
       </div>
 
       <div class="process-hud-top-right" aria-hidden="true">
         <span class="hud-brand">// NÓVUM INDUSTRIAL</span>
         <ul class="hud-caps-list">
-          <li>DISEÑO</li>
-          <li>IMPRESIÓN 3D</li>
-          <li>MATERIALES TÉCNICOS</li>
-          <li>INDUSTRIA REAL</li>
+          <li>DIAGNÓSTICO</li>
+          <li>INGENIERÍA CAD</li>
+          <li>FABRICACIÓN</li>
+          <li>RESULTADO</li>
         </ul>
       </div>
 
       <div class="process-hud-bottom-right" aria-hidden="true">
         <span class="hud-crosshair">+</span>
-        <span>PRECISIÓN FUNCIONAL A ESCALA REAL</span>
+        <span>RESOLUCIÓN TÉCNICA DE ALTO RENDIMIENTO</span>
       </div>
 
       <div class="process-container">
@@ -1114,24 +914,23 @@
         <div class="process-intro-col">
           <p class="section-eyebrow">CÓMO TRABAJAMOS</p>
           <h2 class="process-title">
-            Un proceso<br />
-            simple,<br />
-            resultados<br />
-            concretos.
+            Del problema<br />
+            a una solución<br />
+            funcional<span class="text-orange">.</span>
           </h2>
           <div class="process-editorial-features" aria-hidden="true">
             <div class="editorial-orange-bar"></div>
             <div class="editorial-text-group">
-              <span>IDEAS</span>
-              <span>MATERIALES</span>
-              <span>SOLUCIONES REALES</span>
+              <span>PROBLEMA</span>
+              <span>ANÁLISIS</span>
+              <span>SOLUCIÓN</span>
             </div>
           </div>
         </div>
 
         <!-- Zone 2 & 3: Central Vertical Line & Alternating Steps Timeline -->
         <div class="process-timeline-zone">
-          <!-- Central Vertical Axis (Base + Animated Scroll Progress) -->
+          <!-- Central Vertical Axis -->
           <div class="process-vertical-axis" aria-hidden="true">
             <div class="process-line-base"></div>
             <div class="process-line-progress" id="process-line-progress"></div>
@@ -1158,12 +957,12 @@
                   />
                 </div>
                 <div class="step-info">
-                  <h3 class="step-title">Consultá</h3>
-                  <p class="step-text">Contanos tu necesidad.</p>
+                  <h3 class="step-title">Problema</h3>
+                  <p class="step-text">Nos contás qué ocurre y cómo afecta a tu operación.</p>
                 </div>
               </div>
               <div class="process-step-callout callout-step-1" aria-hidden="true">
-                <span>PRIMER PASO,<br />GRANDES POSIBILIDADES.</span>
+                <span>PRIMER PASO,<br />ENTENDER TU OPERACIÓN.</span>
               </div>
             </li>
 
@@ -1186,12 +985,12 @@
                   />
                 </div>
                 <div class="step-info">
-                  <h3 class="step-title">Analizamos</h3>
-                  <p class="step-text">Evaluamos la mejor solución.</p>
+                  <h3 class="step-title">Análisis</h3>
+                  <p class="step-text">Evaluamos el caso y definimos qué hace falta resolver.</p>
                 </div>
               </div>
               <div class="process-step-callout callout-step-2" aria-hidden="true">
-                <span>EXPERIENCIA<br />QUE SUMA VALOR.</span>
+                <span>EVALUACIÓN<br />TÉCNICA Y VIABILIDAD.</span>
               </div>
             </li>
 
@@ -1214,12 +1013,12 @@
                   />
                 </div>
                 <div class="step-info">
-                  <h3 class="step-title">Diseñamos</h3>
-                  <p class="step-text">Adaptamos o desarrollamos el modelo 3D.</p>
+                  <h3 class="step-title">Solución</h3>
+                  <p class="step-text">Diseñamos la pieza, adaptación o desarrollo adecuado.</p>
                 </div>
               </div>
               <div class="process-step-callout callout-step-3" aria-hidden="true">
-                <span>IDEAS QUE<br />TOMAN FORMA.</span>
+                <span>DISEÑO CAD<br />Y DESARROLLO A MEDIDA.</span>
               </div>
             </li>
 
@@ -1242,12 +1041,12 @@
                   />
                 </div>
                 <div class="step-info">
-                  <h3 class="step-title">Imprimimos</h3>
-                  <p class="step-text">Fabricamos con materiales técnicos.</p>
+                  <h3 class="step-title">Implementación</h3>
+                  <p class="step-text">Fabricamos la solución según el alcance definido.</p>
                 </div>
               </div>
               <div class="process-step-callout callout-step-4" aria-hidden="true">
-                <span>TECNOLOGÍA<br />EN TUS IDEAS.</span>
+                <span>FABRICACIÓN<br />Y CONTROL TÉCNICO.</span>
               </div>
             </li>
 
@@ -1270,12 +1069,12 @@
                   />
                 </div>
                 <div class="step-info">
-                  <h3 class="step-title">Entregamos</h3>
-                  <p class="step-text">Tu pieza lista para trabajar.</p>
+                  <h3 class="step-title">Resultado</h3>
+                  <p class="step-text">Revisamos con vos la solución y las necesidades de continuidad.</p>
                 </div>
               </div>
               <div class="process-step-callout callout-step-5" aria-hidden="true">
-                <span>SOLUCIONES<br />EN TUS MANOS.</span>
+                <span>ENTREGA FUNCIONAL<br />Y CONTINUIDAD.</span>
               </div>
             </li>
           </ol>
@@ -1283,29 +1082,28 @@
       </div>
     </section>
 
-    <!-- 06 — Capacidades técnicas y calidad (#capacidades) -->
+    <!-- 06 — Capacidades (#capacidades) -->
     <section id="capacidades" class="site-section section-capabilities">
       <div class="container">
         <!-- Split Header Layout -->
         <header class="capabilities-header">
           <div class="capabilities-header-left">
-            <p class="capabilities-eyebrow">CAPACIDADES TÉCNICAS Y CALIDAD</p>
-            <h2 class="capabilities-title">Tecnología y conocimiento<br />al servicio de la industria<span class="capabilities-title-dot">.</span></h2>
+            <p class="capabilities-eyebrow">LAS HERRAMIENTAS, AL SERVICIO DE LA SOLUCIÓN</p>
+            <h2 class="capabilities-title">El problema define el enfoque técnico<span class="capabilities-title-dot">.</span></h2>
           </div>
           <div class="capabilities-header-right">
             <p class="capabilities-description">
-              Combinamos equipamiento de última generación, materiales técnicos y procesos de control para garantizar piezas confiables y funcionales.
+              Combinamos conocimientos en mecánica, diseño industrial, ingeniería y fabricación. La impresión 3D y el diseño CAD son herramientas: el objetivo es resolver tu necesidad.
             </p>
             <div class="capabilities-badge" aria-hidden="true">
               <span class="capabilities-badge-bar"></span>
-              <span class="capabilities-badge-text">IDEAS / QUE FABRICAN / EL MAÑANA</span>
+              <span class="capabilities-badge-text">INGENIERÍA / FABRICACIÓN / CONTROL</span>
             </div>
           </div>
         </header>
 
         <!-- Interactive Bento Grid Area -->
         <div class="capabilities-interactive-area">
-          <!-- Editorial Industrial Bento Grid (5 Cards) -->
           <ol class="capabilities-bento-grid">
             <!-- Card 01: Spans 2 Rows (Desktop Left) -->
             <li class="capability-card-item capability-item--01">
@@ -1330,18 +1128,18 @@
                     <span class="capability-num">01</span>
                     <span class="capability-num-line" aria-hidden="true"></span>
                   </div>
-                  <h3 class="capability-card-title">Diseño y optimización CAD</h3>
+                  <h3 class="capability-card-title">Ingeniería y diseño</h3>
                   <p class="capability-card-desc">
-                    Modelado, simulación y optimización para manufactura aditiva.
+                    Analizamos el problema y desarrollamos una solución para su función y contexto de uso.
                   </p>
-                  <a href="#contacto" class="capability-btn-link">
-                    <span>CONOCER MÁS</span>
+                  <a href="#contacto" class="capability-btn-link" data-consulta="Ingeniería y diseño">
+                    <span>CONSULTAR</span>
                     <span class="capability-btn-arrow" aria-hidden="true">→</span>
                   </a>
                 </div>
                 <div class="capability-editorial-tag capability-editorial-tag--bottom" aria-hidden="true">
-                  <span>DE LA IDEA</span>
-                  <span>A LA PIEZA REAL</span>
+                  <span>DESARROLLO</span>
+                  <span>A MEDIDA</span>
                 </div>
               </div>
             </li>
@@ -1349,7 +1147,7 @@
             <!-- Card 02: Wide Module (Desktop Top Right) -->
             <li class="capability-card-item capability-item--02">
               <div class="capability-editorial-tag capability-editorial-tag--topright" aria-hidden="true">
-                <span>MATERIALES / IDEAS / SOLUCIONES</span>
+                <span>RELEVAMIENTO / DIGITALIZACIÓN</span>
               </div>
               <picture class="capability-media">
                 <source
@@ -1358,7 +1156,7 @@
                 />
                 <img
                   src="./assets/images/transparent/seccion06_capacidades_assets/seccion06-impresion_3d_fdm.png"
-                  alt="Impresora 3D industrial FDM fabricando piezas técnicas en polímero avanzado"
+                  alt="Relevamiento y digitalización geométrica de piezas existentes"
                   width="1672"
                   height="941"
                   loading="lazy"
@@ -1372,12 +1170,12 @@
                     <span class="capability-num">02</span>
                     <span class="capability-num-line" aria-hidden="true"></span>
                   </div>
-                  <h3 class="capability-card-title">Impresión 3D FDM</h3>
+                  <h3 class="capability-card-title">Relevamiento y digitalización</h3>
                   <p class="capability-card-desc">
-                    Piezas resistentes y funcionales para uso industrial.
+                    Partimos de una pieza existente para reconstruir su geometría y documentarla.
                   </p>
-                  <a href="#contacto" class="capability-btn-link">
-                    <span>CONOCER MÁS</span>
+                  <a href="#contacto" class="capability-btn-link" data-consulta="Ingeniería Inversa">
+                    <span>CONSULTAR</span>
                     <span class="capability-btn-arrow" aria-hidden="true">→</span>
                   </a>
                 </div>
@@ -1393,7 +1191,7 @@
                 />
                 <img
                   src="./assets/images/transparent/seccion06_capacidades_assets/seccion06-impresion_3d_alta_precision.png"
-                  alt="Piezas industriales de alta definición y precisión geométrica en fabricación aditiva"
+                  alt="Fabricación de soluciones técnicas con manufactura aditiva y procesos integrados"
                   width="1448"
                   height="1086"
                   loading="lazy"
@@ -1407,16 +1205,17 @@
                     <span class="capability-num">03</span>
                     <span class="capability-num-line" aria-hidden="true"></span>
                   </div>
-                  <h3 class="capability-card-title">Impresión 3D de alta precisión</h3>
+                  <h3 class="capability-card-title">Fabricación de soluciones</h3>
                   <p class="capability-card-desc">
-                    Acabado superior y gran detalle para aplicaciones exigentes.
+                    La impresión 3D es una de las herramientas de fabricación, no el punto de partida.
                   </p>
                 </div>
                 <div class="capability-content-bottom">
                   <a
                     href="#contacto"
                     class="capability-circle-btn"
-                    aria-label="Conocer más sobre Impresión 3D de alta precisión"
+                    data-consulta="Solución Industrial"
+                    aria-label="Consultar por Fabricación de soluciones"
                   >
                     <span class="circle-btn-arrow" aria-hidden="true">→</span>
                   </a>
@@ -1433,7 +1232,7 @@
                 />
                 <img
                   src="./assets/images/transparent/seccion06_capacidades_assets/seccion06-materiales_tecnicos.png"
-                  alt="Bobinas y componentes de polímeros técnicos para ingeniería industrial"
+                  alt="Prototipado funcional para validación de mecanismos y piezas"
                   width="1448"
                   height="1086"
                   loading="lazy"
@@ -1447,16 +1246,17 @@
                     <span class="capability-num">04</span>
                     <span class="capability-num-line" aria-hidden="true"></span>
                   </div>
-                  <h3 class="capability-card-title">Materiales técnicos</h3>
+                  <h3 class="capability-card-title">Prototipado funcional</h3>
                   <p class="capability-card-desc">
-                    PLA, PETG, ABS, ASA, Nylon, PC, materiales con fibra de carbono, entre otros.
+                    Desarrollamos prototipos para validar mecanismos, diseños y soluciones.
                   </p>
                 </div>
                 <div class="capability-content-bottom">
                   <a
                     href="#contacto"
                     class="capability-circle-btn"
-                    aria-label="Conocer más sobre Materiales técnicos"
+                    data-consulta="Prototipado"
+                    aria-label="Consultar por Prototipado funcional"
                   >
                     <span class="circle-btn-arrow" aria-hidden="true">→</span>
                   </a>
@@ -1473,7 +1273,7 @@
                 />
                 <img
                   src="./assets/images/transparent/seccion06_capacidades_assets/seccion06-control_dimensional.png"
-                  alt="Verificación y medición dimensional con calibre digital en banco de control de calidad"
+                  alt="Organización y biblioteca digital de componentes técnicos"
                   width="1448"
                   height="1086"
                   loading="lazy"
@@ -1487,16 +1287,17 @@
                     <span class="capability-num">05</span>
                     <span class="capability-num-line" aria-hidden="true"></span>
                   </div>
-                  <h3 class="capability-card-title">Control dimensional</h3>
+                  <h3 class="capability-card-title">Organización digital</h3>
                   <p class="capability-card-desc">
-                    Verificación de tolerancias y calidad en cada pieza.
+                    Digitalizamos piezas y repuestos para facilitar futuras reposiciones y desarrollos.
                   </p>
                 </div>
                 <div class="capability-content-bottom">
                   <a
                     href="#contacto"
                     class="capability-circle-btn"
-                    aria-label="Conocer más sobre Control dimensional"
+                    data-consulta="Inventario Digital"
+                    aria-label="Consultar por Organización digital"
                   >
                     <span class="circle-btn-arrow" aria-hidden="true">→</span>
                   </a>
@@ -1506,11 +1307,11 @@
           </ol>
         </div>
 
-        <!-- Editorial Section Bottom Bar -->
+        <!-- Editorial Section Bottom Bar & Reference Note -->
         <div class="capabilities-footer-bar" aria-hidden="true">
           <span class="capabilities-footer-brand">NÓVUM INDUSTRIAL</span>
           <span class="capabilities-footer-divider"></span>
-          <span class="capabilities-footer-tagline">FABRICACIÓN QUE IMPULSA INDUSTRIAS</span>
+          <span class="capabilities-footer-tagline">Las imágenes son visuales de referencia. Las capacidades y condiciones aplicables se evalúan para cada proyecto.</span>
         </div>
       </div>
     </section>
@@ -1536,7 +1337,7 @@
                     aria-controls="faq-panel-1"
                     type="button"
                   >
-                    <span class="faq-trigger-text">¿Qué tipo de piezas pueden fabricar?</span>
+                    <span class="faq-trigger-text">¿Necesito tener planos o un modelo 3D?</span>
                     <span class="faq-icon" aria-hidden="true">
                       <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
@@ -1553,7 +1354,7 @@
                 >
                   <div class="faq-panel-inner">
                     <div class="faq-panel-content">
-                      <p>Evaluamos tanto piezas unitarias como pequeñas series, repuestos técnicos, soportes, adaptaciones, prototipos funcionales y piezas a medida según los requerimientos de tu operación.</p>
+                      <p>No necesariamente. Ingeniería Inversa permite relevar y recrear una pieza existente, incluso cuando no hay planos originales. Contanos con qué información o componente contás para evaluar el caso.</p>
                     </div>
                   </div>
                 </div>
@@ -1569,7 +1370,7 @@
                     aria-controls="faq-panel-2"
                     type="button"
                   >
-                    <span class="faq-trigger-text">¿Qué materiales utilizan?</span>
+                    <span class="faq-trigger-text">¿Pueden ayudarme con un repuesto discontinuado?</span>
                     <span class="faq-icon" aria-hidden="true">
                       <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
@@ -1586,7 +1387,7 @@
                 >
                   <div class="faq-panel-inner">
                     <div class="faq-panel-content">
-                      <p>Trabajamos con una amplia gama de materiales técnicos que incluyen PLA, PETG, ABS, ASA, Nylon, PC y compuestos reforzados con fibra de carbono, seleccionando el material ideal para cada entorno de trabajo.</p>
+                      <p>La falta o discontinuidad de repuestos es una de las necesidades que buscamos resolver. Analizamos la pieza, su función y los requerimientos para evaluar el desarrollo de un reemplazo.</p>
                     </div>
                   </div>
                 </div>
@@ -1602,7 +1403,7 @@
                     aria-controls="faq-panel-3"
                     type="button"
                   >
-                    <span class="faq-trigger-text">¿Cuáles son los tiempos de entrega?</span>
+                    <span class="faq-trigger-text">¿Qué diferencia hay entre un trabajo puntual y Partner Industrial?</span>
                     <span class="faq-icon" aria-hidden="true">
                       <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
@@ -1619,7 +1420,7 @@
                 >
                   <div class="faq-panel-inner">
                     <div class="faq-panel-content">
-                      <p>Depende de la complejidad, el material y la cantidad requerida. En la mayoría de los casos de reposición y prototipado pasamos de semanas a días, brindando agilidad técnica inmediata.</p>
+                      <p>Un trabajo puntual atiende una necesidad concreta. Partner Industrial propone una relación técnica recurrente para resolver periódicamente repuestos, piezas y desarrollos. Su alcance se conversa según las necesidades de cada empresa.</p>
                     </div>
                   </div>
                 </div>
@@ -1635,7 +1436,7 @@
                     aria-controls="faq-panel-4"
                     type="button"
                   >
-                    <span class="faq-trigger-text">¿Trabajan con diseños propios o pueden ayudarme a diseñar?</span>
+                    <span class="faq-trigger-text">¿Qué es un Inventario Digital?</span>
                     <span class="faq-icon" aria-hidden="true">
                       <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
@@ -1652,7 +1453,7 @@
                 >
                   <div class="faq-panel-inner">
                     <div class="faq-panel-content">
-                      <p>Ambos casos. Podés enviarnos tus archivos 3D o planos, o bien enviarnos una muestra física o fotografías con medidas para realizar relevamiento, ingeniería inversa y modelado completo.</p>
+                      <p>Es una biblioteca digital que organiza piezas y repuestos de tu empresa para facilitar futuras reposiciones y desarrollos. No implica por sí sola que exista stock físico disponible.</p>
                     </div>
                   </div>
                 </div>
@@ -1668,7 +1469,7 @@
                     aria-controls="faq-panel-5"
                     type="button"
                   >
-                    <span class="faq-trigger-text">¿Hacen envíos al interior del país?</span>
+                    <span class="faq-trigger-text">¿Repuesto Express tiene un plazo de entrega fijo?</span>
                     <span class="faq-icon" aria-hidden="true">
                       <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
@@ -1685,7 +1486,73 @@
                 >
                   <div class="faq-panel-inner">
                     <div class="faq-panel-content">
-                      <p>Sí. Despachamos piezas y series a todo el territorio nacional, coordinando la logística más conveniente y segura para cada cliente y proyecto.</p>
+                      <p>Su objetivo es reducir tiempos de espera y paradas operativas. El plazo depende de la evaluación del caso y debe acordarse para cada trabajo; no hay un plazo universal publicado.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 06 -->
+              <div class="faq-item">
+                <h3 class="faq-heading">
+                  <button
+                    class="faq-trigger"
+                    id="faq-trigger-6"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-6"
+                    type="button"
+                  >
+                    <span class="faq-trigger-text">¿Fabrican pequeñas y medianas series?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  class="faq-panel"
+                  id="faq-panel-6"
+                  role="region"
+                  aria-labelledby="faq-trigger-6"
+                  hidden
+                >
+                  <div class="faq-panel-inner">
+                    <div class="faq-panel-content">
+                      <p>Sí. Producción seriada contempla pequeñas y medianas series para necesidades que requieren mayor flexibilidad o que no justifican métodos industriales tradicionales.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 07 -->
+              <div class="faq-item">
+                <h3 class="faq-heading">
+                  <button
+                    class="faq-trigger"
+                    id="faq-trigger-7"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-7"
+                    type="button"
+                  >
+                    <span class="faq-trigger-text">¿Qué información conviene enviar en la primera consulta?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  class="faq-panel"
+                  id="faq-panel-7"
+                  role="region"
+                  aria-labelledby="faq-trigger-7"
+                  hidden
+                >
+                  <div class="faq-panel-inner">
+                    <div class="faq-panel-content">
+                      <p>El nombre de tu empresa, tu función, el equipo o problema a resolver, su impacto en la operación, la cantidad aproximada y el plazo que necesitás. Indicá también si contás con una pieza, planos, fotos o un modelo; luego coordinamos qué información compartir.</p>
                     </div>
                   </div>
                 </div>
@@ -1696,7 +1563,7 @@
       </div>
     </section>
 
-    <!-- 08 — CTA Final / Contacto (#contacto) -->
+    <!-- 08 — Contacto (#contacto) -->
     <section id="contacto" class="site-section section-cta">
       <div class="cta-ambient-glow" aria-hidden="true"></div>
 
@@ -1707,7 +1574,7 @@
             <div class="cta-header-group">
               <div class="cta-eyebrow-wrap">
                 <span class="cta-orange-dash" aria-hidden="true"></span>
-                <p class="cta-eyebrow">CONVERTÍ TUS IDEAS EN SOLUCIONES REALES</p>
+                <p class="cta-eyebrow">EL PRIMER PASO ES ENTENDER TU NECESIDAD</p>
               </div>
               <h2 class="cta-title">
                 ¿Qué necesitás<br />
@@ -1720,54 +1587,100 @@
             <div class="cta-editorial-bottom" aria-hidden="true">
               <div class="cta-editorial-bar"></div>
               <div class="cta-editorial-text">
-                <span>IMPRESIÓN 3D</span>
-                <span>PARA UNA INDUSTRIA</span>
-                <span>MÁS EFICIENTE</span>
+                <span>PROBLEMA</span>
+                <span>ANÁLISIS</span>
+                <span>SOLUCIÓN</span>
+                <span>RESULTADO</span>
               </div>
             </div>
           </div>
 
-          <!-- Zone 2: Center Column (Action, Button & Meta) -->
+          <!-- Zone 2: Center Column (Interactive Consultation & Action) -->
           <div class="cta-center-zone">
             <p class="cta-description">
-              Hablemos. Nuestro equipo técnico está listo para ayudarte a encontrar la mejor solución con impresión 3D.
+              Contanos qué está pasando en tu empresa. Podemos partir de una pieza que falta, una adaptación, un desarrollo o una necesidad recurrente.
             </p>
 
-            <a
-              href="mailto:[EMAIL_DE_CONTACTO]?subject=Consulta%20t%C3%A9cnica%20desde%20la%20web%20-%20N%C3%B3vum%20Industrial&amp;body=Hola%20equipo%20de%20N%C3%B3vum%2C%0A%0AQuisiera%20consultar%20por%20una%20necesidad%20t%C3%A9cnica.%0A%0AEmpresa%3A%0ANombre%20y%20cargo%3A%0ALocalidad%20%2F%20provincia%3A%0APieza%2C%20equipo%20o%20problema%20a%20resolver%3A%0ACantidad%20aproximada%3A%0APlazo%20deseado%3A%0A"
-              class="cta-button"
-            >
-              <span class="cta-btn-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-              </span>
-              <span>Escribinos por correo</span>
-              <span class="cta-btn-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-
-            <div class="cta-meta-row">
-              <a href="tel:+542610000000" class="cta-meta-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <span>+54 261 000-0000</span>
-              </a>
-              <span class="cta-meta-divider" aria-hidden="true">|</span>
-              <div class="cta-meta-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                <span>Mendoza, Argentina</span>
+            <!-- Active Consultation Indicator -->
+            <div class="cta-query-status" id="cta-query-status">
+              <div class="query-status-badge">
+                <span class="query-status-label">Tu consulta:</span>
+                <strong class="query-status-value" id="contact-selected-service">Consulta general</strong>
               </div>
+              <button
+                type="button"
+                id="contact-reset-service"
+                class="btn-reset-service"
+                title="Restablecer a consulta general"
+              >
+                Orientame sobre mi necesidad
+              </button>
+            </div>
+
+            <!-- Unconfirmed Email Warning Notice (Visible in revision mode) -->
+            <div class="cta-revision-notice" id="cta-revision-notice" role="alert">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Versión para revisión: falta confirmar el correo de contacto antes de publicar</span>
+            </div>
+
+            <!-- Email Action Button & Copy Action Button -->
+            <div class="cta-actions-group">
+              <a
+                href="#"
+                id="contact-mail-btn"
+                class="cta-button"
+              >
+                <span class="cta-btn-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </span>
+                <span>Preparar consulta por correo</span>
+                <span class="cta-btn-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+
+              <button
+                type="button"
+                id="contact-copy-guide-btn"
+                class="cta-button-copy"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                </svg>
+                <span>Copiar guía de consulta</span>
+              </button>
+            </div>
+
+            <!-- Visible clarification notice -->
+            <p class="cta-client-clarification">
+              Se abrirá tu aplicación de correo con una guía editable. El mensaje se envía desde esa aplicación, no desde esta web.
+            </p>
+
+            <!-- Feedback message container -->
+            <div id="contact-copy-feedback" class="cta-feedback-msg" role="status" aria-live="polite"></div>
+
+            <!-- Fallback text area for manual copying if clipboard API is unavailable or fails -->
+            <div id="contact-guide-fallback" class="cta-guide-fallback" hidden>
+              <label for="contact-guide-textarea" class="guide-fallback-label">
+                Guía de consulta técnica (para copiar y pegar):
+              </label>
+              <textarea
+                id="contact-guide-textarea"
+                class="guide-fallback-textarea"
+                rows="10"
+                readonly
+              ></textarea>
             </div>
           </div>
 
-          <!-- Zone 3: Right Column (3D Piece, CAD Wireframe, HUD Callouts) -->
+          <!-- Zone 3: Right Column (Technical 3D & Blueprint Visuals) -->
           <div class="cta-visual-zone" aria-hidden="true">
-            <!-- 3D Technical Piece Image -->
             <img
               src="./assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_industrial_principal.png"
               alt=""
@@ -1776,8 +1689,6 @@
               loading="lazy"
               class="cta-piece-image"
             />
-
-            <!-- Technical CAD Wireframe Backdrop -->
             <img
               src="./assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_wireframe_cad.png"
               alt=""
@@ -1786,39 +1697,19 @@
               loading="lazy"
               class="cta-wireframe-backdrop"
             />
-
-            <!-- Top Right HUD Callout -->
             <div class="cta-hud-top-right">
               <span class="cta-hud-crosshair">+</span>
               <div class="cta-hud-tag-list">
-                <span>IDEAS</span>
-                <span>PIEZAS</span>
-                <span>SOLUCIONES</span>
-                <span>REALES</span>
+                <span>INGENIERÍA</span>
+                <span>DISEÑO</span>
+                <span>FABRICACIÓN</span>
+                <span>B2B</span>
               </div>
             </div>
-
-            <!-- Middle Right HUD Callout -->
-            <div class="cta-hud-mid-right">
-              <span>PRECISIÓN</span>
-              <span>INNOVACIÓN</span>
-              <span>INDUSTRIA</span>
-            </div>
-
-            <!-- Bottom Right Watermark Brand -->
             <div class="cta-hud-brand-watermark">
               <span class="cta-brand-dash"></span>
               <span class="cta-brand-name">NÓVUM</span>
               <span class="cta-brand-sub">INDUSTRIAL</span>
-            </div>
-
-            <!-- Bottom Center Blueprint Ticker -->
-            <div class="cta-bottom-ticker">
-              <span class="ticker-dot"></span>
-              <span class="ticker-dot"></span>
-              <span>FABRICACIÓN ADITIVA</span>
-              <span class="ticker-dot"></span>
-              <span class="ticker-dot"></span>
             </div>
           </div>
         </div>
@@ -1827,7 +1718,7 @@
   </main>
 
   <!-- ========================================================================
-       Footer Claro / Blanco con Brand Logo, Navegación Horizontal y Redes
+       Footer con Brand Logo, Navegación Horizontal y Cierre
        ======================================================================== -->
   <footer class="site-footer">
     <div class="container footer-container">
@@ -1849,41 +1740,18 @@
           <ul class="footer-nav-list">
             <li><a href="#inicio" class="footer-nav-link">Inicio</a></li>
             <li><a href="#soluciones" class="footer-nav-link">Soluciones</a></li>
-            <li><a href="#experiencia" class="footer-nav-link">Experiencia</a></li>
+            <li><a href="#sectores" class="footer-nav-link">Sectores</a></li>
             <li><a href="#proceso" class="footer-nav-link">Proceso</a></li>
             <li><a href="#capacidades" class="footer-nav-link">Capacidades</a></li>
             <li><a href="#contacto" class="footer-nav-link">Contacto</a></li>
           </ul>
         </nav>
 
-        <!-- Redes Sociales y Tagline -->
+        <!-- Tagline de Cierre -->
         <div class="footer-right-group">
-          <div class="footer-socials" aria-label="Redes sociales">
-            <!-- LinkedIn -->
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.92 0 1.66-.74 1.66-1.66 0-.92-.74-1.66-1.66-1.66-.92 0-1.66.74-1.66 1.66 0 .92.74 1.66 1.66 1.66m1.4 9.74v-8.37H5.06v8.37h2.8z"></path>
-              </svg>
-            </a>
-            <!-- Instagram -->
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-              </svg>
-            </a>
-            <!-- YouTube -->
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="YouTube">
-              <svg viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
-              </svg>
-            </a>
-          </div>
-
-          <div class="footer-divider" aria-hidden="true"></div>
-
           <p class="footer-tagline-text">
-            Fabricando<br />
-            un futuro más posible.
+            Tu próximo desafío.<br />
+            Una solución a medida.
           </p>
         </div>
       </div>

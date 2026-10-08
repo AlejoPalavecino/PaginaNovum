@@ -1,65 +1,170 @@
 /**
  * ==========================================================================
- * Nóvum Industrial — Main Application Script
- * Phase 4: Interactivity & Accessibility (WCAG AA Compliant)
+ * Nóvum Industrial — Main Application Script (B2B Architecture)
+ * Phase 4 & B2B Adaptation: Interactivity, Accessibility & Consultation State
  * ==========================================================================
  */
 
 import './styles/main.css';
+import {
+  CONTACT_CONFIG,
+  DEFAULT_SERVICE,
+  isEmailConfirmed,
+  normalizeService,
+  buildSubject,
+  buildBody,
+  buildMailtoUrl
+} from './config/contact.js';
 import { initHeroParallax } from './scripts/heroAnimation.js';
 import { initProblemsDiagram } from './scripts/problemsDiagram.js';
-import { initExperienceCarousel } from './scripts/experienceCarousel.js';
 import { initProcessTimeline } from './scripts/processTimeline.js';
 import { initCapabilitiesSection } from './scripts/capabilitiesSection.js';
 
 /**
- * Mailto CTA Central Configuration
- * As specified in arquitecture.md Section 3 and content.md.
+ * Global Consultation State Management
  */
-export const CONTACT_CONFIG = {
-  email: '[EMAIL_DE_CONTACTO]',
-  subject: 'Consulta técnica desde la web - Nóvum Industrial',
-  body: [
-    'Hola equipo de Nóvum,',
-    '',
-    'Quisiera consultar por una necesidad técnica.',
-    '',
-    'Empresa:',
-    'Nombre y cargo:',
-    'Localidad / provincia:',
-    'Pieza, equipo o problema a resolver:',
-    'Cantidad aproximada:',
-    'Plazo deseado:',
-    ''
-  ].join('\n')
-};
+let currentConsultationService = DEFAULT_SERVICE;
 
 /**
- * Builds the URL-encoded mailto string with subject and body parameters.
- * @param {typeof CONTACT_CONFIG} config
- * @returns {string} URL-encoded mailto link
+ * Updates the consultation UI and mailto configuration in the Contact section.
+ * @param {string} serviceName
  */
-export function buildMailtoUrl(config = CONTACT_CONFIG) {
-  const subjectEncoded = encodeURIComponent(config.subject);
-  const bodyEncoded = encodeURIComponent(config.body);
-  return `mailto:${config.email}?subject=${subjectEncoded}&body=${bodyEncoded}`;
+export function updateConsultationState(serviceName = DEFAULT_SERVICE) {
+  currentConsultationService = normalizeService(serviceName);
+
+  // Update selected service badge
+  const serviceBadge = document.getElementById('contact-selected-service');
+  if (serviceBadge) {
+    serviceBadge.textContent = currentConsultationService;
+  }
+
+  // Update revision notice & mailto button
+  const mailBtn = document.getElementById('contact-mail-btn');
+  const revisionNotice = document.getElementById('cta-revision-notice');
+  const fallbackTextarea = document.getElementById('contact-guide-textarea');
+
+  const confirmed = isEmailConfirmed(CONTACT_CONFIG.email);
+
+  if (revisionNotice) {
+    revisionNotice.hidden = confirmed;
+  }
+
+  if (mailBtn) {
+    if (confirmed) {
+      const mailtoUrl = buildMailtoUrl(currentConsultationService, CONTACT_CONFIG);
+      mailBtn.setAttribute('href', mailtoUrl || '#contacto');
+      mailBtn.classList.remove('is-disabled');
+      mailBtn.removeAttribute('aria-disabled');
+    } else {
+      // Avoid fictitious mailto when email is unconfirmed
+      mailBtn.setAttribute('href', '#contacto');
+      mailBtn.classList.add('is-disabled');
+      mailBtn.setAttribute('aria-disabled', 'true');
+    }
+  }
+
+  // Update fallback textarea if present
+  if (fallbackTextarea) {
+    fallbackTextarea.value = buildBody(currentConsultationService);
+  }
 }
 
 /**
- * Initializes and normalizes all mailto CTA anchors across the document.
+ * Initializes consultation CTAs across the site.
+ * Supports data-consulta on any button or anchor.
  */
-export function initMailtoLinks(config = CONTACT_CONFIG) {
-  const mailtoUrl = buildMailtoUrl(config);
-  const mailtoLinks = document.querySelectorAll('a[href^="mailto:"]');
+export function initConsultationHandlers() {
+  // Elements with data-consulta
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-consulta]');
+    if (!trigger) return;
 
-  mailtoLinks.forEach((link) => {
-    link.setAttribute('href', mailtoUrl);
+    const requestedService = trigger.getAttribute('data-consulta');
+    updateConsultationState(requestedService);
   });
+
+  // Reset service button
+  const resetBtn = document.getElementById('contact-reset-service');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      updateConsultationState(DEFAULT_SERVICE);
+    });
+  }
+
+  // Mail button click check when unconfirmed
+  const mailBtn = document.getElementById('contact-mail-btn');
+  if (mailBtn) {
+    mailBtn.addEventListener('click', (event) => {
+      if (!isEmailConfirmed(CONTACT_CONFIG.email)) {
+        event.preventDefault();
+        const feedback = document.getElementById('contact-copy-feedback');
+        if (feedback) {
+          feedback.textContent = 'Aviso: el correo de contacto está pendiente de confirmación. Podés copiar la guía abajo.';
+          feedback.className = 'cta-feedback-msg is-warning';
+        }
+        // Expose guide fallback for immediate inspection
+        const fallbackContainer = document.getElementById('contact-guide-fallback');
+        const fallbackTextarea = document.getElementById('contact-guide-textarea');
+        if (fallbackContainer && fallbackTextarea) {
+          fallbackContainer.hidden = false;
+          fallbackTextarea.value = buildBody(currentConsultationService);
+          fallbackTextarea.focus();
+          fallbackTextarea.select();
+        }
+      }
+    });
+  }
+
+  // Copy guide button
+  const copyBtn = document.getElementById('contact-copy-guide-btn');
+  const feedbackEl = document.getElementById('contact-copy-feedback');
+  const fallbackContainer = document.getElementById('contact-guide-fallback');
+  const fallbackTextarea = document.getElementById('contact-guide-textarea');
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const guideText = buildBody(currentConsultationService);
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        try {
+          await navigator.clipboard.writeText(guideText);
+          if (feedbackEl) {
+            feedbackEl.textContent = 'Guía copiada al portapapeles. Podés pegarla en tu correo.';
+            feedbackEl.className = 'cta-feedback-msg';
+            setTimeout(() => {
+              if (feedbackEl.textContent.includes('copiada')) {
+                feedbackEl.textContent = '';
+              }
+            }, 5000);
+          }
+          if (fallbackContainer) fallbackContainer.hidden = true;
+          return;
+        } catch (err) {
+          // Clipboard write failed: fall through to manual selection
+        }
+      }
+
+      // Manual fallback
+      if (fallbackContainer && fallbackTextarea) {
+        fallbackContainer.hidden = false;
+        fallbackTextarea.value = guideText;
+        fallbackTextarea.focus();
+        fallbackTextarea.select();
+      }
+      if (feedbackEl) {
+        feedbackEl.textContent = 'No se pudo acceder automáticamente al portapapeles. Copiá el texto directamente desde el recuadro.';
+        feedbackEl.className = 'cta-feedback-msg is-warning';
+      }
+    });
+  }
+
+  // Initial render
+  updateConsultationState(DEFAULT_SERVICE);
 }
 
 /**
  * Accessible FAQ Accordion Component
- * - Full ARIA state synchronization (aria-expanded, aria-controls, role="region")
+ * - ARIA state synchronization (aria-expanded, aria-controls, role="region")
  * - CSS Grid smooth transition (0fr -> 1fr) with prefers-reduced-motion support
  * - WAI-ARIA APG keyboard navigation (Enter, Space, ArrowUp, ArrowDown, Home, End)
  */
@@ -70,23 +175,14 @@ export function initAccordion() {
   const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /**
-   * Opens an accordion item
-   */
   function openPanel(trigger, panel, item) {
-    // Show panel before transitioning so CSS Grid can interpolate from 0fr
     panel.hidden = false;
-    // Force browser reflow
     void panel.offsetHeight;
-
     trigger.setAttribute('aria-expanded', 'true');
     panel.classList.add('is-open');
     if (item) item.classList.add('is-open');
   }
 
-  /**
-   * Closes an accordion item
-   */
   function closePanel(trigger, panel, item) {
     trigger.setAttribute('aria-expanded', 'false');
     panel.classList.remove('is-open');
@@ -106,9 +202,6 @@ export function initAccordion() {
     }
   }
 
-  /**
-   * Toggles an accordion item
-   */
   function toggleItem(trigger) {
     const panelId = trigger.getAttribute('aria-controls');
     const panel = document.getElementById(panelId);
@@ -125,15 +218,12 @@ export function initAccordion() {
   }
 
   triggers.forEach((trigger, index) => {
-    // Mouse / Pointer activation
     trigger.addEventListener('click', () => {
       toggleItem(trigger);
     });
 
-    // Keyboard navigation per WAI-ARIA APG Accordion pattern
     trigger.addEventListener('keydown', (event) => {
       let targetIndex = null;
-
       switch (event.key) {
         case 'ArrowDown':
           event.preventDefault();
@@ -168,7 +258,7 @@ export function initAccordion() {
  * - Escape key closes drawer and returns focus to toggle button
  * - Anchor link click closes drawer on mobile
  * - Outside click closes drawer
- * - Body scroll lock on mobile (body.nav-open)
+ * - Body scroll lock on mobile
  */
 export function initMobileNavigation() {
   const toggleBtn = document.getElementById('nav-toggle');
@@ -199,7 +289,6 @@ export function initMobileNavigation() {
     }
   });
 
-  // Close drawer when clicking any anchor link inside navigation
   mainNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       if (window.innerWidth < 992) {
@@ -208,7 +297,6 @@ export function initMobileNavigation() {
     });
   });
 
-  // Close drawer on Escape key and return focus to toggle button
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
       closeMenu();
@@ -216,7 +304,6 @@ export function initMobileNavigation() {
     }
   });
 
-  // Close drawer on clicking outside
   document.addEventListener('click', (event) => {
     if (
       toggleBtn.getAttribute('aria-expanded') === 'true' &&
@@ -227,7 +314,6 @@ export function initMobileNavigation() {
     }
   });
 
-  // Automatically reset drawer when resizing to desktop
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 992 && toggleBtn.getAttribute('aria-expanded') === 'true') {
       closeMenu();
@@ -237,7 +323,7 @@ export function initMobileNavigation() {
 
 /**
  * Active Navigation Scrollspy using IntersectionObserver
- * Accurately highlights current section link without false positives.
+ * Highlights current section link accurately (including #sectores).
  */
 export function initActiveNavObserver() {
   const navLinks = Array.from(document.querySelectorAll('.site-nav .nav-link'));
@@ -251,15 +337,23 @@ export function initActiveNavObserver() {
     }
   });
 
+  // Map backward-compatible anchor #experiencia to #sectores link
+  const sectoresLink = navMap.get('sectores');
+
   const observedSections = Array.from(document.querySelectorAll('section[id]'))
-    .filter((sec) => navMap.has(sec.id));
+    .filter((sec) => navMap.has(sec.id) || sec.id === 'sectores');
 
   if (!observedSections.length) return;
 
   function setActiveLink(activeId) {
     navLinks.forEach((link) => {
       const href = link.getAttribute('href');
-      if (href === `#${activeId}`) {
+      const matches =
+        href === `#${activeId}` ||
+        (activeId === 'experiencia' && href === '#sectores') ||
+        (activeId === 'sectores' && href === '#sectores');
+
+      if (matches) {
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
       } else {
@@ -303,7 +397,6 @@ export function initActiveNavObserver() {
 
 /**
  * Floating Pill Navbar Scroll Observer
- * Adds subtle background & shadow elevation when scrolled.
  */
 export function initFloatingPillNavbar() {
   const header = document.querySelector('.site-header');
@@ -320,14 +413,13 @@ export function initFloatingPillNavbar() {
 
 // Bootstrap all modules once DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  initMailtoLinks();
+  initConsultationHandlers();
   initAccordion();
   initMobileNavigation();
   initActiveNavObserver();
   initHeroParallax();
   initFloatingPillNavbar();
   initProblemsDiagram();
-  initExperienceCarousel();
   initProcessTimeline();
   initCapabilitiesSection();
 });

@@ -1,9 +1,10 @@
 /* ==========================================================================
    Nóvum Industrial — Final CTA / Contact Component Styles (#contacto)
-   Dark industrial panoramic card matching the reference mockup (media_1791402827857_c6045fce.png):
+   Dark industrial panoramic card matching the reference mockup:
    - Left Zone: Eyebrow + 3-line display title + bottom editorial badge
    - Central Divider: Subtle vertical separator hairline
-   - Center Zone: Descriptive text + Orange mailto button + phone/location meta
+   - Center Zone: Descriptive text + Consultation status badge +
+     Mail preparation button + Copy guide button + Revision notice + HUD
    - Right Zone: Industrial 3D piece with CAD wireframe & HUD technical callouts
    ========================================================================== */
 
@@ -53,8 +54,8 @@
 @media (min-width: 1100px) {
   .cta-card-box {
     display: grid;
-    grid-template-columns: 1.12fr 1fr 1.25fr;
-    min-height: 430px;
+    grid-template-columns: 1fr 1.35fr 1.05fr;
+    min-height: 460px;
     align-items: stretch;
   }
 }
@@ -138,7 +139,7 @@
 }
 
 /* ==========================================================================
-   Zone 2: Center Column (CTA Action & Meta)
+   Zone 2: Center Column (Interactive Consultation & Action)
    ========================================================================== */
 
 .cta-center-zone {
@@ -146,7 +147,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.75rem;
+  gap: 1.25rem;
   position: relative;
   z-index: 3;
 }
@@ -154,6 +155,7 @@
 @media (min-width: 1100px) {
   .cta-center-zone {
     border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -163,7 +165,81 @@
   line-height: 1.55;
   color: #C5C8CF;
   margin: 0;
-  max-width: 38ch;
+  max-width: 48ch;
+}
+
+/* Consultation status indicator */
+.cta-query-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.query-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.query-status-label {
+  color: #9CA3AF;
+}
+
+.query-status-value {
+  color: var(--color-orange);
+  font-weight: 700;
+}
+
+.btn-reset-service {
+  background: transparent;
+  border: none;
+  color: #9CA3AF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: color var(--transition-fast);
+}
+
+.btn-reset-service:hover,
+.btn-reset-service:focus-visible {
+  color: var(--color-white);
+}
+
+/* Revision notice banner when email is not confirmed */
+.cta-revision-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 129, 52, 0.12);
+  border: 1px solid rgba(255, 129, 52, 0.35);
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: #FFB380;
+}
+
+.cta-revision-notice svg {
+  color: var(--color-orange);
+  flex-shrink: 0;
+}
+
+/* Actions group */
+.cta-actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
 }
 
 /* Primary Orange Mailto Button */
@@ -171,8 +247,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 0.95rem 1.65rem;
+  gap: 0.65rem;
+  padding: 0.85rem 1.45rem;
   background-color: var(--color-orange);
   color: var(--color-white);
   font-family: var(--font-body);
@@ -186,13 +262,19 @@
     background-color var(--transition-fast),
     transform var(--transition-fast),
     box-shadow var(--transition-fast);
-  align-self: flex-start;
 }
 
 .cta-button:hover {
   background-color: #ff934e;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(255, 129, 52, 0.5);
+}
+
+.cta-button.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .cta-btn-icon {
@@ -209,33 +291,86 @@
   transform: translateX(3px);
 }
 
-/* Contact Meta Details Row (Phone + Location) */
-.cta-meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.85rem;
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: #B5B9C2;
-}
-
-.cta-meta-item {
+/* Copy Guide Secondary Button */
+.cta-button-copy {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  color: #C5C8CF;
-  text-decoration: none;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
-.cta-meta-item svg {
+.cta-button-copy:hover,
+.cta-button-copy:focus-visible {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-button-copy svg {
   color: var(--color-orange);
-  flex-shrink: 0;
 }
 
-.cta-meta-divider {
-  color: rgba(255, 255, 255, 0.2);
-  user-select: none;
+/* Client clarification notice */
+.cta-client-clarification {
+  font-size: 0.78125rem;
+  line-height: 1.45;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+/* Feedback message */
+.cta-feedback-msg {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #10B981;
+  min-height: 1.2rem;
+}
+
+.cta-feedback-msg.is-warning {
+  color: #F59E0B;
+}
+
+/* Fallback textarea */
+.cta-guide-fallback {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.cta-guide-fallback[hidden] {
+  display: none;
+}
+
+.guide-fallback-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9CA3AF;
+}
+
+.guide-fallback-textarea {
+  width: 100%;
+  background-color: #0c0d10;
+  color: #E5E7EB;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  resize: vertical;
 }
 
 /* ==========================================================================
@@ -250,255 +385,100 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
-/* 3D Technical Piece Image */
 .cta-piece-image {
   position: absolute;
-  right: -30px;
-  bottom: -25px;
-  width: clamp(340px, 32vw, 480px);
+  width: 96%;
+  max-width: 480px;
   height: auto;
-  pointer-events: none;
+  object-fit: contain;
   z-index: 2;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85));
-  user-select: none;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75));
+  right: -5%;
+  bottom: -2%;
 }
 
-/* CAD Technical Wireframe Backdrop */
 .cta-wireframe-backdrop {
   position: absolute;
-  right: 60px;
-  top: 15px;
-  width: clamp(240px, 22vw, 360px);
+  width: 85%;
+  max-width: 420px;
   height: auto;
+  object-fit: contain;
   opacity: 0.22;
-  pointer-events: none;
   z-index: 1;
-  user-select: none;
+  right: 5%;
+  top: 10%;
+  filter: grayscale(1) invert(0.8);
 }
 
-/* HUD Callout 1 (Top Right) */
 .cta-hud-top-right {
   position: absolute;
-  top: 1.75rem;
-  right: 1.75rem;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 3;
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  pointer-events: none;
-  z-index: 3;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.5625rem;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
 }
 
 .cta-hud-crosshair {
-  font-size: 1.1rem;
-  line-height: 1;
   color: var(--color-orange);
-  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1;
 }
 
 .cta-hud-tag-list {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  font-family: var(--font-body);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.45);
-  text-transform: uppercase;
+  gap: 0.2rem;
 }
 
-/* HUD Callout 2 (Middle Right) */
-.cta-hud-mid-right {
-  position: absolute;
-  top: 48%;
-  right: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.15rem;
-  font-family: var(--font-body);
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.35);
-  text-transform: uppercase;
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* HUD Brand Watermark (Bottom Right over Piece) */
 .cta-hud-brand-watermark {
   position: absolute;
-  bottom: 1.75rem;
-  right: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.25rem;
-  pointer-events: none;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.625rem;
+  font-weight: 700;
 }
 
 .cta-brand-dash {
-  width: 18px;
+  width: 14px;
   height: 2px;
   background-color: var(--color-orange);
-  border-radius: 1px;
+  opacity: 0.6;
 }
 
-.cta-brand-name {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.1;
-}
+@media (max-width: 1099px) {
+  .cta-visual-zone {
+    min-height: 220px;
+  }
 
-.cta-brand-sub {
-  font-size: 0.56rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.4);
-}
-
-/* Blueprint Ruler / Bottom Axis Ticker */
-.cta-bottom-ticker {
-  position: absolute;
-  bottom: 0.75rem;
-  left: 38%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-body);
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  color: rgba(255, 255, 255, 0.32);
-  text-transform: uppercase;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.ticker-dot {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
-/* ==========================================================================
-   Responsive Breakpoints
-   ========================================================================== */
-
-/* Tablet & Intermediate Viewports (768px – 1099px) */
-@media (min-width: 768px) and (max-width: 1099px) {
-  .cta-card-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .cta-piece-image {
     position: relative;
-  }
-
-  .cta-left-zone {
-    padding: 2.5rem 2rem;
-  }
-
-  .cta-center-zone {
-    padding: 2.5rem 2rem;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .cta-visual-zone {
-    grid-column: span 2;
-    min-height: 240px;
-    background: radial-gradient(circle at 70% 50%, rgba(255, 129, 52, 0.05) 0%, transparent 60%);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .cta-piece-image {
-    right: 5%;
-    bottom: -15px;
-    width: 320px;
-  }
-
-  .cta-wireframe-backdrop {
-    right: 15%;
-    width: 240px;
-  }
-
-  .cta-bottom-ticker {
-    left: 50%;
+    right: 0;
+    bottom: 0;
+    max-width: 320px;
   }
 }
 
-/* Mobile (< 768px) */
-@media (max-width: 767px) {
-  .section-cta {
-    padding-block: 2.5rem;
-  }
-
-  .cta-card-box {
-    display: flex;
-    flex-direction: column;
-    border-radius: 14px;
-  }
-
-  .cta-left-zone {
-    padding: 1.75rem 1.25rem 1.25rem;
-    gap: 1.5rem;
-  }
-
-  .cta-title {
-    font-size: 1.85rem;
-  }
-
-  .cta-center-zone {
-    padding: 0 1.25rem 1.75rem;
-    gap: 1.25rem;
-  }
-
-  .cta-button {
-    width: 100%;
-  }
-
-  .cta-meta-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .cta-meta-divider {
-    display: none;
-  }
-
-  .cta-visual-zone {
-    min-height: 180px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .cta-piece-image {
-    right: -20px;
-    bottom: -10px;
-    width: 240px;
-    opacity: 0.6;
-  }
-
-  .cta-wireframe-backdrop,
-  .cta-hud-mid-right,
-  .cta-bottom-ticker {
-    display: none;
-  }
-
-  .cta-hud-top-right {
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .cta-hud-brand-watermark {
-    bottom: 1rem;
-    right: 1rem;
+@media (prefers-reduced-motion: reduce) {
+  .cta-button,
+  .cta-button-copy,
+  .cta-btn-arrow {
+    transition: none !important;
   }
 }

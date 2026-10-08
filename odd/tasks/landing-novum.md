@@ -59,10 +59,22 @@ Nóvum Industrial requiere una presencia digital que comunique su propuesta de v
 - [x] `TASK-5.3`: Auditoría de performance de assets (dimensiones explícitas `width`/`height`, lazy-loading). *(Ruta: Delegated)*
 - [x] `TASK-5.4`: Verificación del checklist de QA de `AGENTS.md`. *(Ruta: Delegated)*
 
+### Fase 6: Adaptación B2B — Soluciones Industriales a Medida
+- [x] `TASK-6.1`: Adaptar Hero e Inicio con H1 único ("SOLUCIONES INDUSTRIALES A MEDIDA.") y CTAs B2B. *(Ruta: Direct)*
+- [x] `TASK-6.2`: Adaptar diagrama técnico de Problemas con los 6 dolores operativos B2B. *(Ruta: Direct)*
+- [x] `TASK-6.3`: Implementar grilla jerárquica de 8 Soluciones (Partner Industrial, 4 complementarias, 3 desarrollo/producción). *(Ruta: Direct)*
+- [x] `TASK-6.4`: Implementar sección Sectores (`#sectores`) con 6 sectores industriales y compatibilidad `#experiencia`. *(Ruta: Direct)*
+- [x] `TASK-6.5`: Adaptar línea de Proceso a las 5 etapas B2B y sincronizar animaciones. *(Ruta: Direct)*
+- [x] `TASK-6.6`: Adaptar mosaico de Capacidades a las 5 capacidades técnicas y nota de imágenes de referencia. *(Ruta: Direct)*
+- [x] `TASK-6.7`: Implementar 7 preguntas frecuentes en acordeón accesible. *(Ruta: Direct)*
+- [x] `TASK-6.8`: Centralizar contacto en `src/config/contact.js` con selección de servicio, copia de guía con fallback y aviso de revisión. *(Ruta: Direct)*
+- [x] `TASK-6.9`: Implementar script pre-release `npm run check:release` y suite de tests `npm test`. *(Ruta: Direct)*
+- [x] `TASK-6.10`: Actualizar documentación (`content.md`, `arquitecture.md`, `agents.md`, `docs/ADAPTACION_B2B.md`). *(Ruta: Direct)*
+
 ---
 
 ## Progreso y Próximo Paso
-- **Estado actual:** Fases 1, 2, 3, 4 y 5 completadas al 100%. Checklist de entrega verificado.
-- **Ruta declarada:** Direct execution / Delegated worker.
-- **Nivel de riesgo:** Mínimo / Producción lista (bundle Vite compilado con éxito, cero horizontal overflow en 320px, contrastes WCAG AA verificados, fidelidad editorial estricta con content.md).
-- **Próximo paso:** Entrega final al usuario y revisión de handoff.
+- **Estado actual:** Fase 6 (Adaptación B2B) completada al 100%. 17 tests automatizados pasando (`npm test`), build de Vite limpio (`npm run build`), control pre-release configurado (`npm run check:release`).
+- **Ruta declarada:** Direct execution.
+- **Nivel de riesgo:** Mínimo / Listo para revisión (código modificado, sin git push ni merge, pendientes comerciales documentados).
+- **Próximo paso:** Entrega al usuario para revisión de la adaptación B2B.

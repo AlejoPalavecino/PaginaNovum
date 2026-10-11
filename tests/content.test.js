@@ -334,3 +334,17 @@ it('reveals a tall sector when less than fifteen percent can fit in the viewport
   run({ getElementById: () => ({ classList: { add(name) { classes.add(name); } } }) }, { matchMedia: () => ({ matches: false }) }, ShortViewportObserver);
   assert.ok(classes.has('is-revealed'));
 });
+
+it('bounds the mobile menu to the viewport and lets its content scroll without shrinking', () => {
+  const css = fs.readFileSync('src/styles/components/header.css', 'utf8');
+  const mobile = css.slice(css.indexOf('@media (max-width: 991px)'));
+  const nav = mobile.match(/\.site-nav\s*\{([^}]+)\}/)[1];
+  assert.ok(nav.includes('max-height: calc(100vh - 84px)'));
+  assert.ok(nav.includes('max-height: calc(100dvh - 84px)'));
+  assert.ok(nav.includes('overflow-y: auto'));
+  assert.ok(nav.includes('box-sizing: border-box'));
+  for (const selector of ['nav-list', 'nav-cta-wrapper']) {
+    const rule = mobile.match(new RegExp('\\.' + selector + '\\s*\\{([^}]+)\\}'))[1];
+    assert.ok(rule.includes('flex-shrink: 0'));
+  }
+});

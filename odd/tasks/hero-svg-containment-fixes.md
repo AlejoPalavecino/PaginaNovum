@@ -5,7 +5,7 @@ Correct all three confirmed defects: wide-desktop hero orange title overflowing 
 
 ## Tasks
 - [x] HS-01: Size hero typography from available safe copy width, keep the two intended desktop title lines and responsive mobile layout. Do not clip/hide overflowing text. Regression structural proof plus browser geometry at1920 and320/375/667/768/992/1280/1440/1544. Route delegated direct CSS/tests. Rollback hero containment CSS/tests only.
-- [ ] HS-02: Replace only wrench/flask SVG paths with clean continuous padded geometry inside24x24 including stroke. Preserve28pxsector icon size1.65stroke/orange wrappers. Add regressions and browser geometry/render inspection. Route delegated direct markup/tests. Rollback two paths/tests only.
+- [x] HS-02: Replace only wrench/flask SVG paths with clean continuous padded geometry inside24x24 including stroke. Preserve28pxsector icon size1.65stroke/orange wrappers. Add regressions and browser geometry/render inspection. Route delegated direct markup/tests. Rollback two paths/tests only.
 - [ ] HS-03: Independently verify checks and visual proof, create coherent work-unit commits, apply native slice assessment, republish same branch and verify publicHEAD/main unchanged.
 
 ## Verification and constraints
@@ -32,3 +32,12 @@ Meaningful deterministic structural RED beforefixGREEN, but no claim geometry fr
 ## HS-01 selective candidate proof
 - Isolated index-tree npm test 53/53, release check exit 0 and build passed: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-hero-containment-unit-build-b32a69ec-8f1f-49da-b4ed-4fb25e332670. Existing dependency junction reused without installation; staged/worktree diff-check passed.
 - Only hero CSS, typography regression and tracker staged. SVG work and unrelated dirty trackers/exports preserved; native review/publication parent-owned.
+
+## HS-02 independent proof and boundary
+- HS-01 commit 3793acfaff8e06dee2acbf64a8740ee03be629eb assessed by parent from 8772163: medium, 295 lines, under_budget, review_due false. No terminal review inferred.
+- Parent visual inspection found wrench/flask continuous and unclipped; padded control hull plus 0.825 stroke radius stays inside 24 units. getBBox unavailable and not claimed. HTML differs only in two path strings. Parent independent full checks 54/54/release/build/diff-check and content 33/33 spotcheck passed.
+- HS-02 commits only those two paths, their regression and tracker; publication remains pending parent.
+
+## HS-02 isolated candidate proof
+- Index-tree npm test 54/54, release check exit 0 and build passed: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-svg-unit-build-c6d89095-70a7-40fa-ab6f-2885fc32090d. Existing dependency junction reused without installation; staged/worktree diff-check passed.
+- Only two inline paths, their regression and tracker staged; unrelated trackers/exports preserved. Native assessment/publication remain parent-owned.

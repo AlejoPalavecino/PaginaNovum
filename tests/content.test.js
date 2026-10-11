@@ -370,3 +370,17 @@ it('sizes the desktop hero title from the safe copy container with a capped fall
   assert.ok(desktop.includes('font-size: min(10.3cqw, 4.375rem)'));
   assert.equal(desktop.includes('overflow: hidden'), false);
 });
+
+it('uses closed padded absolute outlines for the wrench and flask sector icons', () => {
+  const html = fs.readFileSync('index.html', 'utf8');
+  const icons = [...html.matchAll(/<svg class="sector-icon"[^>]*>([\s\S]*?)<\/svg>/g)];
+  for (const index of [1, 5]) {
+    const path = icons[index][1].match(/<path d="([^"]+)"/)[1];
+    assert.ok(path.endsWith('Z'));
+    assert.equal(/[a-z]/.test(path), false, 'Absolute paths avoid accidental relative coordinate accumulation');
+    assert.equal(/[Aa]/.test(path), false, 'Bezier control bounds avoid uncertain arc extrema');
+    const numbers = path.match(/-?\d+(?:\.\d+)?/g).map(Number);
+    assert.ok(numbers.every(number => number >= 1.5 && number <= 22), 'Control hull plus 0.825 stroke radius stays inside 24-unit viewBox');
+    assert.ok(icons[index][0].includes('stroke-width="1.65"'));
+  }
+});

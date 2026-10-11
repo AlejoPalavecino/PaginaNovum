@@ -82,6 +82,8 @@
 - **Título:** Empresas con desafíos técnicos reales.
 - **Descripción:** Fábricas, talleres y organizaciones donde una pieza, una adaptación o una mejora puede marcar la diferencia en la operación.
 
+- **Presentación:** Fotografía CNC monocromática en recorte diagonal y seis módulos chevrón con iconos lineales naranjas. En pantallas pequeñas los módulos se apilan sin carrusel.
+
 ### Selección de sectores objetivo:
 1. Industria manufacturera
 2. Talleres y mantenimiento

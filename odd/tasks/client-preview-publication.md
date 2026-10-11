@@ -71,3 +71,13 @@ Prepare the current feature branch for the owner's authorized client preview wit
 - Build command: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-hero-unit-build-ec08a9e9-2dce-4b2e-8be8-f4fb76663131. No hidden untracked assets copied; git archive materialized the index tree.
 - Shared content test newline normalization prevents mixed CRLF staged whitespace; later test behavior remains unstaged. Staged and working-tree git diff --check passed.
 - Native review and later commits remain pending parent; no remote operation.
+
+## Hero/navigation commit boundary
+- Commit: 0be888e6854d5a3d95bbd1e13a90f3695d441671; parent: 16a44e1844f964386c66b73339f3c334aea7e8f8. Conventional message: feat(hero): recreate industrial reference hero and navigation.
+- 10 paths, +644/-227 (871 authored lines), excluding the 246108-byte hero JPG. Oversized coherent boundary explicitly accepted by owner (exception-ok).
+- Only this first unit committed. Later sector/contact/footer/release changes remain in the live worktree and unstaged. This boundary record is unstaged for a later tracking commit, not a mutation to the committed candidate.
+- Parent native RDD assessment/review is next; no additional commit or remote operation performed.
+
+## Sector unit preparation
+- Hero/navigation boundary 0be888e6854d5a3d95bbd1e13a90f3695d441671 received native review approval with no findings and exact acknowledgement/burn, as reported by parent.
+- Sectors is the next exception-ok coherent unit; only sector HTML/editorial/tests/CSS/controller, main import/init and CNC asset staged. Contact/config/footer/workflow stay outside this commit.

@@ -794,110 +794,232 @@
     </section>
 
     <!-- 04 — Sectores (#sectores) con ancla auxiliar (#experiencia) -->
-    <section id="sectores" class="site-section section-sectors">
+    <section id="sectores" class="site-section section-sectors" aria-labelledby="sectors-heading">
       <!-- Auxiliary compatibility anchor for #experiencia without ID duplication -->
       <span id="experiencia" class="anchor-compat" aria-hidden="true"></span>
 
       <div class="container sectors-container">
-        <header class="sectors-header">
-          <p class="section-eyebrow">CON QUIÉNES BUSCAMOS TRABAJAR</p>
-          <h2 class="sectors-title">Empresas con desafíos técnicos reales<span class="text-orange">.</span></h2>
-          <p class="sectors-description">
-            Fábricas, talleres y organizaciones donde una pieza, una adaptación o una mejora puede marcar la diferencia en la operación.
-          </p>
+        <!-- Encabezado editorial industrial en dos columnas -->
+        <header class="sectors-header-layout">
+          <div class="sectors-header-content">
+            <div class="sectors-eyebrow-wrap">
+              <span class="sectors-eyebrow-dash" aria-hidden="true"></span>
+              <p class="section-eyebrow-text">CON QUIÉNES BUSCAMOS TRABAJAR</p>
+            </div>
+            <h2 id="sectors-heading" class="sectors-title">
+              Empresas con desafíos<br />técnicos <span class="sectors-title-ending">reales<span class="sectors-title-dot" aria-hidden="true">.</span></span>
+            </h2>
+            <p class="sectors-description">
+              Fábricas, talleres y organizaciones donde una pieza, una adaptación<br class="desc-break" />o una mejora puede marcar la diferencia en la operación.
+            </p>
+          </div>
+
+          <div class="sectors-header-visual" aria-hidden="true">
+            <div class="sectors-visual-stage">
+              <!-- Backdrop silhouette polygon -->
+              <div class="sectors-photo-backdrop"></div>
+
+              <!-- Diagonal CNC Photo -->
+              <div class="sectors-photo-crop">
+                <img
+                  src="./assets/images/seccion07/seccion07-foto-cnc-mecanizado.png"
+                  alt="Mecanizado CNC y fabricación técnica industrial"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  class="sectors-photo-img"
+                />
+              </div>
+
+              <!-- Orange Diagonal Accent Overlay -->
+              <svg class="sectors-photo-accent-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M 24,-2 L -1,102 L -18,102" fill="none" stroke="#FF6A00" stroke-width="1.8" vector-effect="non-scaling-stroke" />
+              </svg>
+            </div>
+
+            <div class="sectors-tech-meta">
+              <div class="tech-meta-tag">
+                <span>SOLUCIONES</span>
+                <span>TÉCNICAS</span>
+                <span>PARA LA INDUSTRIA</span>
+              </div>
+              <span class="tech-meta-dash" aria-hidden="true"></span>
+              <p class="tech-meta-desc">
+                Ideas, ingeniería y<br />fabricación para que<br />tu industria avance.
+              </p>
+              <div class="tech-meta-precision">
+                <svg class="tech-crosshair-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <line x1="10" y1="2" x2="10" y2="18"></line>
+                  <line x1="2" y1="10" x2="18" y2="10"></line>
+                </svg>
+                <div class="tech-precision-text">
+                  <span>PRECISIÓN</span>
+                  <span>CON PROPÓSITO</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </header>
 
-        <!-- 6 Target Sectors Grid -->
-        <div class="sectors-grid" role="list">
-          <div class="sector-card" role="listitem">
-            <div class="sector-icon-wrap" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 20h20"></path>
-                <path d="M6 20V8l6 4V4l6 4v12"></path>
-              </svg>
-            </div>
-            <div class="sector-content">
-              <span class="sector-tag">01 · MANUFACTURA</span>
-              <h3 class="sector-name">Industria manufacturera</h3>
-            </div>
+        <!-- Hilera horizontal de 6 módulos chevrón interconectados -->
+        <div class="sectors-track-container">
+          <!-- Lead-in technical horizontal marker with dot on the left -->
+          <div class="track-lead-in" aria-hidden="true">
+            <span class="lead-marker-dot"></span>
+            <span class="lead-marker-line"></span>
           </div>
 
-          <div class="sector-card" role="listitem">
-            <div class="sector-icon-wrap" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-              </svg>
-            </div>
-            <div class="sector-content">
-              <span class="sector-tag">02 · MANTENIMIENTO</span>
-              <h3 class="sector-name">Talleres y mantenimiento</h3>
-            </div>
+          <div class="sectors-modules-track" role="list">
+            <!-- 01 · Manufactura -->
+            <article class="sector-module sector-module-01" role="listitem" tabindex="0">
+              <svg class="sector-module-outline" viewBox="0 0 240 230" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M12 1H196Q203 1 207 7L237 108Q241 115 237 122L207 223Q203 229 196 229H29Q24 229 20 225L1 206V13Q1 1 12 1Z" vector-effect="non-scaling-stroke" /></svg>
+              <div class="sector-module-content">
+                <div class="sector-icon-wrap" aria-hidden="true">
+                  <svg class="sector-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21V9l7 4V8l7 4V3l4 3v15H3Zm0 0H1m22 0h-2"/></svg>
+                </div>
+                <div class="sector-module-meta">
+                  <div class="sector-module-header">
+                    <span class="sector-module-num">01 · MANUFACTURA</span>
+                    <svg class="sector-inline-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="14 6 20 12 14 18"></polyline>
+                    </svg>
+                  </div>
+                  <h3 class="sector-module-title">Industria manufacturera</h3>
+                </div>
+              </div>
+            </article>
+
+            <!-- 02 · Mantenimiento -->
+            <article class="sector-module sector-module-02" role="listitem" tabindex="0">
+              <svg class="sector-module-outline" viewBox="0 0 240 230" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M12 1H196Q203 1 207 7L237 108Q241 115 237 122L207 223Q203 229 196 229H29Q24 229 20 225L1 206V13Q1 1 12 1Z" vector-effect="non-scaling-stroke" /></svg>
+              <div class="sector-module-content">
+                <div class="sector-icon-wrap" aria-hidden="true">
+                  <svg class="sector-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m14 6-8 8a3 3 0 1 0 4 4l8-8a6 6 0 0 0 3-8l-4 4-3-3 4-4a6 6 0 0 0-8 3"/></svg>
+                </div>
+                <div class="sector-module-meta">
+                  <div class="sector-module-header">
+                    <span class="sector-module-num">02 · MANTENIMIENTO</span>
+                    <svg class="sector-inline-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="14 6 20 12 14 18"></polyline>
+                    </svg>
+                  </div>
+                  <h3 class="sector-module-title">Talleres y mantenimiento</h3>
+                </div>
+              </div>
+            </article>
+
+            <!-- 03 · Control & CAD -->
+            <article class="sector-module sector-module-03" role="listitem" tabindex="0">
+              <svg class="sector-module-outline" viewBox="0 0 240 230" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M12 1H196Q203 1 207 7L237 108Q241 115 237 122L207 223Q203 229 196 229H29Q24 229 20 225L1 206V13Q1 1 12 1Z" vector-effect="non-scaling-stroke" /></svg>
+              <div class="sector-module-content">
+                <div class="sector-icon-wrap" aria-hidden="true">
+                  <svg class="sector-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="m9 3 .6 2.2a7 7 0 0 1 4.8 0L15 3l3 1.7-1.2 2a7 7 0 0 1 2.4 4.1l2.3.2v3l-2.3.2a7 7 0 0 1-2.4 4.1l1.2 2L15 22l-.6-2.2a7 7 0 0 1-4.8 0L9 22l-3-1.7 1.2-2a7 7 0 0 1-2.4-4.1L2.5 14v-3l2.3-.2a7 7 0 0 1 2.4-4.1L6 4.7Z"/></svg>
+                </div>
+                <div class="sector-module-meta">
+                  <div class="sector-module-header">
+                    <span class="sector-module-num">03 · CONTROL &amp; CAD</span>
+                    <svg class="sector-inline-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="14 6 20 12 14 18"></polyline>
+                    </svg>
+                  </div>
+                  <h3 class="sector-module-title">Ingeniería y automatización</h3>
+                </div>
+              </div>
+            </article>
+
+            <!-- 04 · Equipamiento -->
+            <article class="sector-module sector-module-04" role="listitem" tabindex="0">
+              <svg class="sector-module-outline" viewBox="0 0 240 230" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M12 1H196Q203 1 207 7L237 108Q241 115 237 122L207 223Q203 229 196 229H29Q24 229 20 225L1 206V13Q1 1 12 1Z" vector-effect="non-scaling-stroke" /></svg>
+              <div class="sector-module-content">
+                <div class="sector-icon-wrap" aria-hidden="true">
+                  <svg class="sector-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M9 7v14m6-14v14"/></svg>
+                </div>
+                <div class="sector-module-meta">
+                  <div class="sector-module-header">
+                    <span class="sector-module-num">04 · EQUIPAMIENTO</span>
+                    <svg class="sector-inline-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="14 6 20 12 14 18"></polyline>
+                    </svg>
+                  </div>
+                  <h3 class="sector-module-title">Maquinaria y equipamiento</h3>
+                </div>
+              </div>
+            </article>
+
+            <!-- 05 · Agro & Packing -->
+            <article class="sector-module sector-module-05" role="listitem" tabindex="0">
+              <svg class="sector-module-outline" viewBox="0 0 240 230" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M12 1H196Q203 1 207 7L237 108Q241 115 237 122L207 223Q203 229 196 229H29Q24 229 20 225L1 206V13Q1 1 12 1Z" vector-effect="non-scaling-stroke" /></svg>
+              <div class="sector-module-content">
+                <div class="sector-icon-wrap" aria-hidden="true">
+                  <svg class="sector-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 17C1 8 11 9 20 3c4 11-2 19-11 16M3 22c1-7 7-10 12-12"/></svg>
+                </div>
+                <div class="sector-module-meta">
+                  <div class="sector-module-header">
+                    <span class="sector-module-num">05 · AGRO &amp; PACKING</span>
+                    <svg class="sector-inline-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="14 6 20 12 14 18"></polyline>
+                    </svg>
+                  </div>
+                  <h3 class="sector-module-title">Agroindustria</h3>
+                </div>
+              </div>
+            </article>
+
+            <!-- 06 · I+D & Control -->
+            <article class="sector-module sector-module-06" role="listitem" tabindex="0">
+              <svg class="sector-module-outline" viewBox="0 0 240 230" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M12 1H196Q203 1 207 7L237 108Q241 115 237 122L207 223Q203 229 196 229H29Q24 229 20 225L1 206V13Q1 1 12 1Z" vector-effect="non-scaling-stroke" /></svg>
+              <div class="sector-module-content">
+                <div class="sector-icon-wrap" aria-hidden="true">
+                  <svg class="sector-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3h6m-5 0v8a7 7 0 1 0 4 0V3M6 17h12"/></svg>
+                </div>
+                <div class="sector-module-meta">
+                  <div class="sector-module-header">
+                    <span class="sector-module-num">06 · I+D &amp; CONTROL</span>
+                  </div>
+                  <h3 class="sector-module-title">Laboratorios</h3>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <div class="sector-card" role="listitem">
-            <div class="sector-icon-wrap" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-              </svg>
-            </div>
-            <div class="sector-content">
-              <span class="sector-tag">03 · CONTROL & CAD</span>
-              <h3 class="sector-name">Ingeniería y automatización</h3>
-            </div>
+          <!-- Lead-out technical horizontal marker with dot on the right -->
+          <div class="track-lead-out" aria-hidden="true">
+            <span class="lead-marker-line"></span>
+            <span class="lead-marker-dot"></span>
           </div>
 
-          <div class="sector-card" role="listitem">
-            <div class="sector-icon-wrap" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              </svg>
+          <!-- Terminal Technical Marker on the far right -->
+          <div class="sectors-track-end" aria-hidden="true">
+            <div class="track-end-line"></div>
+            <div class="track-end-text">
+              <span>INDUSTRIA</span>
+              <span>QUE HACE</span>
+              <span>AVANZAR</span>
             </div>
-            <div class="sector-content">
-              <span class="sector-tag">04 · EQUIPAMIENTO</span>
-              <h3 class="sector-name">Maquinaria y equipamiento</h3>
-            </div>
-          </div>
-
-          <div class="sector-card" role="listitem">
-            <div class="sector-icon-wrap" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-              </svg>
-            </div>
-            <div class="sector-content">
-              <span class="sector-tag">05 · AGRO & PACKING</span>
-              <h3 class="sector-name">Agroindustria</h3>
-            </div>
-          </div>
-
-          <div class="sector-card" role="listitem">
-            <div class="sector-icon-wrap" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 2v7.31"></path>
-                <path d="M14 9.3V2"></path>
-                <path d="M8.5 2h7"></path>
-                <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
-                <path d="M5.52 16h12.96"></path>
-              </svg>
-            </div>
-            <div class="sector-content">
-              <span class="sector-tag">06 · I+D & CONTROL</span>
-              <h3 class="sector-name">Laboratorios</h3>
-            </div>
+            <div class="track-end-line"></div>
+            <div class="track-end-dash">-</div>
           </div>
         </div>
 
         <!-- Complementary Text & CTA -->
         <div class="sectors-footer-bar">
-          <p class="sectors-complementary-text">
-            Para dueños de PyMEs y responsables de planta, mantenimiento, producción, ingeniería y compras.
-          </p>
-          <a href="#contacto" class="btn btn-secondary sectors-cta" data-consulta="Consulta general">
+          <div class="sectors-target-audience">
+            <span class="sectors-audience-accent" aria-hidden="true">//</span>
+            <span class="sectors-audience-dash" aria-hidden="true"></span>
+            <p class="sectors-complementary-text">
+              Para dueños de PyMEs y responsables de planta, mantenimiento, producción, ingeniería y compras.
+            </p>
+          </div>
+          <div class="sectors-footer-divider" aria-hidden="true"></div>
+          <span class="sectors-cta-accent-dash" aria-hidden="true"></span>
+          <a href="#contacto" class="btn sectors-cta-btn" data-consulta="Consulta general">
             <span>Conversemos sobre tu empresa</span>
-            <span aria-hidden="true">&rarr;</span>
+            <span class="cta-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </div>

@@ -56,3 +56,7 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 ## Active reference hero asset
 - `assets/images/backgrounds/hero-taller-transformacion.jpg` is the full workshop transformation photograph used by the current hero, with live HTML callouts and actions.
 - Historical hero exports are not required by this composition and are not included in this work unit.
+
+## Sectores — assets activos
+- `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png`: fotografía CNC monocromática, recortada diagonalmente mediante CSS.
+- Los seis iconos lineales y los perímetros chevrón se dibujan con SVG nativos en index.html. No se requieren exportaciones raster de iconos ni de marcos.

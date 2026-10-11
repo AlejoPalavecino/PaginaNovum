@@ -19,6 +19,7 @@ import { initHeroParallax } from './scripts/heroAnimation.js';
 import { initProblemsDiagram } from './scripts/problemsDiagram.js';
 import { initProcessTimeline } from './scripts/processTimeline.js';
 import { initCapabilitiesSection } from './scripts/capabilitiesSection.js';
+import { initSectorsAnimation } from './scripts/sectorsAnimation.js';
 
 /**
  * Global Consultation State Management
@@ -422,4 +423,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initProblemsDiagram();
   initProcessTimeline();
   initCapabilitiesSection();
+  initSectorsAnimation();
 });

@@ -270,6 +270,15 @@
   .hero-benefits { gap: 1rem; }
 }
 
+/* The long orange line follows its safe copy column, not the full viewport. */
+@media (min-width: 992px) {
+  .hero-content { container-type: inline-size; }
+  .hero-title {
+    font-size: min(4.2vw, 4.25rem);
+    font-size: min(10.3cqw, 4.375rem);
+  }
+}
+
 /* Keep the whole photograph visible below the copy on narrow viewports. */
 @media (max-width: 991px) {
   #inicio.section-hero {

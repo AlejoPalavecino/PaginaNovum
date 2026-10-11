@@ -361,3 +361,12 @@ it('keeps associated contact labels visible persistently on narrow layouts', () 
   assert.ok(css.includes('min-height: 56px'));
   assert.ok(css.includes('font-size: 1rem'));
 });
+
+it('sizes the desktop hero title from the safe copy container with a capped fallback', () => {
+  const css = fs.readFileSync('src/styles/components/hero.css', 'utf8');
+  const desktop = css.match(/@media \(min-width: 992px\)\s*\{([\s\S]*?)\n\}/)[1];
+  assert.ok(desktop.includes('container-type: inline-size'));
+  assert.ok(desktop.includes('font-size: min(4.2vw, 4.25rem)'));
+  assert.ok(desktop.includes('font-size: min(10.3cqw, 4.375rem)'));
+  assert.equal(desktop.includes('overflow: hidden'), false);
+});

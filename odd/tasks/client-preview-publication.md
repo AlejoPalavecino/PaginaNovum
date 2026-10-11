@@ -110,3 +110,19 @@ Prepare the current feature branch for the owner's authorized client preview wit
 - Final isolated candidate npm test 46/46; release check exit 0; production build successful: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-release-final-unit-build-adc8a797-4c77-401d-a0d5-c31e3c693809. Mirror C:\Users\alejo\AppData\Local\Temp\novum-release-candidate-0e0fa64f-9218-4afc-a6ab-149635871c7c contains index-tree source plus exact staged final tests, with only existing node_modules junction reused.
 - All 35 HTML asset references exist in candidate; successful Vite build resolves CSS/runtime assets. Approved HTML/runtime/component styles equal live frontend bytes under Git line-ending normalization; release unit adds no frontend source changes.
 - Workflow/main triggers, dispatch, permission and environment policy preserved. Public URL remains unverified; no remote operation performed.
+
+## Release guardrails commit boundary
+- Commit 8772163aeadf4119980a4dbbab841a517df3e76b; parent e2dbb0633eea8bf0925692e349397ca7dd48fc27. Conventional message: ci(pages): validate client preview before deployment. Four paths, +135/-82 (217 authored lines).
+- All intended 24 paths verified in HEAD. Before this tracking append, no tracked differences remained; only excluded historical assets/tool metadata/dormant data stayed untracked. SHA tracking now remains unstaged.
+- Parent native review, authorized push/dispatch and published URL inspection remain pending. No public acceptance or deployment claim; no remote operation performed.
+
+## CPP-03 — Make the CI test command portable
+- [ ] Fix the test runner invocation without removing CI test/release gates or changing dependency/runtime versions.
+- Observed RED (parent-provided actual GitHub Actions log): Pages run 38169451126 failed its Test step on Node 20 with Could not find /home/runner/work/PaginaNovum/PaginaNovum/tests/**/*.test.js. The literal glob was not resolved by that runner; local Node v24.20.0 accepted it.
+- Use the three explicit existing test paths to avoid shell/glob-version dependence and accidental discovery of unrelated files. Route: delegated direct, bounded two-file operational fix; no new dependencies or lock metadata change.
+- New candidate only; prior four reviewed/acknowledged boundaries remain unchanged. Required proof: isolated 46 tests, release check, production build and diff-check. Actual Node 20 CI rerun remains parent-owned and pending.
+
+### CPP-03 isolated candidate proof
+- package.json changes only scripts.test to node --test tests/contact.test.js tests/content.test.js tests/contact-ui.test.js. All three existing test files are included, no broad discovery; dependencies/version/lockfile unchanged.
+- npm test 46/46, check:release exit 0 and isolated build successful: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-portable-tests-build-961fbda3-8cdf-4a1a-bfd2-92b295117d02. Candidate: C:\Users\alejo\AppData\Local\Temp\novum-portable-tests-candidate-5e48642d-3386-4bbf-9fb8-1f2d5040d8b2. No installation, network access or runtime version change.
+- Local Node v24.20.0 verification does not substitute for the pending Node 20 Actions rerun. CI gates remain intact; diff-check passed. Native review/push/deployment remain parent-owned.

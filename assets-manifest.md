@@ -33,10 +33,20 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 | `capability-materials.png` | materiales, objeto aislado | Bobinas y pellets de materiales para impresión 3D |
 | `capability-quality.png` | calidad, objeto aislado | Calibre digital midiendo una pieza impresa en 3D |
 
+## Hero — Tu problema, nuestra ingeniería
+| Archivo | Uso recomendado | Focal point / Tipo |
+|---|---|---|
+| `assets/images/backgrounds/hero-taller-transformacion.jpg` | Fondo principal hero (composición maestra 3D con banco, piezas, calibre y plano CAD) | derecha (78%) |
+| `assets/images/transparent/hero/hero/assets/01_fondo_taller_industrial.png` | Fondo taller sin piezas (variante limpia) | centro-abajo |
+| `assets/images/transparent/hero/hero/assets/02_pieza_danada.png` | Objeto transparente pieza dañada / problema | centro |
+| `assets/images/transparent/hero/hero/assets/03_pieza_solucion.png` | Objeto transparente pieza mecanizada / solución técnica | centro |
+| `assets/images/transparent/hero/hero/assets/04_overlay_cad.png` | Capa wireframe / plano CAD superpuesto a la solución | centro |
+| `assets/images/transparent/hero/hero/assets/05_flecha_transformacion.png` | Referencia flecha de transformación naranja | centro |
+
 ## Con fondo — secciones fotográficas
 | Archivo | Uso recomendado | Focal point |
 |---|---|---|
-| `hero-workshop-cad-transition.png` | Hero desktop principal | derecha |
+| `hero-workshop-cad-transition.png` | Hero desktop secundario / archivo histórico | derecha |
 | `cad-studio.png` | card/feature Diseño CAD | centro-derecha |
 | `fdm-production.png` | card/feature Impresión 3D FDM | centro-derecha |
 | `precision-printing.png` | card/feature Alta precisión | centro |
@@ -44,6 +54,18 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 | `quality-control.png` | card/feature Control dimensional | centro-derecha |
 | `cta-workshop-dark.png` | fondo CTA final | derecha; izquierda libre para copy |
 | `small-series-production.png` | apoyo Pequeñas series / sección de producción | centro |
+
+## Sección 07 — Con quiénes buscamos trabajar
+| Archivo | Uso recomendado | Tipo |
+|---|---|---|
+| `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png` | Fotografía industrial recortada diagonalmente con clip-path | Fotografía industrial |
+| `assets/images/seccion07/seccion07-marco-diagonal-naranja.png` | Marco/acento diagonal naranja | Decoración gráfica |
+| `assets/images/seccion07/seccion07-icono-industria-manufacturera.png` | Icono sector 01 Manufactura | Icono vectorial |
+| `assets/images/seccion07/seccion07-icono-talleres-mantenimiento.png` | Icono sector 02 Mantenimiento | Icono vectorial |
+| `assets/images/seccion07/seccion07-icono-ingenieria-automatizacion.png` | Icono sector 03 Control & CAD | Icono vectorial |
+| `assets/images/seccion07/seccion07-icono-maquinaria-equipamiento.png` | Icono sector 04 Equipamiento | Icono vectorial |
+| `assets/images/seccion07/seccion07-icono-agroindustria.png` | Icono sector 05 Agro & Packing | Icono vectorial |
+| `assets/images/seccion07/seccion07-icono-laboratorios.png` | Icono sector 06 I+D & Control | Icono vectorial |
 
 ## Reglas
 - No recortar objetos transparentes tan cerca que se pierda su silueta.
@@ -53,15 +75,18 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 - Añadir overlay oscuro solo cuando haga falta para contraste de texto.
 - Evitar insertar texto dentro de las imágenes.
 
-## Active reference hero asset
-- `assets/images/backgrounds/hero-taller-transformacion.jpg` is the full workshop transformation photograph used by the current hero, with live HTML callouts and actions.
-- Historical hero exports are not required by this composition and are not included in this work unit.
-
-## Sectores — assets activos
-- `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png`: fotografía CNC monocromática, recortada diagonalmente mediante CSS.
-- Los seis iconos lineales y los perímetros chevrón se dibujan con SVG nativos en index.html. No se requieren exportaciones raster de iconos ni de marcos.
-
 ## Contacto — reutilización de assets aprobados
 - Fondo de taller: `assets/images/transparent/hero/hero/assets/01_fondo_taller_industrial.png` (1672 × 941), sin texto ni interfaz incrustada.
 - Pieza y CAD: `assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_industrial_principal.png` y `seccion05-pieza_wireframe_cad.png` (1448 × 1086), decorativos debajo del contexto editorial.
 - La captura de referencia no se utiliza como imagen de producción. Los archivos fuente existentes se conservan sin modificaciones.
+
+## Sectores — referencia industrial
+- Se reutiliza la fotografía CNC aprobada con filtro monocromático y recorte diagonal en CSS.
+- Los seis iconos de sector se representan como SVG lineales nativos en index.html; las imágenes históricas del catálogo se conservan sin modificación.
+- La captura de referencia no se utiliza como imagen de producción.
+
+## Estado de entrega — activos frente a exportaciones históricas
+- **Assets activos en esta entrega:** `assets/images/backgrounds/hero-taller-transformacion.jpg`, `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png` y `assets/images/transparent/hero/hero/assets/01_fondo_taller_industrial.png`, junto con las imágenes ya utilizadas por el resto de la página.
+- **Exportaciones históricas no utilizadas ni incluidas en esta entrega:** marco diagonal e iconos PNG de `assets/images/seccion07/`, exportaciones de `assets/images/transparent/seccion07-sectores-industriales/` y demás archivos del paquete `assets/images/transparent/hero/` salvo el fondo activo indicado. El catálogo no implica uso ni publicación de estos archivos.
+- Los contornos e iconos de Sectores son SVG nativos; no necesitan las exportaciones PNG históricas. Los archivos locales históricos se conservan sin borrar, pero quedan fuera del inventario de publicación.
+- `.atl/` y `.codegraph/` son metadatos locales de herramientas, no assets del cliente.

@@ -91,3 +91,22 @@ Prepare the current feature branch for the owner's authorized client preview wit
 - Parent reported sector boundary 2e5404980556c4f6c52d5e8a3638fae2fe08b60c native approval and exact acknowledgement/burn. Hero was already approved without findings.
 - Sector review advisory (nonblocking): whole-section observer threshold 0.15 may be unreachable at small viewport height/high zoom. Record as follow-up; do not reopen or mutate approved sector bytes in this unit.
 - Next exception-ok unit is contact/footer: compact fields, confirmed email, current-field copy, failure-only selectable recovery and integrated footer. Workflow/release catalog remains excluded.
+
+## Contact/footer commit boundary
+- Commit e2dbb0633eea8bf0925692e349397ca7dd48fc27; parent 2e5404980556c4f6c52d5e8a3638fae2fe08b60c. Message: feat(contact): streamline consultation and integrate footer.
+- Fourteen paths, +1019/-705 (1724 authored lines), workshop PNG excluded. Owner exception-ok applies; native review pending parent before release unit.
+- Candidate npm test 46/46, release check exit 0, isolated build successful; staged/worktree diff-check passed. No native email launch or remote access.
+- Remaining workflow/catalog/formatting deltas and excluded metadata/historical exports stay unstaged. This SHA record is unstaged for next tracking unit.
+
+## Release guardrails preparation
+- Parent reported contact/footer boundary e2dbb0633eea8bf0925692e349397ca7dd48fc27 native approval and exact acknowledgement/burn; hero and sectors were already approved.
+- Nonblocking contact advisory R3-001: delayed clipboard rejection can reveal captured older text and focus recovery after a field/service edit. Separate follow-up, not a reopening or correction of approved bytes. Sector small-height/high-zoom observation advisory also remains follow-up.
+- Final unit stages only workflow checks, asset catalog reconciliation and publication progress. content.md already equals committed contact/editorial contract. Remaining content-test delta is suite ordering and H1 assertion formatting/message from selective staging, not omitted functionality; excluded from this unit.
+- Public URL and deployment verification remain pending; no publication inferred from local tests.
+
+- Parent authorized the remaining content-test cosmetic normalization in this release unit. Sorted nonblank lines match the previous candidate after normalizing only the H1 assertion message/formatting, proving all functional assertions unchanged; suites retain 46 passing tests.
+
+## Release unit candidate proof
+- Final isolated candidate npm test 46/46; release check exit 0; production build successful: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-release-final-unit-build-adc8a797-4c77-401d-a0d5-c31e3c693809. Mirror C:\Users\alejo\AppData\Local\Temp\novum-release-candidate-0e0fa64f-9218-4afc-a6ab-149635871c7c contains index-tree source plus exact staged final tests, with only existing node_modules junction reused.
+- All 35 HTML asset references exist in candidate; successful Vite build resolves CSS/runtime assets. Approved HTML/runtime/component styles equal live frontend bytes under Git line-ending normalization; release unit adds no frontend source changes.
+- Workflow/main triggers, dispatch, permission and environment policy preserved. Public URL remains unverified; no remote operation performed.

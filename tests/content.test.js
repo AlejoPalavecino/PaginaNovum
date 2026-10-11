@@ -13,7 +13,10 @@ describe('HTML Structure & B2B Editorial Integrity', () => {
   });
 
   it('contains the single authorized H1 title text', () => {
-    assert.ok(html.includes('Tu problema') && html.includes('nuestra ingeniería'));
+    assert.ok(
+      html.includes('Tu problema') && html.includes('nuestra ingeniería'),
+      'H1 does not contain authorized title'
+    );
   });
 
   it('contains the required page title and meta description', () => {
@@ -166,78 +169,6 @@ describe('Hero benefit icon consistency', () => {
   });
 });
 
-describe('Sectors reference presentation', () => {
-  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
-  const sectors = html.match(/<section id="sectores"[\s\S]*?<\/section>/)[0];
-  const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
-  it('pairs six decorative native outlined icons with unchanged sector labels', () => {
-    const icons = [...sectors.matchAll(/<svg class="sector-icon"[^>]*>/g)];
-    assert.equal(icons.length, 6);
-    for (const [icon] of icons) {
-      assert.ok(icon.includes('viewBox="0 0 24 24"'));
-      assert.ok(icon.includes('stroke="currentColor"'));
-      assert.ok(icon.includes('aria-hidden="true"'));
-      assert.ok(icon.includes('focusable="false"'));
-    }
-    assert.equal(sectors.includes('seccion07-icono-'), false);
-    assert.ok(sectors.includes('seccion07-foto-cnc-mecanizado.png'));
-    assert.ok(sectors.includes('data-consulta="Consulta general"'));
-  });
-  it('keeps a monochrome photograph and a six-column ribbon with deliberate smaller grids', () => {
-    assert.ok(css.includes('grayscale(1)'));
-    assert.ok(css.includes('repeat(6, minmax(0, 1fr))'));
-    assert.ok(css.includes('repeat(3, minmax(0, 1fr))'));
-    assert.ok(css.includes('grid-template-columns: minmax(0, 1fr)'));
-    assert.ok(css.includes('.sector-icon {'));
-  });
-  it('only conceals entrance animation content after progressive enhancement', () => {
-    assert.ok(css.includes('.section-sectors.sectors-motion-ready:not(.is-revealed)'));
-    assert.ok(css.includes('@media (prefers-reduced-motion: reduce)'));
-    const script = fs.readFileSync(path.resolve('src/scripts/sectorsAnimation.js'), 'utf8');
-    assert.ok(script.includes("typeof IntersectionObserver !== 'function'"));
-    assert.ok(script.includes("section.classList.add('sectors-motion-ready')"));
-  });
-  it('reveals immediately without observation support or with reduced motion', () => {
-    const source = fs.readFileSync(path.resolve('src/scripts/sectorsAnimation.js'), 'utf8').replace('export function', 'function');
-    const run = new Function('document', 'window', 'IntersectionObserver', source + '; initSectorsAnimation();');
-    for (const reduced of [false, true]) {
-      const classes = new Set();
-      run({ getElementById: () => ({ classList: { add(name) { classes.add(name); } } }) }, { matchMedia: () => ({ matches: reduced }) }, undefined);
-      assert.ok(classes.has('is-revealed'));
-      assert.equal(classes.has('sectors-motion-ready'), false);
-    }
-    const classes = new Set();
-    let disconnected = false;
-    class Observer {
-      constructor(callback) { this.callback = callback; }
-      observe() { this.callback([{ isIntersecting: true }]); }
-      disconnect() { disconnected = true; }
-    }
-    run({ getElementById: () => ({ classList: { add(name) { classes.add(name); } } }) }, { matchMedia: () => ({ matches: false }) }, Observer);
-    assert.ok(classes.has('sectors-motion-ready'));
-    assert.ok(classes.has('is-revealed'));
-    assert.equal(disconnected, true);
-  });
-
-});
-
-it('draws six distinct interlocking sector perimeters rather than a shared rounded strip', () => {
-  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
-  const sector = html.match(/<section id="sectores"[\s\S]*?<\/section>/)[0];
-  assert.equal([...sector.matchAll(/class="sector-module-outline"/g)].length, 6);
-  const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
-  assert.ok(css.includes('width: calc(100% + 32px)'));
-  assert.ok(css.includes('.sector-module-outline {'));
-  assert.equal(sector.includes('class="sector-chevron-divider"'), false);
-});
-
-it('keeps the sector final word and decorative dot together on narrow screens', () => {
-  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
-  assert.ok(html.includes('<span class="sectors-title-ending">reales<span class="sectors-title-dot"'));
-  const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
-  assert.ok(css.match(/\.sectors-title-ending\s*\{[^}]*white-space: nowrap/));
-});
-
 describe('Express contact structure', () => {
   const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
   const contact = html.match(/<section id="contacto"[\s\S]*?<\/section>/)[0];
@@ -315,4 +246,76 @@ describe('Contact hierarchy and integrated footer', () => {
     assert.equal(/linkedin|instagram|whatsapp/i.test(footer), false);
     assert.ok(footer.includes('Una solución a medida.'));
   });
+});
+
+describe('Sectors reference presentation', () => {
+  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
+  const sectors = html.match(/<section id="sectores"[\s\S]*?<\/section>/)[0];
+  const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
+  it('pairs six decorative native outlined icons with unchanged sector labels', () => {
+    const icons = [...sectors.matchAll(/<svg class="sector-icon"[^>]*>/g)];
+    assert.equal(icons.length, 6);
+    for (const [icon] of icons) {
+      assert.ok(icon.includes('viewBox="0 0 24 24"'));
+      assert.ok(icon.includes('stroke="currentColor"'));
+      assert.ok(icon.includes('aria-hidden="true"'));
+      assert.ok(icon.includes('focusable="false"'));
+    }
+    assert.equal(sectors.includes('seccion07-icono-'), false);
+    assert.ok(sectors.includes('seccion07-foto-cnc-mecanizado.png'));
+    assert.ok(sectors.includes('data-consulta="Consulta general"'));
+  });
+  it('keeps a monochrome photograph and a six-column ribbon with deliberate smaller grids', () => {
+    assert.ok(css.includes('grayscale(1)'));
+    assert.ok(css.includes('repeat(6, minmax(0, 1fr))'));
+    assert.ok(css.includes('repeat(3, minmax(0, 1fr))'));
+    assert.ok(css.includes('grid-template-columns: minmax(0, 1fr)'));
+    assert.ok(css.includes('.sector-icon {'));
+  });
+  it('only conceals entrance animation content after progressive enhancement', () => {
+    assert.ok(css.includes('.section-sectors.sectors-motion-ready:not(.is-revealed)'));
+    assert.ok(css.includes('@media (prefers-reduced-motion: reduce)'));
+    const script = fs.readFileSync(path.resolve('src/scripts/sectorsAnimation.js'), 'utf8');
+    assert.ok(script.includes("typeof IntersectionObserver !== 'function'"));
+    assert.ok(script.includes("section.classList.add('sectors-motion-ready')"));
+  });
+  it('reveals immediately without observation support or with reduced motion', () => {
+    const source = fs.readFileSync(path.resolve('src/scripts/sectorsAnimation.js'), 'utf8').replace('export function', 'function');
+    const run = new Function('document', 'window', 'IntersectionObserver', source + '; initSectorsAnimation();');
+    for (const reduced of [false, true]) {
+      const classes = new Set();
+      run({ getElementById: () => ({ classList: { add(name) { classes.add(name); } } }) }, { matchMedia: () => ({ matches: reduced }) }, undefined);
+      assert.ok(classes.has('is-revealed'));
+      assert.equal(classes.has('sectors-motion-ready'), false);
+    }
+    const classes = new Set();
+    let disconnected = false;
+    class Observer {
+      constructor(callback) { this.callback = callback; }
+      observe() { this.callback([{ isIntersecting: true }]); }
+      disconnect() { disconnected = true; }
+    }
+    run({ getElementById: () => ({ classList: { add(name) { classes.add(name); } } }) }, { matchMedia: () => ({ matches: false }) }, Observer);
+    assert.ok(classes.has('sectors-motion-ready'));
+    assert.ok(classes.has('is-revealed'));
+    assert.equal(disconnected, true);
+  });
+
+});
+
+it('draws six distinct interlocking sector perimeters rather than a shared rounded strip', () => {
+  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
+  const sector = html.match(/<section id="sectores"[\s\S]*?<\/section>/)[0];
+  assert.equal([...sector.matchAll(/class="sector-module-outline"/g)].length, 6);
+  const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
+  assert.ok(css.includes('width: calc(100% + 32px)'));
+  assert.ok(css.includes('.sector-module-outline {'));
+  assert.equal(sector.includes('class="sector-chevron-divider"'), false);
+});
+
+it('keeps the sector final word and decorative dot together on narrow screens', () => {
+  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
+  assert.ok(html.includes('<span class="sectors-title-ending">reales<span class="sectors-title-dot"'));
+  const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
+  assert.ok(css.match(/\.sectors-title-ending\s*\{[^}]*white-space: nowrap/));
 });

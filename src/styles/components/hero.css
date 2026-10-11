@@ -1,234 +1,328 @@
 /* ==========================================================================
-   Nóvum Industrial — Hero Component Styles (#inicio)
-   Split desktop layout, responsive picture fallback, technical visual frame.
+   Nóvum Industrial — Reference Hero (#inicio)
+   Live copy and technical annotations over the clean workshop photograph.
+   Navbar styles and behavior are intentionally outside this component.
    ========================================================================== */
 
-.section-hero {
+#inicio.section-hero {
   position: relative;
-  padding-top: clamp(6.5rem, 5rem + 3vw, 8.5rem);
-  padding-bottom: clamp(3.5rem, 2rem + 4vw, 6.5rem);
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--border-light);
-  overflow: hidden;
-  min-height: clamp(560px, 45vw + 160px, 740px);
+  min-height: max(650px, 56.25vw);
   display: flex;
   align-items: center;
+  overflow: hidden;
+  background: #0c0d10;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  border-bottom: 1px solid var(--border-dark);
 }
 
-.hero-layout {
-  position: relative;
-  z-index: 3;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-  align-items: center;
+.hero-bg-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-bg-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.48) 42%, transparent 67%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 65%, rgba(0, 0, 0, 0.15));
+}
+
+.hero-container {
+  position: static;
   width: 100%;
 }
 
-@media (min-width: 992px) {
-  .hero-layout {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: clamp(2.5rem, 1.5rem + 2.5vw, 4.5rem);
-  }
-}
-
-/* Hero Text Content Hierarchy */
 .hero-content {
+  position: relative;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.25rem;
+  width: 54%;
+  max-width: 730px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.hero-eyebrow-dash {
+  width: 24px;
+  height: 2px;
+  background: var(--color-orange);
+  flex-shrink: 0;
+}
+
+.hero-eyebrow-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 0.9vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.065em;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 1.7rem + 2.8vw, 4.25rem);
-  line-height: 0.96;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.75rem, 4.35vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
   font-weight: 800;
-  color: var(--color-black);
+  color: #fff;
   margin: 0;
-  text-transform: uppercase;
-  text-wrap: balance;
+  text-transform: none;
+}
+
+.hero-title .text-orange {
+  white-space: nowrap;
 }
 
 .hero-description {
-  font-size: var(--text-body-lg);
-  line-height: var(--leading-body);
-  color: var(--text-muted);
-  max-width: 54ch;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  line-height: 1.35;
+  color: #f3f3f3;
+  max-width: 48ch;
   margin: 0;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.btn-hero-primary {
+  background: var(--color-orange);
+  color: var(--color-white);
+  border: 1px solid var(--color-orange);
+  border-radius: 8px;
+  padding: 0.9rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-hero-primary:hover,
+.btn-hero-primary:focus-visible {
+  background: var(--color-orange-hover);
+  border-color: var(--color-orange-hover);
+  color: #fff;
+}
+
+.btn-hero-secondary {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 0.9rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-hero-secondary:hover,
+.btn-hero-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+.hero-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-benefit-icon {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.hero-benefit-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+}
+
+.hero-benefit-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.85vw, 0.9375rem);
+  color: #fff;
+}
+
+/* Coordinates track the two parts in the 16:9 photograph, not a copy column. */
+.hero-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-stage-item {
+  position: absolute;
+  top: 30%;
+}
+
+.hero-stage-problem {
+  left: 54.5%;
+}
+
+.hero-stage-solution {
+  left: 79%;
+}
+
+.hero-callout-card {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.hero-callout-accent {
+  width: 1px;
+  background: var(--color-orange);
+  flex-shrink: 0;
+}
+
+.hero-callout-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hero-callout-title {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.2vw, 1.25rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero-callout-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.12vw, 1.1875rem);
+  line-height: 1.25;
+  color: #f3f3f3;
+}
+
+.hero-callout-pin {
+  width: 44px;
+  height: 44px;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.hero-pin-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.hero-stage-divider {
+  position: absolute;
+  top: 57%;
+  left: 69%;
+}
+
+.hero-arrow-svg {
+  display: block;
+  width: clamp(38px, 4.5vw, 76px);
+  height: auto;
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .hero-content { width: 52%; }
+  .hero-title { font-size: 4.2vw; }
+  .hero-actions { gap: 0.75rem; }
+  .btn-hero-primary,
+  .btn-hero-secondary { padding-inline: 1rem; font-size: 0.875rem; }
+  .hero-benefits { gap: 1rem; }
+}
+
+/* Keep the whole photograph visible below the copy on narrow viewports. */
+@media (max-width: 991px) {
+  #inicio.section-hero {
+    min-height: auto;
+    padding-top: 7.5rem;
+    padding-bottom: calc(56.25vw + 2rem);
+  }
+
+  .hero-content { width: 100%; max-width: 730px; }
+  .hero-title { font-size: clamp(2.1rem, 5.25vw, 4.25rem); }
+  .hero-description { font-size: clamp(1rem, 2.5vw, 1.25rem); }
+  .hero-eyebrow-text { font-size: clamp(0.625rem, 1.55vw, 0.875rem); }
+
+  .hero-bg-backdrop,
+  .hero-stage {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-bg-img { object-fit: contain; }
+  .hero-bg-vignette {
+    background: linear-gradient(180deg, #0c0d10, transparent 27%);
+  }
+
+  .hero-stage-item { top: 6%; max-width: 26%; }
+  .hero-stage-problem { left: 38%; max-width: 36%; }
+  .hero-stage-solution { left: 75%; max-width: 24%; }
+  .hero-callout-card { gap: 0.4rem; }
+  .hero-callout-title { font-size: clamp(0.75rem, 1.4vw, 0.9375rem); }
+  .hero-callout-desc { font-size: clamp(0.75rem, 1.3vw, 0.875rem); overflow-wrap: anywhere; }
+  .hero-callout-pin { width: 7vw; height: 7vw; }
+  .hero-stage-problem .hero-callout-pin { margin-left: 14vw; }
+  .hero-stage-solution .hero-callout-pin { margin-left: 3vw; }
+  .hero-stage-divider { top: 57%; left: 69%; }
+  .hero-arrow-svg { width: clamp(22px, 4.5vw, 45px); }
 }
 
 @media (max-width: 480px) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-  }
+  .hero-content { gap: 1rem; }
+  .hero-title { font-size: clamp(1.75rem, 7.5vw, 2.25rem); letter-spacing: -0.04em; }
+  .hero-title .text-orange { white-space: normal; }
+  .hero-actions { flex-direction: column; align-items: stretch; width: 100%; gap: 0.75rem; }
+  .btn-hero-primary,
+  .btn-hero-secondary { width: 100%; justify-content: center; padding-inline: 1rem; }
+  .hero-benefits { flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+  .hero-benefit-text { font-size: 0.8125rem; }
+  .hero-benefit-icon svg { width: 24px; height: 24px; }
 }
 
-/* 3 Key Benefits / Metric Row Below Buttons */
-.hero-metrics {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin-top: 1.25rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-light);
-  width: 100%;
-}
-
-@media (min-width: 600px) {
-  .hero-metrics {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-.hero-metric-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.hero-metric-icon {
-  color: var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-}
-
-.hero-metric-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: var(--color-black);
-}
-
-.hero-metric-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-  line-height: 1.2;
-}
-
-.hero-metric-text strong {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-black);
-}
-
-.hero-metric-text span {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   Hero Background Backdrop: Right Image with Smooth Gradient Transition
-   ========================================================================== */
-
-.hero-bg-backdrop {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 72%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 85% center;
-  display: block;
-  transform: none;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.12) 10%,
-    rgba(0, 0, 0, 0.65) 22%,
-    black 36%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.12) 10%,
-    rgba(0, 0, 0, 0.65) 22%,
-    black 36%
-  );
-}
-
-.hero-bg-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to right,
-    #FFFFFF 0%,
-    rgba(255, 255, 255, 0.96) 8%,
-    rgba(255, 255, 255, 0.45) 18%,
-    rgba(255, 255, 255, 0) 34%
-  );
-  pointer-events: none;
-  z-index: 2;
-}
-
-@media (max-width: 991px) {
-  .hero-bg-backdrop {
-    width: 100%;
-    opacity: 0.18;
-  }
-
-  .hero-bg-img {
-    -webkit-mask-image: none;
-    mask-image: none;
-    object-position: center center;
-  }
-
-  .hero-bg-gradient {
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.85) 0%,
-      rgba(255, 255, 255, 0.98) 100%
-    );
-  }
-}
-
-/* ==========================================================================
-   Hero Visual Column (Clean View of Background 3D Printer & CAD Transition)
-   ========================================================================== */
-
-.hero-visual {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 480px;
-}
-
-@media (max-width: 991px) {
-  .hero-visual {
-    display: none;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .btn-hero-primary,
+  .btn-hero-secondary { transition: none; }
 }

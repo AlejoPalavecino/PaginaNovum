@@ -17,11 +17,15 @@
 ---
 
 ## 01 — Inicio / Hero (`#inicio`)
-- **Texto superior:** INGENIERÍA, DISEÑO Y FABRICACIÓN · B2B
-- **H1 único:** SOLUCIONES INDUSTRIALES A MEDIDA.
-- **Descripción:** ¿Un repuesto que no conseguís? ¿Una máquina que necesita una adaptación? Analizamos el problema, diseñamos la solución y la fabricamos para tu empresa.
-- **CTA principal:** Contanos qué necesitás resolver (`#contacto`, consulta general)
-- **CTA secundario:** Conocé nuestras soluciones (`#soluciones`)
+- **Texto superior:** DE UN DESAFÍO REAL A UNA SOLUCIÓN FUNCIONAL
+- **H1 único:** Tu problema nuestra ingeniería.
+- **Descripción:** Analizamos, diseñamos y fabricamos soluciones industriales a medida para que tu operación no se detenga.
+- **CTA principal:** Contanos tu desafío (`#contacto`, consulta general)
+- **CTA secundario:** Conocé cómo trabajamos (`#proceso`)
+- **Beneficios clave:**
+  - Soluciones a medida
+  - Menos tiempos de espera
+  - Acompañamiento técnico
 
 ---
 

@@ -1,0 +1,73 @@
+# Client preview publication
+Prepare the current feature branch for the owner's authorized client preview without changing main.
+
+## Authorization and boundaries
+- Repository: https://github.com/AlejoPalavecino/PaginaNovum.git.
+- Authorized branch: codex/hero-supplied-background only; no main merge or main changes.
+- This worker performs local release preparation only. Parent owns credential/session authorization, native consent/review, coherent commits, push and Pages dispatch/environment policy.
+- Intended delivery inventory: 22 parent-audited feature paths plus this task and deployment workflow (24 total). Parent owns staging; no blanket staging.
+- Excluded: .atl/, .codegraph/, dormant src/data/sectorsData.js and all 31 remaining untracked asset exports, including the six unused sector PNG icons.
+
+### Exact publication inventory
+1. arquitecture.md
+2. assets-manifest.md
+3. content.md
+4. index.html
+5. src/config/contact.js
+6. src/main.js
+7. src/styles/components/cta.css
+8. src/styles/components/footer.css
+9. src/styles/components/header.css
+10. src/styles/components/hero.css
+11. src/styles/components/sectors.css
+12. tests/contact.test.js
+13. tests/content.test.js
+14. assets/images/backgrounds/hero-taller-transformacion.jpg
+15. assets/images/seccion07/seccion07-foto-cnc-mecanizado.png
+16. assets/images/transparent/hero/hero/assets/01_fondo_taller_industrial.png
+17. src/scripts/sectorsAnimation.js
+18. tests/contact-ui.test.js
+19. odd/tasks/contact-express.md
+20. odd/tasks/hero-reference-layout.md
+21. odd/tasks/hero-supplied-background.md
+22. odd/tasks/sectors-reference-layout.md
+23. .github/workflows/deploy.yml
+24. odd/tasks/client-preview-publication.md
+
+### Prior evidence
+- Prior evidence: final 46 tests passing, isolated build and release check exit 0; mounted visual evidence remains in contact/sectors task documents.
+- Cumulative prior change forecast approximately 3,619 authored lines requires deliberate coherent commit boundaries and native candidate consent. No commits yet; review completion is not inferred from tests.
+
+## CPP-01 — Align release contracts and pre-build gates
+- [ ] Remove the reported sector CSS trailing whitespace, align editorial generated consultation example, distinguish active versus unshipped historical assets, and add tests/release check before workflow build.
+- Route: delegated direct; preparation plus multi-file operational/editorial correction. Forecast approximately 120 authored lines, advisory only.
+- Preserve workflow main push trigger, manual dispatch, permissions, environment, deployment actions and concurrency.
+- Test-first exception: YAML/docs/whitespace changes have no meaningful executable RED runner within these allowed surfaces; use structural workflow readback and existing functional suite instead. No new testing dependencies.
+- Checks: npm test, npm run check:release, unique external build, git diff --check, exact workflow preservation comparison.
+- Scope: .github/workflows/deploy.yml, sectors CSS whitespace only, contact template in content.md, asset status notes in assets-manifest.md and this document.
+- No source behavior changes, asset deletion, dependencies, remote access, staging, commit or native lifecycle action.
+- Full Engram mirror pending parent: registered runtime session identity unavailable.
+
+## CPP-02 — Parent delivery
+- [ ] Reconcile exact publication paths and coherent commit boundaries; obtain native review consent/outcome as applicable.
+- [ ] Commit/push only the authorized branch and deploy the selected branch through authorized credentials and environment policy.
+- [ ] Verify the published URL before sharing it as client-ready; report any environment or release blocker.
+
+## CPP-01 ordinary proof
+- CSS change removes only the reported whitespace-only line; no functional CSS change. Editorial example now matches buildConsultationBody service/five-field data, optional-line omission and failure-only selectable recovery. Manifest explicitly separates three newly active assets from 31 unshipped historical exports/tool metadata.
+- Workflow adds npm test then npm run check:release before build. Exact removal of the two added steps reproduces baseline bytes, proving main push/manual dispatch, permissions, environment, concurrency and deployment actions unchanged. No workflow run was dispatched.
+- npm test: 46/46 passed; npm run check:release: exit 0; git diff --check: exit 0 (line-ending advisory warnings only).
+- Build passed: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-release-prep-build-1e5cbe6c-6354-4e80-904c-255ca3bc9e2f. Unique outside-root output warning only.
+- Baseline snapshot: C:\Users\alejo\AppData\Local\Temp\novum-release-prep-baseline-5ae42ddb-f277-4d97-8636-0f9f76b78492. No markup, runtime/configuration, assets or dependencies edited. No fresh browser proof claimed.
+- CPP-01 ordinary checks complete; checklist remains pending parent acceptance/native handling. CPP-02 publication entirely pending; no remote probe/authentication, staging, commit, push or native review action. Engram mirror pending.
+
+## Coherent section delivery strategy
+- User confirmed exception-ok: oversized coherent section commits, no PRs and no main changes. Initial branch boundary: 16a44e1844f964386c66b73339f3c334aea7e8f8.
+- Ordered boundaries: hero/navigation first; then sectors; contact/footer; release preparation, each only after parent native review handling.
+- First unit uses selectively constructed index blobs for shared HTML/editorial/tests. Live uncommitted later-unit bytes remain untouched.
+
+## First work-unit candidate proof
+- Selective index tree contains hero/navigation only, base sectors/contact/runtime/configuration unchanged. Candidate npm test 23/23 and isolated production build passed from C:\Users\alejo\AppData\Local\Temp\novum-hero-candidate-97b3d3d9-de93-4082-b3fb-729fbd825997 using existing node_modules junction (no dependency installation).
+- Build command: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-hero-unit-build-ec08a9e9-2dce-4b2e-8be8-f4fb76663131. No hidden untracked assets copied; git archive materialized the index tree.
+- Shared content test newline normalization prevents mixed CRLF staged whitespace; later test behavior remains unstaged. Staged and working-tree git diff --check passed.
+- Native review and later commits remain pending parent; no remote operation.

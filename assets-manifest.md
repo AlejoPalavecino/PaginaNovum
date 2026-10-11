@@ -52,3 +52,7 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 - No usar simultáneamente más de 2–3 imágenes complejas en el mismo viewport.
 - Añadir overlay oscuro solo cuando haga falta para contraste de texto.
 - Evitar insertar texto dentro de las imágenes.
+
+## Active reference hero asset
+- `assets/images/backgrounds/hero-taller-transformacion.jpg` is the full workshop transformation photograph used by the current hero, with live HTML callouts and actions.
+- Historical hero exports are not required by this composition and are not included in this work unit.

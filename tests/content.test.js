@@ -237,3 +237,82 @@ it('keeps the sector final word and decorative dot together on narrow screens', 
   const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
   assert.ok(css.match(/\.sectors-title-ending\s*\{[^}]*white-space: nowrap/));
 });
+
+describe('Express contact structure', () => {
+  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
+  const contact = html.match(/<section id="contacto"[\s\S]*?<\/section>/)[0];
+  it('provides one labeled problem field and an initially disabled email continuation', () => {
+    assert.ok(contact.includes('for="contact-problem-textarea"'));
+    assert.ok(contact.includes('¿Qué necesitás resolver?'));
+    assert.ok(contact.includes('Preparar consulta por correo'));
+    const button = contact.match(/<a[^>]*id="contact-mail-btn"[^>]*>/)[0];
+    assert.ok(button.includes('aria-disabled="true"'));
+    assert.equal(/\bhref=/.test(button), false);
+    assert.ok(contact.includes('Versión para revisión: falta confirmar el correo de contacto antes de publicar'));
+  });
+  it('keeps manual-copy recovery hidden until clipboard failure', () => {
+    const container = contact.match(/<div[^>]*id="contact-guide-fallback"[^>]*>/)[0];
+    const textarea = contact.match(/<textarea[^>]*id="contact-guide-textarea"[^>]*>/)[0];
+    assert.equal(/\bhidden\b/.test(container), true);
+    assert.equal(/\breadonly\b/.test(textarea), true);
+  });
+});
+
+describe('Reference contact presentation', () => {
+  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
+  const contact = html.match(/<section id="contacto"[\s\S]*?<\/section>/)[0];
+  it('contains a native service selector and four explicitly optional fields', () => {
+    assert.ok(contact.includes('<select id="contact-service-select"'));
+    assert.ok(contact.includes('Prepará tu consulta'));
+    for (const name of ['company', 'name', 'reply', 'deadline']) {
+      assert.ok(contact.includes(`for="contact-${name}-input"`));
+      const field = contact.match(new RegExp(`<input[^>]*id="contact-${name}-input"[^>]*>`))[0];
+      assert.equal(/\brequired\b/.test(field), false);
+    }
+    assert.ok(contact.includes('Contanos qué'));
+    assert.ok(contact.includes('necesitás resolver.'));
+    assert.equal(contact.includes('codex-clipboard'), false);
+  });
+});
+
+describe('Contact hierarchy and integrated footer', () => {
+  const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
+  const contact = html.match(/<section id="contacto"[\s\S]*?<\/section>/)[0];
+  const footer = html.match(/<footer class="site-footer"[\s\S]*?<\/footer>/)[0];
+  it('stacks five compact, accessibly labeled fields in reference order', () => {
+    const ids = ['company-input', 'name-input', 'reply-input', 'problem-textarea', 'deadline-input'];
+    const positions = ids.map(id => contact.indexOf('id="contact-' + id + '"'));
+    assert.ok(positions.every((position, index) => position >= 0 && (!index || position > positions[index - 1])));
+    for (const id of ids) {
+      assert.ok(contact.match(new RegExp('<label[^>]*for="contact-' + id + '"[^>]*class="contact-control-label"')));
+    }
+    assert.equal(contact.includes('contact-optional-grid'), false);
+    assert.ok(contact.match(/<textarea[^>]*id="contact-problem-textarea"[^>]*rows="1"[^>]*required/));
+    assert.ok(contact.match(/<strong id="contact-selected-service"[^>]*hidden/));
+    const css = fs.readFileSync(path.resolve('src/styles/components/cta.css'), 'utf8');
+    assert.ok(css.match(/\.contact-fields\s*\{[^}]*grid-template-columns: minmax\(0, 1fr\)/));
+    assert.ok(css.match(/\.contact-input-shell\s*\{[^}]*min-height: 56px/));
+    assert.ok(css.match(/\.contact-control-label\s*\{[^}]*clip-path: inset\(50%\)/));
+  });
+  it('places both full-width actions before hidden selectable recovery', () => {
+    const actions = contact.match(/<div class="cta-actions-group">[\s\S]*?<\/div>/)[0];
+    assert.ok(actions.includes('id="contact-mail-btn"'));
+    assert.ok(actions.includes('id="contact-copy-guide-btn"'));
+    assert.ok(actions.indexOf('contact-mail-btn') < actions.indexOf('contact-copy-guide-btn'));
+    const guide = contact.slice(contact.indexOf('<div id="contact-guide-fallback"'));
+    assert.equal(guide.includes('id="contact-copy-guide-btn"'), false);
+    assert.ok(guide.match(/<textarea[^>]*id="contact-guide-textarea"[^>]*rows="2"/));
+    assert.ok(guide.match(/<textarea[^>]*readonly/));
+    assert.ok(guide.match(/<div[^>]*id="contact-guide-fallback"[^>]*hidden/));
+    const css = fs.readFileSync(path.resolve('src/styles/components/cta.css'), 'utf8');
+    assert.equal(css.includes('width: auto'), false);
+    assert.ok(css.match(/\.contact-input-shell textarea,\s*\.guide-fallback-textarea\s*\{[^}]*color-scheme: dark/));
+  });
+  it('uses the approved white logo and preserves the six legitimate footer links', () => {
+    assert.ok(footer.includes('./assets/logo/logo-white-transparent.png'));
+    const links = [...footer.matchAll(/class="footer-nav-link">([^<]+)<\/a>/g)].map(match => match[1]);
+    assert.deepEqual(links, ['Inicio', 'Soluciones', 'Sectores', 'Proceso', 'Capacidades', 'Contacto']);
+    assert.equal(/linkedin|instagram|whatsapp/i.test(footer), false);
+    assert.ok(footer.includes('Una solución a medida.'));
+  });
+});

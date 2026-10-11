@@ -1,7 +1,7 @@
 # Contenido web — Nóvum Industrial (Versión B2B)
 
 > Estado: Copy oficial para adaptación B2B. Fuente de verdad editorial para la web.
-> Pendiente de validación comercial: dirección de correo electrónico real (`[EMAIL_DE_CONTACTO]`), alcance operativo exacto de servicios y formalizaciones institucionales.
+> Correo de contacto confirmado: `novum.industrial.ar@gmail.com`. Pendiente de validación comercial: alcance operativo exacto de servicios y formalizaciones institucionales.
 
 ---
 
@@ -152,39 +152,44 @@
 ---
 
 ## 08 — Contacto (`#contacto`)
-- **Texto superior:** EL PRIMER PASO ES ENTENDER TU NECESIDAD
-- **Título:** ¿Qué necesitás resolver en tu empresa?
-- **Descripción:** Contanos qué está pasando en tu empresa. Podemos partir de una pieza que falta, una adaptación, un desarrollo o una necesidad recurrente.
+- **Texto superior:** CONTACTO
+- **Título:** Contanos qué necesitás resolver.
+- **Descripción:** Podemos partir de un repuesto faltante, una adaptación, una mejora de proceso o una necesidad técnica recurrente. Analizamos el caso y te orientamos con la mejor solución para tu operación.
+- **Información útil:** Empresa y cargo; Equipo, pieza o problema; Impacto en la operación; Cantidad y plazo.
+- **Título de la tarjeta:** Prepará tu consulta
+- **Ayuda de la tarjeta:** Completá lo que tengas. Solo el problema es obligatorio.
+- **Selector de servicio:** Consulta general y los ocho servicios autorizados.
+- **Campos compactos:** Empresa; Nombre y función; Correo o teléfono; Equipo, pieza o problema; Plazo que necesitás. Una columna con iconos y etiquetas accesibles. Solo el problema es obligatorio; los demás datos son opcionales.
+- **Campo de consulta breve:** ¿Qué necesitás resolver?
+- **Placeholder del problema:** Equipo, pieza o problema a resolver *. El campo se expande al enfocarlo o ingresar texto.
 - **Acción principal:** Preparar consulta por correo
-- **Acción secundaria:** Copiar guía de consulta
-- **Aclaración visible:** Se abrirá tu aplicación de correo con una guía editable. El mensaje se envía desde esa aplicación, no desde esta web.
-- **Aviso en modo revisión:** Versión para revisión: falta confirmar el correo de contacto antes de publicar.
+- **Acción secundaria debajo del correo, a todo el ancho:** Copiar guía de consulta
+- **Aclaración visible:** Se abrirá tu aplicación de correo con tu consulta. Revisá y enviá el mensaje desde allí; esta web no lo envía.
+- **Guía de consulta:** El botón genera y copia el texto con el servicio seleccionado y los campos completados. No muestra un editor duplicado. Solo si falla el portapapeles aparece el texto seleccionable para copiarlo manualmente.
+- **Correo confirmado:** novum.industrial.ar@gmail.com
+- **Aviso de protección si falta un correo válido:** Versión para revisión: falta confirmar el correo de contacto antes de publicar. Se oculta cuando el correo está confirmado.
 
-### Plantilla de la guía de consulta:
+### Consulta generada desde los campos actuales:
+El botón de copia y el correo usan el mismo servicio normalizado y los cinco campos actuales. Las cuatro líneas opcionales solo se incluyen si tienen contenido; el problema conserva sus saltos de línea.
+
 ```text
 Hola equipo de Nóvum Industrial,
 
 Consulta: [servicio seleccionado o Consulta general]
+Empresa: [empresa, si se completó]
+Nombre y función: [nombre y función, si se completó]
+Correo o teléfono para responder: [contacto, si se completó]
+Plazo que necesitás: [plazo, si se completó]
 
-Empresa:
-Nombre y función:
-Correo o teléfono para responder:
-Localidad / provincia:
-
-Equipo, pieza o problema a resolver:
-Impacto en la operación (parada, mantenimiento, mejora o desarrollo):
-Necesidad puntual o recurrente:
-Cantidad aproximada:
-Plazo que necesitamos:
-
-Información disponible (pieza, fotos, planos o modelo):
-
-Quedamos atentos para conversar y evaluar el caso.
+Equipo, pieza o problema:
+[problema introducido]
 ```
+
+No se muestra un editor adicional. Si falla el portapapeles, se revela y selecciona esta consulta actual para copiarla manualmente. Cambiar campos o servicio oculta la recuperación anterior.
 
 ---
 
 ## Footer
-- **Marca:** Nóvum Industrial
+- **Marca:** Nóvum Industrial, con el logo blanco sobre el cierre oscuro integrado a Contacto.
 - **Navegación:** Inicio, Soluciones, Sectores, Proceso, Capacidades, Contacto
 - **Cierre institucional:** Tu próximo desafío. Una solución a medida.

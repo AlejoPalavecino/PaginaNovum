@@ -81,3 +81,13 @@ Prepare the current feature branch for the owner's authorized client preview wit
 ## Sector unit preparation
 - Hero/navigation boundary 0be888e6854d5a3d95bbd1e13a90f3695d441671 received native review approval with no findings and exact acknowledgement/burn, as reported by parent.
 - Sectors is the next exception-ok coherent unit; only sector HTML/editorial/tests/CSS/controller, main import/init and CNC asset staged. Contact/config/footer/workflow stay outside this commit.
+
+## Sector commit boundary
+- Commit 2e5404980556c4f6c52d5e8a3638fae2fe08b60c; parent 0be888e6854d5a3d95bbd1e13a90f3695d441671. Message: feat(sectors): match industrial reference composition.
+- Ten paths, +983/-150 (1133 authored lines), excluding CNC binary. Coherent oversized section accepted via exception-ok. Candidate npm test 29/29 and isolated build passed; staged/worktree diff-check passed after task EOF normalization.
+- Parent native review is next. Contact/footer/release and excluded historical/tool assets remain unstaged. This tracking record is unstaged for a later unit.
+
+## Contact/footer unit preparation
+- Parent reported sector boundary 2e5404980556c4f6c52d5e8a3638fae2fe08b60c native approval and exact acknowledgement/burn. Hero was already approved without findings.
+- Sector review advisory (nonblocking): whole-section observer threshold 0.15 may be unreachable at small viewport height/high zoom. Record as follow-up; do not reopen or mutate approved sector bytes in this unit.
+- Next exception-ok unit is contact/footer: compact fields, confirmed email, current-field copy, failure-only selectable recovery and integrated footer. Workflow/release catalog remains excluded.

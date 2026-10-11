@@ -15,7 +15,7 @@ Recorrido ordenado:
 5. **Proceso** (`#proceso`): 5 etapas del problema a la solución funcional.
 6. **Capacidades** (`#capacidades`): Las herramientas al servicio de la solución (CAD, relevamiento, fabricación aditiva, prototipado, organización digital).
 7. **Preguntas frecuentes** (`#faq`): 7 respuestas claras sobre información requerida, tiempos, viabilidad y alcances.
-8. **Contacto** (`#contacto`): Consulta técnica por correo con selección de servicio, guía editable y aviso de revisión si no hay correo confirmado.
+8. **Contacto** (`#contacto`): Consulta técnica por correo con selección de servicio, copia de consulta y aviso de revisión si no hay correo confirmado.
 9. **Footer**: Marca, navegación actualizada y cierre institucional.
 
 ---
@@ -90,9 +90,13 @@ Estructura jerárquica:
 ### 08 — Contacto (`#contacto`)
 - Centralizado en `src/config/contact.js`.
 - Indicador dinámico de servicio seleccionado: "Tu consulta: [Servicio]".
-- Botón para preparar consulta por correo (`mailto:` generado solo con correo confirmado).
-- Botón para copiar guía de consulta preformateada al portapapeles, con fallback visible si el API falla.
-- Aviso visible en modo revisión: "Versión para revisión: falta confirmar el correo de contacto antes de publicar".
+- Composición de dos columnas sobre un taller: contexto, lista de información útil y pieza industrial a la izquierda; tarjeta “Prepará tu consulta” a la derecha.
+- Selector nativo de servicio sincronizado con los CTA `data-consulta` y el restablecimiento a Consulta general.
+- Campo clave “¿Qué necesitás resolver?” y datos opcionales de empresa, nombre/función, correo/teléfono y plazo. No requiere registro ni envío desde la web.
+- Acción “Preparar consulta por correo”: el `mailto:` incluye servicio, problema y solo datos opcionales no vacíos. Se genera únicamente con correo confirmado y problema no vacío.
+- El botón de copia genera la consulta con el servicio y los campos actuales. No hay editor de guía visible: únicamente si falla el portapapeles se revela y selecciona el texto generado para recuperación manual.
+- Cambiar, preseleccionar o restablecer el servicio conserva todos los datos introducidos. Modificar campos o servicio oculta la recuperación anterior; cada intento de copia vuelve a generar el texto actual.
+- Correo confirmado por el titular: `novum.industrial.ar@gmail.com`. El aviso “Versión para revisión: falta confirmar el correo de contacto antes de publicar” solo permanece visible si falta un correo válido.
 - Aclaración: el correo se abre y envía desde la aplicación del usuario.
 
 ### Footer

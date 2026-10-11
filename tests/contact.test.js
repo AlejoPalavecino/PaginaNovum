@@ -73,3 +73,55 @@ describe('Contact Configuration & B2B Mailto Generator', () => {
     assert.ok(mailto.includes('Soluci%C3%B3n%20Industrial'));
   });
 });
+
+describe('Express inquiry encoding', () => {
+  it('includes the selected service and entered problem without the long guide', async () => {
+    const { buildExpressBody, buildExpressMailtoUrl } = await import('../src/config/contact.js');
+    assert.equal(typeof buildExpressBody, 'function');
+    const problem = 'Repuesto dañado & plano #4\nNecesitamos adaptación: 20% "más".';
+    const url = buildExpressMailtoUrl('ingeniería inversa', problem, { email: 'test@example.com' });
+    const params = new URLSearchParams(url.split('?')[1]);
+    assert.ok(params.get('subject').includes('Ingeniería Inversa'));
+    assert.equal(params.get('body'), buildExpressBody('Ingeniería Inversa', problem));
+    assert.ok(params.get('body').includes(problem));
+    assert.equal(params.get('body').includes('Nombre y función:'), false);
+    assert.ok(buildExpressBody('Inventado', 'Una pieza').includes('Consulta general'));
+  });
+
+  it('does not create links for an invalid address or an empty problem', async () => {
+    const { buildExpressMailtoUrl } = await import('../src/config/contact.js');
+    assert.equal(typeof buildExpressMailtoUrl, 'function');
+    for (const email of ['[EMAIL_DE_CONTACTO]', '', 'invalid']) {
+      assert.equal(buildExpressMailtoUrl('Repuesto Express', 'Pieza dañada', { email }), null);
+    }
+    assert.equal(buildExpressMailtoUrl('Repuesto Express', '  ', { email: 'test@example.com' }), null);
+  });
+});
+
+describe('Reference consultation details', () => {
+  it('encodes only provided optional fields while preserving the service and problem', async () => {
+    const { buildConsultationBody, buildConsultationMailtoUrl } = await import('../src/config/contact.js');
+    assert.equal(typeof buildConsultationBody, 'function');
+    const details = { company: 'Taller Ñ & Hijos', name: 'María — mantenimiento', replyContact: '+54 123', problem: 'Pieza #5\nSe rompió', deadline: '' };
+    const url = buildConsultationMailtoUrl('partner industrial', details, { email: 'test@example.com' });
+    const body = new URLSearchParams(url.split('?')[1]).get('body');
+    assert.equal(body, buildConsultationBody('Partner Industrial', details));
+    for (const value of ['Taller Ñ & Hijos', 'María — mantenimiento', '+54 123', 'Pieza #5\nSe rompió']) assert.ok(body.includes(value));
+    assert.equal(body.includes('Plazo que necesitás:'), false);
+    assert.ok(body.includes('Consulta: Partner Industrial'));
+    assert.equal(buildConsultationMailtoUrl('general', details, { email: '[EMAIL_DE_CONTACTO]' }), null);
+    assert.equal(buildConsultationMailtoUrl('general', { problem: ' ' }, { email: 'test@example.com' }), null);
+  });
+});
+
+it('uses the business-confirmed address for a prepared Unicode consultation without sending it', async () => {
+  const { CONTACT_CONFIG, buildConsultationMailtoUrl } = await import('../src/config/contact.js');
+  assert.equal(CONTACT_CONFIG.email, 'novum.industrial.ar@gmail.com');
+  const problem = 'Necesitamos un repuesto: piñón #3 & eje\nMáquina detenida';
+  const url = buildConsultationMailtoUrl('Ingeniería Inversa', { problem, company: 'Fábrica Ñ' });
+  assert.ok(url.startsWith('mailto:novum.industrial.ar@gmail.com?subject='));
+  const params = new URLSearchParams(url.split('?')[1]);
+  assert.ok(params.get('subject').includes('Ingeniería Inversa'));
+  assert.ok(params.get('body').includes(problem));
+  assert.ok(params.get('body').includes('Fábrica Ñ'));
+});

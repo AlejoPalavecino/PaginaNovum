@@ -60,3 +60,8 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 ## Sectores — assets activos
 - `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png`: fotografía CNC monocromática, recortada diagonalmente mediante CSS.
 - Los seis iconos lineales y los perímetros chevrón se dibujan con SVG nativos en index.html. No se requieren exportaciones raster de iconos ni de marcos.
+
+## Contacto — reutilización de assets aprobados
+- Fondo de taller: `assets/images/transparent/hero/hero/assets/01_fondo_taller_industrial.png` (1672 × 941), sin texto ni interfaz incrustada.
+- Pieza y CAD: `assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_industrial_principal.png` y `seccion05-pieza_wireframe_cad.png` (1448 × 1086), decorativos debajo del contexto editorial.
+- La captura de referencia no se utiliza como imagen de producción. Los archivos fuente existentes se conservan sin modificaciones.

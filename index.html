@@ -1728,151 +1728,80 @@
 
     <!-- 08 — Contacto (#contacto) -->
     <section id="contacto" class="site-section section-cta">
-      <div class="cta-ambient-glow" aria-hidden="true"></div>
-
+      <div class="cta-workshop-backdrop" aria-hidden="true"></div>
       <div class="container cta-container">
         <div class="cta-card-box">
-          <!-- Zone 1: Left Column (Titles & Editorial Badge) -->
           <div class="cta-left-zone">
-            <div class="cta-header-group">
-              <div class="cta-eyebrow-wrap">
-                <span class="cta-orange-dash" aria-hidden="true"></span>
-                <p class="cta-eyebrow">EL PRIMER PASO ES ENTENDER TU NECESIDAD</p>
-              </div>
-              <h2 class="cta-title">
-                ¿Qué necesitás<br />
-                resolver en<br />
-                tu empresa?
-              </h2>
-            </div>
-
-            <!-- Bottom Left Editorial Mark -->
-            <div class="cta-editorial-bottom" aria-hidden="true">
-              <div class="cta-editorial-bar"></div>
-              <div class="cta-editorial-text">
-                <span>PROBLEMA</span>
-                <span>ANÁLISIS</span>
-                <span>SOLUCIÓN</span>
-                <span>RESULTADO</span>
-              </div>
+            <div class="cta-eyebrow-wrap"><span class="cta-orange-dash" aria-hidden="true"></span><p class="cta-eyebrow">CONTACTO</p></div>
+            <h2 class="cta-title">Contanos qué<br /><span class="text-orange">necesitás resolver.</span></h2>
+            <p class="cta-description">Podemos partir de un repuesto faltante, una adaptación, una mejora de proceso o una necesidad técnica recurrente. Analizamos el caso y te orientamos con la mejor solución para tu operación.</p>
+            <ul class="cta-information-cues" aria-label="Información útil para conversar sobre tu necesidad">
+              <li><span class="cta-cue-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="3"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span><span>Empresa y cargo</span></li>
+              <li><span class="cta-cue-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="m9 3 .6 2.2a7 7 0 0 1 4.8 0L15 3l3 1.7-1.2 2a7 7 0 0 1 2.4 4.1l2.3.2v3l-2.3.2a7 7 0 0 1-2.4 4.1l1.2 2L15 22l-.6-2.2a7 7 0 0 1-4.8 0L9 22l-3-1.7 1.2-2a7 7 0 0 1-2.4-4.1L2.5 14v-3l2.3-.2a7 7 0 0 1 2.4-4.1L6 4.7Z"/></svg></span><span>Equipo, pieza o problema</span></li>
+              <li><span class="cta-cue-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 20v-5m7 5V9m7 11V4M3 22h18"/></svg></span><span>Impacto en la operación</span></li>
+              <li><span class="cta-cue-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>Cantidad y plazo</span></li>
+            </ul>
+            <div class="cta-visual-zone" aria-hidden="true">
+              <img src="./assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_industrial_principal.png" alt="" width="1448" height="1086" loading="lazy" class="cta-piece-image" />
+              <img src="./assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_wireframe_cad.png" alt="" width="1448" height="1086" loading="lazy" class="cta-wireframe-backdrop" />
             </div>
           </div>
-
-          <!-- Zone 2: Center Column (Interactive Consultation & Action) -->
           <div class="cta-center-zone">
-            <p class="cta-description">
-              Contanos qué está pasando en tu empresa. Podemos partir de una pieza que falta, una adaptación, un desarrollo o una necesidad recurrente.
-            </p>
-
-            <!-- Active Consultation Indicator -->
-            <div class="cta-query-status" id="cta-query-status">
-              <div class="query-status-badge">
-                <span class="query-status-label">Tu consulta:</span>
-                <strong class="query-status-value" id="contact-selected-service">Consulta general</strong>
+            <h3 class="cta-form-title">Prepará tu consulta</h3>
+            <p id="contact-fields-help" class="cta-form-description">Completá lo que tengas. Solo el problema es obligatorio.</p>
+            <div class="contact-service-field">
+              <label for="contact-service-select" class="contact-control-label">Servicio de tu consulta</label>
+              <select id="contact-service-select" class="contact-service-select">
+                  <option value="Consulta general">Consulta general</option>
+                  <option value="Partner Industrial">Partner Industrial</option>
+                  <option value="Repuesto Express">Repuesto Express</option>
+                  <option value="Ingeniería Inversa">Ingeniería Inversa</option>
+                  <option value="Inventario Digital">Inventario Digital</option>
+                  <option value="Solución Industrial">Solución Industrial</option>
+                  <option value="Prototipado">Prototipado</option>
+                  <option value="Producción seriada">Producción seriada</option>
+                  <option value="Productos propios">Productos propios</option>
+              </select>
+              <div class="cta-query-status" id="cta-query-status">
+                <strong id="contact-selected-service" hidden>Consulta general</strong>
+                <button type="button" id="contact-reset-service" class="btn-reset-service">Volver a consulta general</button>
               </div>
-              <button
-                type="button"
-                id="contact-reset-service"
-                class="btn-reset-service"
-                title="Restablecer a consulta general"
-              >
-                Orientame sobre mi necesidad
-              </button>
             </div>
-
-            <!-- Unconfirmed Email Warning Notice (Visible in revision mode) -->
+            <div class="contact-fields" aria-describedby="contact-fields-help">
+              <div class="contact-field">
+                <label for="contact-company-input" class="contact-control-label">Empresa (opcional)</label>
+                <div class="contact-input-shell"><span class="contact-field-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1m4 0h1M9 11h1m4 0h1M9 15h1m4 0h1M3 21h18"/></svg></span><input id="contact-company-input" type="text" autocomplete="organization" maxlength="200" placeholder="Empresa (opcional)" /></div>
+              </div>
+              <div class="contact-field">
+                <label for="contact-name-input" class="contact-control-label">Nombre y función (opcional)</label>
+                <div class="contact-input-shell"><span class="contact-field-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="3"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span><input id="contact-name-input" type="text" autocomplete="name" maxlength="200" placeholder="Nombre y función (opcional)" /></div>
+              </div>
+              <div class="contact-field">
+                <label for="contact-reply-input" class="contact-control-label">Correo o teléfono (opcional)</label>
+                <div class="contact-input-shell"><span class="contact-field-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><input id="contact-reply-input" type="text" autocomplete="off" maxlength="200" placeholder="Correo o teléfono (opcional)" /></div>
+              </div>
+              <div class="contact-field contact-express-field">
+                <label for="contact-problem-textarea" class="contact-control-label">¿Qué necesitás resolver? (obligatorio)</label>
+                <div class="contact-input-shell contact-problem-shell"><span class="contact-field-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="m9 3 .6 2.2a7 7 0 0 1 4.8 0L15 3l3 1.7-1.2 2a7 7 0 0 1 2.4 4.1l2.3.2v3l-2.3.2a7 7 0 0 1-2.4 4.1l1.2 2L15 22l-.6-2.2a7 7 0 0 1-4.8 0L9 22l-3-1.7 1.2-2a7 7 0 0 1-2.4-4.1L2.5 14v-3l2.3-.2a7 7 0 0 1 2.4-4.1L6 4.7Z"/></svg></span><textarea id="contact-problem-textarea" class="contact-express-textarea" rows="1" maxlength="2000" required aria-required="true" aria-describedby="contact-fields-help" placeholder="Equipo, pieza o problema a resolver *"></textarea></div>
+              </div>
+              <div class="contact-field">
+                <label for="contact-deadline-input" class="contact-control-label">Plazo que necesitás (opcional)</label>
+                <div class="contact-input-shell"><span class="contact-field-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><input id="contact-deadline-input" type="text" autocomplete="off" maxlength="200" placeholder="Plazo que necesitás (opcional)" /></div>
+              </div>
+            </div>
             <div class="cta-revision-notice" id="cta-revision-notice" role="alert">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
               <span>Versión para revisión: falta confirmar el correo de contacto antes de publicar</span>
             </div>
-
-            <!-- Email Action Button & Copy Action Button -->
             <div class="cta-actions-group">
-              <a
-                href="#"
-                id="contact-mail-btn"
-                class="cta-button"
-              >
-                <span class="cta-btn-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                </span>
-                <span>Preparar consulta por correo</span>
-                <span class="cta-btn-arrow" aria-hidden="true">&rarr;</span>
-              </a>
-
-              <button
-                type="button"
-                id="contact-copy-guide-btn"
-                class="cta-button-copy"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-                </svg>
-                <span>Copiar guía de consulta</span>
-              </button>
+              <a id="contact-mail-btn" class="cta-button is-disabled" role="link" tabindex="0" aria-disabled="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Preparar consulta por correo</span><span class="cta-btn-arrow" aria-hidden="true">&rarr;</span></a>
+              <button type="button" id="contact-copy-guide-btn" class="cta-button-copy"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M5 16H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1"/></svg><span>Copiar guía de consulta</span></button>
             </div>
-
-            <!-- Visible clarification notice -->
-            <p class="cta-client-clarification">
-              Se abrirá tu aplicación de correo con una guía editable. El mensaje se envía desde esa aplicación, no desde esta web.
-            </p>
-
-            <!-- Feedback message container -->
+            <p class="cta-client-clarification">Se abrirá tu aplicación de correo con tu consulta. Revisá y enviá el mensaje desde allí; esta web no lo envía.</p>
             <div id="contact-copy-feedback" class="cta-feedback-msg" role="status" aria-live="polite"></div>
-
-            <!-- Fallback text area for manual copying if clipboard API is unavailable or fails -->
             <div id="contact-guide-fallback" class="cta-guide-fallback" hidden>
-              <label for="contact-guide-textarea" class="guide-fallback-label">
-                Guía de consulta técnica (para copiar y pegar):
-              </label>
-              <textarea
-                id="contact-guide-textarea"
-                class="guide-fallback-textarea"
-                rows="10"
-                readonly
-              ></textarea>
-            </div>
-          </div>
-
-          <!-- Zone 3: Right Column (Technical 3D & Blueprint Visuals) -->
-          <div class="cta-visual-zone" aria-hidden="true">
-            <img
-              src="./assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_industrial_principal.png"
-              alt=""
-              width="700"
-              height="520"
-              loading="lazy"
-              class="cta-piece-image"
-            />
-            <img
-              src="./assets/images/transparent/seccion05_como_trabajamos_assets/seccion05-pieza_wireframe_cad.png"
-              alt=""
-              width="560"
-              height="480"
-              loading="lazy"
-              class="cta-wireframe-backdrop"
-            />
-            <div class="cta-hud-top-right">
-              <span class="cta-hud-crosshair">+</span>
-              <div class="cta-hud-tag-list">
-                <span>INGENIERÍA</span>
-                <span>DISEÑO</span>
-                <span>FABRICACIÓN</span>
-                <span>B2B</span>
-              </div>
-            </div>
-            <div class="cta-hud-brand-watermark">
-              <span class="cta-brand-dash"></span>
-              <span class="cta-brand-name">NÓVUM</span>
-              <span class="cta-brand-sub">INDUSTRIAL</span>
+              <label for="contact-guide-textarea" class="guide-fallback-label">Texto para copiar manualmente:</label>
+              <textarea id="contact-guide-textarea" class="guide-fallback-textarea" rows="2" readonly aria-describedby="contact-guide-help"></textarea>
+              <p id="contact-guide-help" class="cta-client-clarification">El portapapeles no está disponible. Seleccioná este texto y copialo manualmente.</p>
             </div>
           </div>
         </div>
@@ -1886,10 +1815,10 @@
   <footer class="site-footer">
     <div class="container footer-container">
       <div class="footer-bar">
-        <!-- Logo Marca en Negro -->
+        <!-- Brand mark on the integrated dark closing surface -->
         <a href="#inicio" class="footer-brand" aria-label="Nóvum Industrial — Volver al inicio">
           <img
-            src="./assets/logo/logo-black-transparent.png"
+            src="./assets/logo/logo-white-transparent.png"
             alt="Nóvum Industrial"
             width="389"
             height="169"

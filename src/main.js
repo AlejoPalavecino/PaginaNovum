@@ -11,9 +11,8 @@ import {
   DEFAULT_SERVICE,
   isEmailConfirmed,
   normalizeService,
-  buildSubject,
-  buildBody,
-  buildMailtoUrl
+  buildConsultationBody,
+  buildConsultationMailtoUrl
 } from './config/contact.js';
 import { initHeroParallax } from './scripts/heroAnimation.js';
 import { initProblemsDiagram } from './scripts/problemsDiagram.js';
@@ -26,140 +25,106 @@ import { initSectorsAnimation } from './scripts/sectorsAnimation.js';
  */
 let currentConsultationService = DEFAULT_SERVICE;
 
-/**
- * Updates the consultation UI and mailto configuration in the Contact section.
- * @param {string} serviceName
- */
-export function updateConsultationState(serviceName = DEFAULT_SERVICE) {
-  currentConsultationService = normalizeService(serviceName);
+/** Reads the local consultation fields without changing visitor-authored content. */
+function getConsultationDetails() {
+  return {
+    company: document.getElementById('contact-company-input')?.value || '',
+    name: document.getElementById('contact-name-input')?.value || '',
+    replyContact: document.getElementById('contact-reply-input')?.value || '',
+    deadline: document.getElementById('contact-deadline-input')?.value || '',
+    problem: document.getElementById('contact-problem-textarea')?.value || ''
+  };
+}
 
-  // Update selected service badge
-  const serviceBadge = document.getElementById('contact-selected-service');
-  if (serviceBadge) {
-    serviceBadge.textContent = currentConsultationService;
-  }
-
-  // Update revision notice & mailto button
+/** Refreshes only the email action, never the visitor's entered text. */
+function updateConsultationMailAction() {
+  const recovery = document.getElementById('contact-guide-fallback');
+  if (recovery) recovery.hidden = true;
   const mailBtn = document.getElementById('contact-mail-btn');
-  const revisionNotice = document.getElementById('cta-revision-notice');
-  const fallbackTextarea = document.getElementById('contact-guide-textarea');
-
-  const confirmed = isEmailConfirmed(CONTACT_CONFIG.email);
-
-  if (revisionNotice) {
-    revisionNotice.hidden = confirmed;
-  }
-
-  if (mailBtn) {
-    if (confirmed) {
-      const mailtoUrl = buildMailtoUrl(currentConsultationService, CONTACT_CONFIG);
-      mailBtn.setAttribute('href', mailtoUrl || '#contacto');
-      mailBtn.classList.remove('is-disabled');
-      mailBtn.removeAttribute('aria-disabled');
-    } else {
-      // Avoid fictitious mailto when email is unconfirmed
-      mailBtn.setAttribute('href', '#contacto');
-      mailBtn.classList.add('is-disabled');
-      mailBtn.setAttribute('aria-disabled', 'true');
-    }
-  }
-
-  // Update fallback textarea if present
-  if (fallbackTextarea) {
-    fallbackTextarea.value = buildBody(currentConsultationService);
+  const url = buildConsultationMailtoUrl(currentConsultationService, getConsultationDetails(), CONTACT_CONFIG);
+  if (!mailBtn) return;
+  if (url) {
+    mailBtn.setAttribute('href', url);
+    mailBtn.classList.remove('is-disabled');
+    mailBtn.removeAttribute('aria-disabled');
+  } else {
+    mailBtn.removeAttribute('href');
+    mailBtn.classList.add('is-disabled');
+    mailBtn.setAttribute('aria-disabled', 'true');
   }
 }
 
-/**
- * Initializes consultation CTAs across the site.
- * Supports data-consulta on any button or anchor.
- */
+/** Keeps the selected service in sync while preserving visitor-authored content. */
+export function updateConsultationState(serviceName = DEFAULT_SERVICE) {
+  currentConsultationService = normalizeService(serviceName);
+  const serviceBadge = document.getElementById('contact-selected-service');
+  if (serviceBadge) serviceBadge.textContent = currentConsultationService;
+  const serviceSelect = document.getElementById('contact-service-select');
+  if (serviceSelect) serviceSelect.value = currentConsultationService;
+  const revisionNotice = document.getElementById('cta-revision-notice');
+  if (revisionNotice) revisionNotice.hidden = isEmailConfirmed(CONTACT_CONFIG.email);
+  updateConsultationMailAction();
+}
+
+/** Initializes local email continuation and generated-guide copying. */
 export function initConsultationHandlers() {
-  // Elements with data-consulta
+  const problem = document.getElementById('contact-problem-textarea');
+  const guide = document.getElementById('contact-guide-textarea');
+  const recovery = document.getElementById('contact-guide-fallback');
+  const feedback = document.getElementById('contact-copy-feedback');
+  const setFeedback = (message, warning = false) => {
+    if (!feedback) return;
+    feedback.textContent = message;
+    feedback.className = warning ? 'cta-feedback-msg is-warning' : 'cta-feedback-msg';
+  };
+
   document.addEventListener('click', (event) => {
     const trigger = event.target.closest('[data-consulta]');
-    if (!trigger) return;
+    if (trigger) updateConsultationState(trigger.getAttribute('data-consulta'));
+  });
+  document.getElementById('contact-reset-service')?.addEventListener('click', () => {
+    updateConsultationState(DEFAULT_SERVICE);
+  });
+  for (const id of ['contact-problem-textarea', 'contact-company-input', 'contact-name-input', 'contact-reply-input', 'contact-deadline-input']) {
+    document.getElementById(id)?.addEventListener('input', updateConsultationMailAction);
+  }
+  const serviceSelect = document.getElementById('contact-service-select');
+  serviceSelect?.addEventListener('change', () => updateConsultationState(serviceSelect.value));
 
-    const requestedService = trigger.getAttribute('data-consulta');
-    updateConsultationState(requestedService);
+  const mailBtn = document.getElementById('contact-mail-btn');
+  const continueByEmail = (event) => {
+    updateConsultationMailAction();
+    if (!isEmailConfirmed(CONTACT_CONFIG.email)) {
+      event.preventDefault();
+      setFeedback('El correo de contacto está pendiente de confirmación. Podés preparar tu consulta y copiar la guía opcional.', true);
+    } else if (!problem?.value.trim()) {
+      event.preventDefault();
+      setFeedback('Contanos brevemente qué necesitás resolver para continuar por correo.', true);
+      problem?.focus();
+    }
+  };
+  mailBtn?.addEventListener('click', continueByEmail);
+  mailBtn?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !mailBtn.getAttribute('href')) continueByEmail(event);
   });
 
-  // Reset service button
-  const resetBtn = document.getElementById('contact-reset-service');
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      updateConsultationState(DEFAULT_SERVICE);
-    });
-  }
-
-  // Mail button click check when unconfirmed
-  const mailBtn = document.getElementById('contact-mail-btn');
-  if (mailBtn) {
-    mailBtn.addEventListener('click', (event) => {
-      if (!isEmailConfirmed(CONTACT_CONFIG.email)) {
-        event.preventDefault();
-        const feedback = document.getElementById('contact-copy-feedback');
-        if (feedback) {
-          feedback.textContent = 'Aviso: el correo de contacto está pendiente de confirmación. Podés copiar la guía abajo.';
-          feedback.className = 'cta-feedback-msg is-warning';
-        }
-        // Expose guide fallback for immediate inspection
-        const fallbackContainer = document.getElementById('contact-guide-fallback');
-        const fallbackTextarea = document.getElementById('contact-guide-textarea');
-        if (fallbackContainer && fallbackTextarea) {
-          fallbackContainer.hidden = false;
-          fallbackTextarea.value = buildBody(currentConsultationService);
-          fallbackTextarea.focus();
-          fallbackTextarea.select();
-        }
+  document.getElementById('contact-copy-guide-btn')?.addEventListener('click', async () => {
+    const guideText = buildConsultationBody(currentConsultationService, getConsultationDetails());
+    try {
+      if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') {
+        throw new Error('Clipboard unavailable');
       }
-    });
-  }
-
-  // Copy guide button
-  const copyBtn = document.getElementById('contact-copy-guide-btn');
-  const feedbackEl = document.getElementById('contact-copy-feedback');
-  const fallbackContainer = document.getElementById('contact-guide-fallback');
-  const fallbackTextarea = document.getElementById('contact-guide-textarea');
-
-  if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
-      const guideText = buildBody(currentConsultationService);
-
-      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-        try {
-          await navigator.clipboard.writeText(guideText);
-          if (feedbackEl) {
-            feedbackEl.textContent = 'Guía copiada al portapapeles. Podés pegarla en tu correo.';
-            feedbackEl.className = 'cta-feedback-msg';
-            setTimeout(() => {
-              if (feedbackEl.textContent.includes('copiada')) {
-                feedbackEl.textContent = '';
-              }
-            }, 5000);
-          }
-          if (fallbackContainer) fallbackContainer.hidden = true;
-          return;
-        } catch (err) {
-          // Clipboard write failed: fall through to manual selection
-        }
-      }
-
-      // Manual fallback
-      if (fallbackContainer && fallbackTextarea) {
-        fallbackContainer.hidden = false;
-        fallbackTextarea.value = guideText;
-        fallbackTextarea.focus();
-        fallbackTextarea.select();
-      }
-      if (feedbackEl) {
-        feedbackEl.textContent = 'No se pudo acceder automáticamente al portapapeles. Copiá el texto directamente desde el recuadro.';
-        feedbackEl.className = 'cta-feedback-msg is-warning';
-      }
-    });
-  }
-
-  // Initial render
+      await navigator.clipboard.writeText(guideText);
+      if (recovery) recovery.hidden = true;
+      setFeedback('Guía copiada al portapapeles. Podés pegarla en tu correo.');
+    } catch {
+      if (guide) guide.value = guideText;
+      if (recovery) recovery.hidden = false;
+      guide?.focus();
+      guide?.select();
+      setFeedback('No se pudo acceder al portapapeles. El texto está seleccionado: copialo directamente desde la guía.', true);
+    }
+  });
   updateConsultationState(DEFAULT_SERVICE);
 }
 

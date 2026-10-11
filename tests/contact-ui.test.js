@@ -139,3 +139,68 @@ it('synchronizes native service selection with CTAs and preserves optional value
   assert.equal(elements.get('contact-name-input').value, 'Ana');
   assert.equal(elements.get('contact-deadline-input').value, 'Esta semana');
 });
+
+function deferredClipboard() {
+  const requests = [];
+  return { requests, clipboard: { writeText(text) { return new Promise((resolve, reject) => requests.push({ text, resolve, reject })); } } };
+}
+
+it('ignores delayed clipboard outcomes after any field edit or service change', async () => {
+  for (const change of ['contact-problem-textarea', 'contact-company-input', 'contact-name-input', 'contact-reply-input', 'contact-deadline-input', 'service', 'reset']) {
+    for (const outcome of ['resolve', 'reject']) {
+      const { clipboard, requests } = deferredClipboard();
+      const { elements, context } = setup({ clipboard });
+      elements.get('contact-problem-textarea').value = 'Original problem';
+      context.updateConsultationState('Repuesto Express');
+      const pending = elements.get('contact-copy-guide-btn').dispatch('click');
+      if (change === 'service') context.updateConsultationState('Ingeniería Inversa');
+      else if (change === 'reset') elements.get('contact-reset-service').dispatch('click');
+      else { elements.get(change).value = 'Changed value'; elements.get(change).dispatch('input'); }
+      requests[0][outcome](new Error('denied'));
+      await pending;
+      assert.equal(elements.get('contact-guide-fallback').hidden, true, change + '/' + outcome);
+      assert.equal(elements.get('contact-guide-textarea').focused, undefined);
+      assert.equal(elements.get('contact-guide-textarea').selected, undefined);
+      assert.equal(elements.get('contact-copy-feedback').textContent, '');
+    }
+  }
+});
+
+it('lets only the newest copy request control success or failure feedback', async () => {
+  for (const latestOutcome of ['resolve', 'reject']) {
+    for (const olderOutcome of ['resolve', 'reject']) {
+      const { clipboard, requests } = deferredClipboard();
+      const { elements } = setup({ clipboard });
+      elements.get('contact-problem-textarea').value = 'Current problem';
+      const older = elements.get('contact-copy-guide-btn').dispatch('click');
+      const latest = elements.get('contact-copy-guide-btn').dispatch('click');
+      requests[1][latestOutcome](new Error('denied'));
+      await latest;
+      const feedback = elements.get('contact-copy-feedback').textContent;
+      assert.ok(feedback.includes(latestOutcome === 'resolve' ? 'copiada' : 'No se pudo'));
+      assert.equal(elements.get('contact-guide-fallback').hidden, latestOutcome === 'resolve');
+      requests[0][olderOutcome](new Error('denied'));
+      await older;
+      assert.equal(elements.get('contact-copy-feedback').textContent, feedback);
+      assert.equal(elements.get('contact-guide-fallback').hidden, latestOutcome === 'resolve');
+    }
+  }
+});
+
+it('ignores an older completion while a newer clipboard request is still pending', async () => {
+  for (const outcome of ['resolve', 'reject']) {
+    const { clipboard, requests } = deferredClipboard();
+    const { elements } = setup({ clipboard });
+    elements.get('contact-problem-textarea').value = 'Current problem';
+    const older = elements.get('contact-copy-guide-btn').dispatch('click');
+    const latest = elements.get('contact-copy-guide-btn').dispatch('click');
+    requests[0][outcome](new Error('denied'));
+    await older;
+    assert.equal(elements.get('contact-copy-feedback').textContent, '');
+    assert.equal(elements.get('contact-guide-fallback').hidden, true);
+    assert.equal(elements.get('contact-guide-textarea').focused, undefined);
+    requests[1].resolve();
+    await latest;
+    assert.ok(elements.get('contact-copy-feedback').textContent.includes('copiada'));
+  }
+});

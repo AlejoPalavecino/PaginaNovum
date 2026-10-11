@@ -24,6 +24,7 @@ import { initSectorsAnimation } from './scripts/sectorsAnimation.js';
  * Global Consultation State Management
  */
 let currentConsultationService = DEFAULT_SERVICE;
+let consultationCopyRevision = 0;
 
 /** Reads the local consultation fields without changing visitor-authored content. */
 function getConsultationDetails() {
@@ -38,6 +39,7 @@ function getConsultationDetails() {
 
 /** Refreshes only the email action, never the visitor's entered text. */
 function updateConsultationMailAction() {
+  consultationCopyRevision += 1;
   const recovery = document.getElementById('contact-guide-fallback');
   if (recovery) recovery.hidden = true;
   const mailBtn = document.getElementById('contact-mail-btn');
@@ -110,14 +112,20 @@ export function initConsultationHandlers() {
 
   document.getElementById('contact-copy-guide-btn')?.addEventListener('click', async () => {
     const guideText = buildConsultationBody(currentConsultationService, getConsultationDetails());
+    const revision = ++consultationCopyRevision;
+    // Native writes cannot be cancelled; only the latest unchanged request owns UI.
+    const isCurrent = () => revision === consultationCopyRevision
+      && guideText === buildConsultationBody(currentConsultationService, getConsultationDetails());
     try {
       if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') {
         throw new Error('Clipboard unavailable');
       }
       await navigator.clipboard.writeText(guideText);
+      if (!isCurrent()) return;
       if (recovery) recovery.hidden = true;
       setFeedback('Guía copiada al portapapeles. Podés pegarla en tu correo.');
     } catch {
+      if (!isCurrent()) return;
       if (guide) guide.value = guideText;
       if (recovery) recovery.hidden = false;
       guide?.focus();

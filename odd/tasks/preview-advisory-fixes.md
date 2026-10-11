@@ -5,7 +5,7 @@ Fix the sector reveal threshold and stale asynchronous clipboard recovery, then 
 
 ## Work units
 - [x] AF-01: Reveal tall sectors at any positive intersection; preserve reduced-motion and unsupported-observer fallback. Add deterministic regression tests. Route: delegated direct (behavior plus tests). Rollback: sector observer and its tests only.
-- [ ] AF-02: Invalidate stale clipboard completion after input/service edits or newer copy attempts; preserve current-copy feedback and selectable failure recovery. Add deferred promise regressions. Route: delegated direct (behavior plus tests). Rollback: clipboard guard and its tests only.
+- [x] AF-02: Invalidate stale clipboard completion after input/service edits or newer copy attempts; preserve current-copy feedback and selectable failure recovery. Add deferred promise regressions. Route: delegated direct (behavior plus tests). Rollback: clipboard guard and its tests only.
 - [ ] AF-03: Review applicable committed slices, push and dispatch exact branch, verify successful deployed HEAD and unchanged main, deliver link.
 
 ## Verification and delivery
@@ -28,3 +28,6 @@ Observe meaningful RED before each behavior fix, then GREEN and existing tests. 
 
 ## Independent verification
 - Separate read-only verifier observed 50/50 tests, release exit0 and isolated build success; no actionable blockers. Parent spot check contact UI 10/10. Native clipboard writes cannot be cancelled; only stale UI effects are invalidated.
+
+## AF-01 commit boundary
+- affe4e67a37fd4204ca827e28e51935f376f63be: fix(sectors): reveal tall sections on viewport entry. Native committed assessment from8772163: medium,66lines, under_budget, review_due false after explicit exclusion of historical untracked exports. No approval receipt claimed.

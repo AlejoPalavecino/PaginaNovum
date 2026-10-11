@@ -236,7 +236,8 @@ describe('Contact hierarchy and integrated footer', () => {
     assert.ok(guide.match(/<textarea[^>]*readonly/));
     assert.ok(guide.match(/<div[^>]*id="contact-guide-fallback"[^>]*hidden/));
     const css = fs.readFileSync(path.resolve('src/styles/components/cta.css'), 'utf8');
-    assert.equal(css.includes('width: auto'), false);
+    const copyRule = css.match(/\.cta-button-copy\s*\{([^}]+)\}/)[1];
+    assert.equal(copyRule.includes('width: auto'), false);
     assert.ok(css.match(/\.contact-input-shell textarea,\s*\.guide-fallback-textarea\s*\{[^}]*color-scheme: dark/));
   });
   it('uses the approved white logo and preserves the six legitimate footer links', () => {
@@ -347,4 +348,16 @@ it('bounds the mobile menu to the viewport and lets its content scroll without s
     const rule = mobile.match(new RegExp('\\.' + selector + '\\s*\\{([^}]+)\\}'))[1];
     assert.ok(rule.includes('flex-shrink: 0'));
   }
+});
+
+it('keeps associated contact labels visible persistently on narrow layouts', () => {
+  const css = fs.readFileSync('src/styles/components/cta.css', 'utf8');
+  const narrow = css.match(/@media \(max-width: 575px\)\s*\{([\s\S]*?)\n\}/)[1];
+  const labels = narrow.match(/\.contact-control-label\s*\{([^}]+)\}/)[1];
+  for (const declaration of ['position: static', 'width: auto', 'height: auto', 'clip-path: none', 'white-space: normal']) assert.ok(labels.includes(declaration));
+  const html = fs.readFileSync('index.html', 'utf8');
+  for (const id of ['company-input', 'name-input', 'reply-input', 'deadline-input']) assert.ok(html.match(new RegExp('<label[^>]*for="contact-' + id + '"[^>]*>[^<]*opcional')));
+  assert.ok(html.match(/<label[^>]*for="contact-problem-textarea"[^>]*>[^<]*obligatorio/));
+  assert.ok(css.includes('min-height: 56px'));
+  assert.ok(css.includes('font-size: 1rem'));
 });

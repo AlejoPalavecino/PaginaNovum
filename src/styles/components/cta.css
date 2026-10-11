@@ -383,6 +383,25 @@
   .cta-center-zone { width: 100%; }
 }
 
+/* Persistent field names remain readable after typing on narrow layouts. */
+@media (max-width: 575px) {
+  .contact-control-label {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    margin: 0 0 0.4rem;
+    padding: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    color: #e5e7eb;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+}
+
 @media (max-width: 480px) {
   .cta-title { font-size: clamp(1.9rem, 8vw, 2.5rem); }
   .cta-information-cues { padding-left: 0.75rem; }

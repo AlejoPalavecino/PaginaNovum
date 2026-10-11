@@ -5,7 +5,7 @@ Correct the two verified responsive issues while preserving current visual desig
 
 ## Work units
 - [x] RP-01: Bound mobile menu to available viewport height and enable internal scrolling, preserving navbar shape, focus, Escape and body lock. Regression proof for667x375. Route delegated direct: CSS plus tests; rollback menu CSS/tests only.
-- [ ] RP-02: Expose compact persistent contact labels on narrow layouts without smaller text or enlarged desktop fields. Preserve Spanish content/associated labels/current form functionality. Route delegated direct: markup/CSS/tests; rollback label-specific changes only.
+- [x] RP-02: Expose compact persistent contact labels on narrow layouts without smaller text or enlarged desktop fields. Preserve Spanish content/associated labels/current form functionality. Route delegated direct: markup/CSS/tests; rollback label-specific changes only.
 - [ ] RP-03: Verify320x640,375x812,667x375,768x1024,992x768,1440x900 visual spacing, no overflow/clipping/overlap and menu access. Check applicable native slices, push and deploy exact branch, verify unchanged main and final public URL.
 
 ## Checks and delivery
@@ -34,3 +34,12 @@ Observe meaningful deterministic RED→GREEN where tests apply; CSS geometry req
 ## RP-01 selective candidate proof
 - Isolated index tree npm test 51/51, release check exit 0 and build successful: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-menu-unit-build-1a8150a0-a3db-4466-ace5-6f781a196e4f. Index archive reused existing node_modules junction without install; staged/worktree diff-check passed.
 - Only header CSS, menu regression and this tracker staged. RP-02 label CSS/test/copy-rule assertion remain unstaged; no remote/native review operation.
+
+## RP-02 independent proof and boundary
+- RP-01 commit d61f1e8df995edc456cf86a9d06bc5421c22ec70 assessed by parent from 8772163: medium, 200 lines, under_budget, review_due false; no terminal review invented.
+- Parent verified persistent labels at 320/375px; 575px shown and 576px hidden; input text remains 16px. Independent full tests 52/52, release/build passed. RP-02 ordinary outcome observed; RP-03 publication/native handling still pending.
+- Only label CSS, label regression/copy-rule assertion narrowing and tracker belong to this unit.
+
+## RP-02 isolated candidate proof
+- Index-tree npm test 52/52, release check exit 0 and production build passed: npm run build -- --outDir C:\Users\alejo\AppData\Local\Temp\novum-label-unit-build-a7730e19-9ecb-437e-bb75-4bde766473b4. Existing dependencies reused without installation; staged/worktree diff-check passed.
+- Native slice handling and publication remain parent-owned; unrelated trackers and untracked exports preserved.

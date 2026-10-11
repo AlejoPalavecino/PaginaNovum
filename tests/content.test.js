@@ -319,3 +319,18 @@ it('keeps the sector final word and decorative dot together on narrow screens', 
   const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
   assert.ok(css.match(/\.sectors-title-ending\s*\{[^}]*white-space: nowrap/));
 });
+
+it('reveals a tall sector when less than fifteen percent can fit in the viewport', () => {
+  const source = fs.readFileSync('src/scripts/sectorsAnimation.js', 'utf8').replace('export function', 'function');
+  const run = new Function('document', 'window', 'IntersectionObserver', source + '; initSectorsAnimation();');
+  const classes = new Set();
+  class ShortViewportObserver {
+    constructor(callback, options) { this.callback = callback; this.threshold = options.threshold; }
+    observe() {
+      if (this.threshold <= 0.005) this.callback([{ isIntersecting: true, intersectionRatio: 0.005 }]);
+    }
+    disconnect() {}
+  }
+  run({ getElementById: () => ({ classList: { add(name) { classes.add(name); } } }) }, { matchMedia: () => ({ matches: false }) }, ShortViewportObserver);
+  assert.ok(classes.has('is-revealed'));
+});

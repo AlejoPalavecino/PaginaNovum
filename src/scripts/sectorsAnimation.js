@@ -29,7 +29,8 @@ export function initSectorsAnimation() {
     {
       root: null,
       rootMargin: '0px 0px -10% 0px',
-      threshold: 0.15
+      // Whole-section ratios can be unreachable for tall responsive layouts.
+      threshold: 0
     }
   );
 

@@ -1,94 +1,123 @@
-/**
- * ==========================================================================
- * Nóvum Industrial — Process Section Interactive Scroll Timeline (#proceso)
- * Scroll-driven vertical progress line, node activation, connector drawing,
- * and card reveal animations via requestAnimationFrame + IntersectionObserver.
- * ==========================================================================
- */
-
+/** Measured, frame-coalesced vertical process progression without scroll interception. */
 export function initProcessTimeline() {
   const section = document.getElementById('proceso');
   const progressLine = document.getElementById('process-line-progress');
-  if (!section || !progressLine) return;
+  if (!section || !progressLine) return () => {};
 
-  const prefersReducedMotion = () =>
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const axis = section.querySelector('.process-vertical-axis');
+  const items = Array.from(section.querySelectorAll('.process-step-item'));
+  const nodes = items.map(item => item.querySelector('.process-node-anchor'));
+  const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  let observer;
+  let resizeObserver;
+  let frame = null;
+  let geometry;
+  let dirty = true;
+  let visible = true;
+  let enabled = false;
+  let disposed = false;
 
-  const stepItems = Array.from(section.querySelectorAll('.process-step-item'));
-  // Thresholds matching vertical node placements (01: ~10%, 02: ~27%, 03: ~45%, 04: ~64%, 05: ~83%)
-  const stepThresholds = [0.08, 0.24, 0.42, 0.61, 0.79];
-
-  // If user requests reduced motion, immediately activate all elements statically
-  if (prefersReducedMotion()) {
+  const cancelFrame = () => {
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+  };
+  const renderStatic = () => {
+    section.classList.remove('process-motion-ready');
     progressLine.style.transform = 'scaleY(1)';
-    stepItems.forEach((item) => item.classList.add('is-active'));
-    return;
-  }
+    items.forEach(item => item.classList.add('is-active'));
+  };
+  const stopObservers = () => {
+    observer?.disconnect();
+    resizeObserver?.disconnect();
+    cancelFrame();
+  };
+  const failStatic = () => {
+    enabled = false;
+    stopObservers();
+    renderStatic();
+  };
 
-  let isIntersecting = false;
-  let rafId = null;
-
-  const updateProgress = () => {
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    // Start progress as section enters view (when top reaches 75% of viewport)
-    // and complete as section center passes view (when bottom reaches 30% of viewport)
-    const startY = windowHeight * 0.75;
-    const totalDistance = rect.height + windowHeight * 0.25;
-    const currentDistance = startY - rect.top;
-
-    let progress = currentDistance / totalDistance;
-    progress = Math.min(Math.max(progress, 0), 1);
-
-    progressLine.style.transform = `scaleY(${progress.toFixed(3)})`;
-
-    stepItems.forEach((item, index) => {
-      const threshold = stepThresholds[index] !== undefined ? stepThresholds[index] : index / stepItems.length;
-      if (progress >= threshold) {
-        if (!item.classList.contains('is-active')) {
-          item.classList.add('is-active');
-        }
-      } else {
-        if (item.classList.contains('is-active')) {
-          item.classList.remove('is-active');
-        }
-      }
+  // All layout reads occur together, before any line/class write.
+  const measure = () => {
+    const rect = axis.getBoundingClientRect();
+    const scrollY = window.scrollY || 0;
+    if (!Number.isFinite(rect.top) || !Number.isFinite(rect.height) || rect.height <= 0) throw new Error('Invalid process axis');
+    const centers = nodes.map(node => {
+      const bounds = node.getBoundingClientRect();
+      const center = bounds.top + bounds.height / 2 + scrollY;
+      if (!Number.isFinite(center)) throw new Error('Invalid process node');
+      return center;
     });
+    geometry = { top: rect.top + scrollY, height: rect.height, centers };
+    dirty = false;
   };
-
-  const onScroll = () => {
-    if (!isIntersecting) return;
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(updateProgress);
-  };
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      isIntersecting = entry.isIntersecting;
-      if (isIntersecting) {
-        updateProgress();
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll, { passive: true });
-      } else {
-        window.removeEventListener('scroll', onScroll);
-        window.removeEventListener('resize', onScroll);
-        if (rafId) cancelAnimationFrame(rafId);
-      }
-    },
-    {
-      rootMargin: '100px 0px 100px 0px',
-      threshold: 0
+  const render = () => {
+    frame = null;
+    if (disposed || !enabled || !visible) return;
+    try {
+      if (dirty) measure();
+      const readingPoint = (window.scrollY || 0) + window.innerHeight * 0.75;
+      const progress = Math.max(0, Math.min(1, (readingPoint - geometry.top) / geometry.height));
+      const tip = geometry.top + progress * geometry.height;
+      section.classList.add('process-motion-ready');
+      progressLine.style.transform = `scaleY(${progress})`;
+      items.forEach((item, index) => item.classList.toggle('is-active', progress > 0 && geometry.centers[index] <= tip));
+    } catch {
+      failStatic();
     }
-  );
+  };
+  const schedule = () => {
+    if (!disposed && enabled && visible && frame === null) frame = requestAnimationFrame(render);
+  };
+  const refresh = () => {
+    dirty = true;
+    schedule();
+  };
+  const configure = () => {
+    if (disposed) return;
+    stopObservers();
+    enabled = !media?.matches && Boolean(axis) && nodes.length > 0
+      && nodes.every(Boolean) && typeof IntersectionObserver === 'function';
+    if (!enabled) {
+      renderStatic();
+      return;
+    }
+    dirty = true;
+    visible = true;
+    try {
+      observer = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) refresh();
+        else cancelFrame();
+      }, { rootMargin: '100px 0px 100px 0px', threshold: 0 });
+      observer.observe(section);
+      if (typeof ResizeObserver === 'function') {
+        resizeObserver = new ResizeObserver(refresh);
+        resizeObserver.observe(section.querySelector('.process-timeline-zone') || section);
+      }
+      schedule();
+    } catch {
+      failStatic();
+    }
+  };
 
-  observer.observe(section);
-  updateProgress();
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', refresh, { passive: true });
+  window.addEventListener('load', refresh, { once: true });
+  if (media?.addEventListener) media.addEventListener('change', configure);
+  else media?.addListener?.(configure);
+  document.fonts?.ready?.then(() => { if (!disposed) refresh(); });
+  configure();
 
   return () => {
-    observer.disconnect();
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('resize', onScroll);
-    if (rafId) cancelAnimationFrame(rafId);
+    disposed = true;
+    enabled = false;
+    stopObservers();
+    window.removeEventListener('scroll', schedule);
+    window.removeEventListener('resize', refresh);
+    window.removeEventListener('load', refresh);
+    if (media?.removeEventListener) media.removeEventListener('change', configure);
+    else media?.removeListener?.(configure);
+    renderStatic();
   };
 }

@@ -401,3 +401,112 @@ it('uses ordinary chevron perimeters for the first five sectors and terminal geo
   for (const path of paths.slice(0, 5)) assert.ok(path.includes('L237 108Q241 115 237 122'));
   assert.equal(paths[5], 'M12 1 H207 L239 31 V199 L209 229 H12 Q1 229 1 217 V13 Q1 1 12 1 Z');
 });
+
+function processFixture({ reduced = false, supported = true, missingAxis = false, badGeometry = false, fonts = false } = {}) {
+  const classes = () => { const values = new Set(); return { add: name => values.add(name), remove: name => values.delete(name), contains: name => values.has(name), toggle(name, on) { if (on) values.add(name); else values.delete(name); } }; };
+  const listeners = new Map(), frames = new Map();
+  let frameId = 0, reads = 0;
+  const layout = { top: 200, height: 1000, centers: [220, 430, 760, 950, 1160] };
+  const win = { innerHeight: 800, scrollY: 0, addEventListener(name, fn) { listeners.set(name, fn); }, removeEventListener(name, fn) { if (listeners.get(name) === fn) listeners.delete(name); } };
+  const media = { matches: reduced, addEventListener(name, fn) { this.handler = fn; }, removeEventListener() { this.handler = undefined; } };
+  win.matchMedia = () => media;
+  const axis = { getBoundingClientRect() { reads++; if (badGeometry) throw new Error('layout unavailable'); return { top: layout.top - win.scrollY, height: layout.height }; } };
+  const items = layout.centers.map((_, index) => ({ classList: classes(), querySelector() { return { getBoundingClientRect() { reads++; return { top: layout.centers[index] - win.scrollY - 10, height: 20 }; } }; } }));
+  const section = { classList: classes(), querySelectorAll: () => items, querySelector: selector => selector === '.process-vertical-axis' ? (missingAxis ? null : axis) : section, getBoundingClientRect: () => ({ top: -9999, height: 99999 }) };
+  const line = { style: {} };
+  let observer, resizeObserver;
+  class Observer { constructor(fn) { this.callback = fn; observer = this; } observe() {} disconnect() { this.disconnected = true; } }
+  class Resize { constructor(fn) { this.callback = fn; resizeObserver = this; } observe() {} disconnect() { this.disconnected = true; } }
+  let resolveFonts;
+  const document = { getElementById: id => id === 'proceso' ? section : line };
+  if (fonts) document.fonts = { ready: new Promise(resolve => { resolveFonts = resolve; }) };
+  const source = fs.readFileSync('src/scripts/processTimeline.js', 'utf8').replace('export function', 'function');
+  const run = new Function('document', 'window', 'IntersectionObserver', 'ResizeObserver', 'requestAnimationFrame', 'cancelAnimationFrame', source + '; return initProcessTimeline();');
+  const cleanup = run(document, win, supported ? Observer : undefined, Resize, fn => { const id = ++frameId; frames.set(id, fn); return id; }, id => frames.delete(id));
+  const flush = () => { const callbacks = [...frames.values()]; frames.clear(); callbacks.forEach(fn => fn()); };
+  const scroll = y => { win.scrollY = y; listeners.get('scroll')?.(); };
+  const visibility = on => observer?.callback([{ isIntersecting: on }]);
+  const changeMotion = on => { media.matches = on; media.handler?.({ matches: on }); };
+  return { layout, win, line, items, section, frames, listeners, cleanup, flush, scroll, visibility, changeMotion, media, resolveFonts, get observer() { return observer; }, get resizeObserver() { return resizeObserver; }, get reads() { return reads; } };
+}
+
+it('drives process fill and uneven node activation from the measured axis forward and backward', () => {
+  const f = processFixture(); f.visibility(true); f.flush();
+  assert.equal(f.line.style.transform, 'scaleY(0.4)');
+  assert.deepEqual(f.items.map(item => item.classList.contains('is-active')), [true, true, false, false, false]);
+  f.scroll(360); f.flush();
+  assert.equal(f.line.style.transform, 'scaleY(0.76)');
+  assert.deepEqual(f.items.map(item => item.classList.contains('is-active')), [true, true, true, true, false]);
+  f.scroll(-400); f.flush();
+  assert.equal(f.line.style.transform, 'scaleY(0)');
+  assert.ok(f.items.every(item => !item.classList.contains('is-active')));
+  f.cleanup();
+});
+
+it('coalesces process scroll frames and refreshes cached geometry after resize/layout changes', () => {
+  const f = processFixture(); f.visibility(true); f.flush(); const reads = f.reads;
+  f.scroll(100); f.scroll(110); f.scroll(120);
+  assert.equal(f.frames.size, 1); f.flush();
+  assert.equal(f.reads, reads, 'Scrolling does not repeatedly measure node DOM');
+  f.layout.height = 2000; f.layout.centers[2] = 650;
+  f.listeners.get('resize')?.(); f.flush();
+  assert.equal(f.line.style.transform, 'scaleY(0.26)');
+  assert.equal(f.items[2].classList.contains('is-active'), true);
+  f.layout.height = 1000; f.resizeObserver.callback(); f.flush();
+  assert.equal(f.line.style.transform, 'scaleY(0.52)');
+  f.cleanup();
+});
+
+it('provides full static process content for missing capabilities, geometry and reduced motion', () => {
+  for (const options of [{ reduced: true }, { supported: false }, { missingAxis: true }, { badGeometry: true }]) {
+    const f = processFixture(options); f.flush();
+    assert.equal(f.line.style.transform, 'scaleY(1)');
+    assert.ok(f.items.every(item => item.classList.contains('is-active')));
+    assert.equal(f.section.classList.contains('process-motion-ready'), false);
+    f.cleanup?.();
+  }
+});
+
+it('cancels process work offscreen, on live reduced motion and after disposal', () => {
+  const f = processFixture(); f.visibility(true); f.flush(); f.scroll(10);
+  f.visibility(false); assert.equal(f.frames.size, 0);
+  f.scroll(20); assert.equal(f.frames.size, 0);
+  f.visibility(true); f.flush(); f.scroll(30); f.changeMotion(true);
+  assert.equal(f.frames.size, 0); assert.equal(f.line.style.transform, 'scaleY(1)');
+  assert.ok(f.items.every(item => item.classList.contains('is-active')));
+  f.changeMotion(false); f.visibility(true); f.flush();
+  assert.notEqual(f.line.style.transform, 'scaleY(1)');
+  f.scroll(40); f.cleanup();
+  assert.equal(f.frames.size, 0); assert.equal(f.listeners.size, 0);
+  assert.equal(f.observer.disconnected, true); assert.equal(f.resizeObserver.disconnected, true);
+  assert.equal(f.media.handler, undefined);
+  assert.equal(f.line.style.transform, 'scaleY(1)');
+});
+
+it('keeps process static text visible and prevents competing CSS line interpolation', () => {
+  const css = fs.readFileSync('src/styles/components/process.css', 'utf8');
+  const line = css.match(/\.process-line-progress\s*\{([^}]+)\}/)[1];
+  assert.equal(line.includes('transition: transform'), false);
+  assert.ok(line.includes('transform: scaleY(1)'));
+  assert.ok(css.match(/\.process-step-callout\s*\{[^}]*opacity: 1/));
+  assert.ok(css.includes('.section-process.process-motion-ready'));
+});
+
+it('refreshes process geometry after fonts settle without reviving disposed work', async () => {
+  const f = processFixture({ fonts: true }); f.visibility(true); f.flush();
+  f.layout.height = 2000; f.resolveFonts(); await Promise.resolve(); f.flush();
+  assert.equal(f.line.style.transform, 'scaleY(0.2)'); f.cleanup();
+  const disposed = processFixture({ fonts: true }); disposed.cleanup();
+  disposed.resolveFonts(); await Promise.resolve();
+  assert.equal(disposed.frames.size, 0);
+  assert.equal(disposed.line.style.transform, 'scaleY(1)');
+});
+
+it('allows long Spanish process titles to wrap inside narrow cards without smaller text', () => {
+  const css = fs.readFileSync('src/styles/components/process.css', 'utf8');
+  const mobile = css.slice(css.indexOf('@media (max-width: 767px)'));
+  const title = mobile.match(/\.step-title\s*\{([^}]+)\}/)[1];
+  assert.ok(title.includes('overflow-wrap: anywhere'));
+  assert.ok(title.includes('hyphens: auto'));
+  assert.ok(title.includes('font-size: 0.9375rem'));
+});

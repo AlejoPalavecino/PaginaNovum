@@ -298,10 +298,9 @@
   background-color: var(--color-orange);
   border-radius: 2px;
   transform-origin: top center;
-  transform: scaleY(0);
+  transform: scaleY(1);
   box-shadow: 0 0 14px rgba(255, 129, 52, 0.7), 0 0 4px var(--color-orange);
   will-change: transform;
-  transition: transform 0.1s linear;
 }
 
 /* Steps List Container */
@@ -485,16 +484,16 @@
     position: absolute;
     top: 0;
     right: 42px; /* 10px node radius + 32px connector */
-    transform: translate(14px, -50%);
-    opacity: 0;
+    transform: translate(0, -50%);
+    opacity: 1;
   }
 
   .step-right .process-step-card {
     position: absolute;
     top: 0;
     left: 42px; /* 10px node radius + 32px connector */
-    transform: translate(-14px, -50%);
-    opacity: 0;
+    transform: translate(0, -50%);
+    opacity: 1;
   }
 
   .process-step-item.is-active.step-left .process-step-card {
@@ -587,7 +586,7 @@
   pointer-events: none;
   white-space: nowrap;
   transition: opacity 0.4s ease;
-  opacity: 0;
+  opacity: 1;
   z-index: 5;
 }
 
@@ -862,6 +861,8 @@
 
   .step-title {
     font-size: 0.9375rem;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   .step-text {
@@ -882,6 +883,19 @@
   .process-tech-badge-piece,
   .process-step-callout {
     display: none;
+  }
+}
+
+/* Only initialized motion enhances card entrances; static text stays visible. */
+@media (min-width: 1200px) and (prefers-reduced-motion: no-preference) {
+  .section-process.process-motion-ready .process-step-item:not(.is-active) .process-step-callout { opacity: 0; }
+  .section-process.process-motion-ready .step-left:not(.is-active) .process-step-card {
+    opacity: 0;
+    transform: translate(14px, -50%);
+  }
+  .section-process.process-motion-ready .step-right:not(.is-active) .process-step-card {
+    opacity: 0;
+    transform: translate(-14px, -50%);
   }
 }
 

@@ -2,6 +2,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { SECTORS_DATA } from '../src/data/sectorsData.js';
 
 describe('HTML Structure & B2B Editorial Integrity', () => {
   const htmlPath = path.resolve('index.html');
@@ -253,18 +254,26 @@ describe('Sectors reference presentation', () => {
   const html = fs.readFileSync(path.resolve('index.html'), 'utf8');
   const sectors = html.match(/<section id="sectores"[\s\S]*?<\/section>/)[0];
   const css = fs.readFileSync(path.resolve('src/styles/components/sectors.css'), 'utf8');
-  it('pairs six decorative native outlined icons with unchanged sector labels', () => {
-    const icons = [...sectors.matchAll(/<svg class="sector-icon"[^>]*>/g)];
-    assert.equal(icons.length, 6);
-    for (const [icon] of icons) {
-      assert.ok(icon.includes('viewBox="0 0 24 24"'));
-      assert.ok(icon.includes('stroke="currentColor"'));
-      assert.ok(icon.includes('aria-hidden="true"'));
-      assert.ok(icon.includes('focusable="false"'));
+  it('pairs the six supplied decorative images with canonical static sector data', () => {
+    const modules = [...sectors.matchAll(/<article class="sector-module[^>]*>([\s\S]*?)<\/article>/g)].map(match => match[1]);
+    assert.equal(modules.length, SECTORS_DATA.length);
+    for (const [index, data] of SECTORS_DATA.entries()) {
+      assert.ok(modules[index].includes(data.name));
+      assert.ok(modules[index].includes(data.tag.replaceAll('&', '&amp;')));
+      const icon = modules[index].match(/<img class="sector-icon"[^>]*>/)[0];
+      assert.ok(icon.includes('src="' + data.icon + '"'));
+      assert.ok(icon.includes('alt=""'));
+      assert.ok(data.icon.endsWith('.webp'));
+      assert.ok(fs.existsSync(data.icon));
+      assert.ok(modules[index].includes(data.number + ' ·'));
+      const bytes = fs.readFileSync(data.icon);
+      assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
+      assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
+      assert.ok(bytes.length < 20000, 'Decorative thumbnails stay below 20KB each');
     }
-    assert.equal(sectors.includes('seccion07-icono-'), false);
-    assert.ok(sectors.includes('seccion07-foto-cnc-mecanizado.png'));
+    assert.ok(sectors.includes('seccion07-foto-cnc-mecanizado.webp'));
     assert.ok(sectors.includes('data-consulta="Consulta general"'));
+    assert.ok(sectors.includes('id="experiencia"'));
   });
   it('keeps a monochrome photograph and a six-column ribbon with deliberate smaller grids', () => {
     assert.ok(css.includes('grayscale(1)'));
@@ -371,16 +380,24 @@ it('sizes the desktop hero title from the safe copy container with a capped fall
   assert.equal(desktop.includes('overflow: hidden'), false);
 });
 
-it('uses closed padded absolute outlines for the wrench and flask sector icons', () => {
+it('uses supplied sector images independently of native padded perimeter geometry', () => {
   const html = fs.readFileSync('index.html', 'utf8');
-  const icons = [...html.matchAll(/<svg class="sector-icon"[^>]*>([\s\S]*?)<\/svg>/g)];
-  for (const index of [1, 5]) {
-    const path = icons[index][1].match(/<path d="([^"]+)"/)[1];
-    assert.ok(path.endsWith('Z'));
-    assert.equal(/[a-z]/.test(path), false, 'Absolute paths avoid accidental relative coordinate accumulation');
-    assert.equal(/[Aa]/.test(path), false, 'Bezier control bounds avoid uncertain arc extrema');
-    const numbers = path.match(/-?\d+(?:\.\d+)?/g).map(Number);
-    assert.ok(numbers.every(number => number >= 1.5 && number <= 22), 'Control hull plus 0.825 stroke radius stays inside 24-unit viewBox');
-    assert.ok(icons[index][0].includes('stroke-width="1.65"'));
-  }
+  const sectors = html.match(/<section id="sectores"[\s\S]*?<\/section>/)[0];
+  assert.equal([...sectors.matchAll(/<img class="sector-icon"/g)].length, 6);
+  assert.equal([...sectors.matchAll(/class="sector-module-outline"/g)].length, 6);
+  const css = fs.readFileSync('src/styles/components/sectors.css', 'utf8');
+  const wrapper = css.match(/\.sector-icon-wrap\s*\{([^}]+)\}/)[1];
+  assert.ok(wrapper.includes('background: transparent'));
+  assert.ok(css.includes('@media (min-width: 768px) and (max-width: 1439px)'));
+  assert.ok(css.includes('@media (min-width: 1440px)'));
+  assert.ok(css.includes('white-space: nowrap'));
+  assert.ok(sectors.match(/class="sectors-photo-accent-svg"[\s\S]*?<path[^>]*d="[^"]*Z"/));
+});
+it('uses ordinary chevron perimeters for the first five sectors and terminal geometry only last', () => {
+  const html = fs.readFileSync('index.html', 'utf8');
+  const sectors = html.match(/<section id="sectores"[\s\S]*?<\/section>/)[0];
+  const paths = [...sectors.matchAll(/class="sector-module-outline"[\s\S]*?<path d="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(paths.length, 6);
+  for (const path of paths.slice(0, 5)) assert.ok(path.includes('L237 108Q241 115 237 122'));
+  assert.equal(paths[5], 'M12 1 H207 L239 31 V199 L209 229 H12 Q1 229 1 217 V13 Q1 1 12 1 Z');
 });

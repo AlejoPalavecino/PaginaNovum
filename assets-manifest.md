@@ -58,14 +58,14 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 ## Sección 07 — Con quiénes buscamos trabajar
 | Archivo | Uso recomendado | Tipo |
 |---|---|---|
-| `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png` | Fotografía industrial recortada diagonalmente con clip-path | Fotografía industrial |
-| `assets/images/seccion07/seccion07-marco-diagonal-naranja.png` | Marco/acento diagonal naranja | Decoración gráfica |
-| `assets/images/seccion07/seccion07-icono-industria-manufacturera.png` | Icono sector 01 Manufactura | Icono vectorial |
-| `assets/images/seccion07/seccion07-icono-talleres-mantenimiento.png` | Icono sector 02 Mantenimiento | Icono vectorial |
-| `assets/images/seccion07/seccion07-icono-ingenieria-automatizacion.png` | Icono sector 03 Control & CAD | Icono vectorial |
-| `assets/images/seccion07/seccion07-icono-maquinaria-equipamiento.png` | Icono sector 04 Equipamiento | Icono vectorial |
-| `assets/images/seccion07/seccion07-icono-agroindustria.png` | Icono sector 05 Agro & Packing | Icono vectorial |
-| `assets/images/seccion07/seccion07-icono-laboratorios.png` | Icono sector 06 I+D & Control | Icono vectorial |
+| `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png` | Fotografía industrial recortada diagonalmente con clip-path | PNG fuente; WebP activo derivado |
+| `assets/images/seccion07/seccion07-marco-diagonal-naranja.png` | Marco/acento diagonal naranja | PNG fuente; marco SVG activo |
+| `assets/images/seccion07/seccion07-icono-industria-manufacturera.png` | Icono sector 01 Manufactura | PNG fuente; WebP activo derivado |
+| `assets/images/seccion07/seccion07-icono-talleres-mantenimiento.png` | Icono sector 02 Mantenimiento | PNG fuente; WebP activo derivado |
+| `assets/images/seccion07/seccion07-icono-ingenieria-automatizacion.png` | Icono sector 03 Control & CAD | PNG fuente; WebP activo derivado |
+| `assets/images/seccion07/seccion07-icono-maquinaria-equipamiento.png` | Icono sector 04 Equipamiento | PNG fuente; WebP activo derivado |
+| `assets/images/seccion07/seccion07-icono-agroindustria.png` | Icono sector 05 Agro & Packing | PNG fuente; WebP activo derivado |
+| `assets/images/seccion07/seccion07-icono-laboratorios.png` | Icono sector 06 I+D & Control | PNG fuente; WebP activo derivado |
 
 ## Reglas
 - No recortar objetos transparentes tan cerca que se pierda su silueta.
@@ -82,11 +82,26 @@ Todos los nombres están normalizados para desarrollo. Los PNG fuente se conserv
 
 ## Sectores — referencia industrial
 - Se reutiliza la fotografía CNC aprobada con filtro monocromático y recorte diagonal en CSS.
-- Los seis iconos de sector se representan como SVG lineales nativos en index.html; las imágenes históricas del catálogo se conservan sin modificación.
+- SRL-02 utiliza derivados WebP de los seis iconos proporcionados. Sus originales PNG se conservan sin modificación; los contornos, flechas y marco diagonal siguen siendo SVG nativos.
 - La captura de referencia no se utiliza como imagen de producción.
 
 ## Estado de entrega — activos frente a exportaciones históricas
-- **Assets activos en esta entrega:** `assets/images/backgrounds/hero-taller-transformacion.jpg`, `assets/images/seccion07/seccion07-foto-cnc-mecanizado.png` y `assets/images/transparent/hero/hero/assets/01_fondo_taller_industrial.png`, junto con las imágenes ya utilizadas por el resto de la página.
+- **Assets activos en esta entrega:** `assets/images/backgrounds/hero-taller-transformacion.jpg`, `assets/images/seccion07/seccion07-foto-cnc-mecanizado.webp`, los seis iconos WebP enumerados abajo y `assets/images/transparent/hero/hero/assets/01_fondo_taller_industrial.png`, junto con las imágenes ya utilizadas por el resto de la página.
 - **Exportaciones históricas no utilizadas ni incluidas en esta entrega:** marco diagonal e iconos PNG de `assets/images/seccion07/`, exportaciones de `assets/images/transparent/seccion07-sectores-industriales/` y demás archivos del paquete `assets/images/transparent/hero/` salvo el fondo activo indicado. El catálogo no implica uso ni publicación de estos archivos.
-- Los contornos e iconos de Sectores son SVG nativos; no necesitan las exportaciones PNG históricas. Los archivos locales históricos se conservan sin borrar, pero quedan fuera del inventario de publicación.
+- Los contornos de Sectores son SVG nativos y los seis iconos activos son derivados WebP de los PNG históricos. Los originales se conservan sin borrar y no se cargan como iconos de producción.
 - `.atl/` y `.codegraph/` son metadatos locales de herramientas, no assets del cliente.
+
+## SRL-02 — derivados activos proporcionados
+| Archivo en assets/images/seccion07/ | Dimensiones | Bytes | Fuente |
+|---|---|---:|---|
+| `seccion07-foto-cnc-mecanizado.webp` | 1100 × 825 | 72878 | PNG homónimo proporcionado |
+| `seccion07-icono-agroindustria.webp` | 160 × 160 | 5378 | PNG homónimo proporcionado |
+| `seccion07-icono-industria-manufacturera.webp` | 160 × 160 | 4098 | PNG homónimo proporcionado |
+| `seccion07-icono-ingenieria-automatizacion.webp` | 160 × 160 | 6798 | PNG homónimo proporcionado |
+| `seccion07-icono-laboratorios.webp` | 160 × 160 | 4978 | PNG homónimo proporcionado |
+| `seccion07-icono-maquinaria-equipamiento.webp` | 160 × 160 | 4794 | PNG homónimo proporcionado |
+| `seccion07-icono-talleres-mantenimiento.webp` | 160 × 160 | 5764 | PNG homónimo proporcionado |
+
+- Foto: WebP de 1100 × 825, sin modificar el PNG original conceptual. No acredita equipamiento propio, precisión ni certificaciones.
+- Iconos: alpha preservado, margen transparente conservador normalizado y padding uniforme, 160 × 160 para visualización de 64 px. La caja translúcida pertenece al recurso, no se agrega otro fondo CSS.
+- Ocho fuentes revisadas: foto, marco y seis iconos. Producción usa siete imágenes WebP más un marco SVG responsive permitido por el brief; no se afirma que carguen ocho imágenes. El marco PNG no se necesita.

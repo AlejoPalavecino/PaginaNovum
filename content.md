@@ -82,7 +82,7 @@
 - **Título:** Empresas con desafíos técnicos reales.
 - **Descripción:** Fábricas, talleres y organizaciones donde una pieza, una adaptación o una mejora puede marcar la diferencia en la operación.
 
-- **Presentación:** Fotografía CNC monocromática en recorte diagonal y seis módulos chevrón con iconos lineales naranjas. En pantallas pequeñas los módulos se apilan sin carrusel.
+- **Presentación:** Fotografía conceptual CNC monocromática en recorte diagonal con marco SVG naranja; seis módulos chevrón con los iconos proporcionados optimizados en WebP, sin duplicar su caja translúcida. Mobile menor a 768 px en una columna, tablet en tres y desktop desde 1440 px en seis, sin carrusel.
 
 ### Selección de sectores objetivo:
 1. Industria manufacturera

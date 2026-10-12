@@ -46,7 +46,7 @@
 
 @media (min-width: 1024px) {
   .sectors-header-layout {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
     gap: clamp(1.25rem, 1rem + 1vw, 2.5rem);
   }
 }
@@ -134,7 +134,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .sectors-header-visual {
     flex-direction: column;
     align-items: flex-start;
@@ -148,7 +148,7 @@
   min-width: 0;
   width: min(100%, 380px);
   max-width: 380px;
-  aspect-ratio: 0.9;
+  aspect-ratio: 1.12;
 }
 
 @media (max-width: 640px) {
@@ -198,11 +198,16 @@
   top: -4px;
   left: -16px;
   width: 100%;
-  height: 105%;
+  height: 100%;
+  color: var(--color-orange);
   pointer-events: none;
   z-index: 2;
   overflow: visible;
 
+}
+
+@media (min-width: 1440px) {
+  .sectors-visual-stage { max-width: 440px; width: min(100%, 440px); margin-top: -3rem; }
 }
 
 /* Metadatos Editoriales Secundarios */
@@ -246,7 +251,9 @@
   align-items: center;
   gap: 0.55rem;
   color: #64748B;
-  margin-top: 0.6rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #B6BDC6;
 }
 
 .tech-crosshair-icon {
@@ -284,7 +291,7 @@
 }
 
 /* Tablet: 3 columnas x 2 filas */
-@media (min-width: 640px) and (max-width: 1099px) {
+@media (min-width: 768px) and (max-width: 1439px) {
   .sectors-modules-track {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
@@ -322,7 +329,7 @@
 }
 
 /* Desktop: Cinta continua sin escalones con cheurones matemáticos */
-@media (min-width: 1100px) {
+@media (min-width: 1440px) {
   .sectors-track-container {
     padding-right: 68px;
   }
@@ -383,18 +390,18 @@
 
   /* Padding interno perfectamente calibrado para el avance del chevrón */
   .sector-module-01 .sector-module-content {
-    padding: 1.6rem 3rem 1.5rem 1.4rem;
+    padding: 1.5rem 2.25rem 1.5rem 1.25rem;
   }
 
   .sector-module-02 .sector-module-content,
   .sector-module-03 .sector-module-content,
   .sector-module-04 .sector-module-content,
   .sector-module-05 .sector-module-content {
-    padding: 1.6rem 3rem 1.5rem 1.9rem;
+    padding: 1.5rem 2.25rem 1.5rem 1.75rem;
   }
 
   .sector-module-06 .sector-module-content {
-    padding: 1.6rem 2.5rem 1.5rem 1.9rem;
+    padding: 1.5rem 1.25rem 1.5rem 1.75rem;
   }
 
   /* Marcador técnico izquierdo con punto y línea sobre el borde superior */
@@ -477,6 +484,9 @@
   }
 }
 
+.sector-module:hover .sector-icon,
+.sector-module:focus-visible .sector-icon { transform: scale(1.04); }
+
 /* Contenido Interno del Módulo con Alineación Rigurosa */
 .sector-module-content {
   position: relative;
@@ -488,27 +498,28 @@
 }
 
 .sector-icon-wrap {
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   display: grid;
   place-items: center;
   margin-bottom: auto;
-  border-radius: 10px;
-  background: #E9EDF1;
+  background: transparent;
   color: var(--color-orange);
   flex-shrink: 0;
 }
 
 .sector-icon {
-  width: 28px;
-  height: 28px;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
 }
 
 .sector-module-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  margin-top: 1.5rem;
+  gap: 0.6rem;
+  margin-top: 1rem;
 }
 
 .sector-module-header {
@@ -526,7 +537,7 @@
   letter-spacing: 0.12em;
   color: #94A3B8;
   text-transform: uppercase;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 
 .sector-inline-arrow {
@@ -714,6 +725,7 @@
     transform: none !important;
     transition: none !important;
   }
+  .section-sectors .sector-icon,
   .section-sectors .sector-inline-arrow,
   .section-sectors .sectors-cta-btn,
   .section-sectors .cta-arrow { transition: none !important; }
